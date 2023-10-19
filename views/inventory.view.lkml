@@ -1,5 +1,5 @@
 view: inventory {
-  sql_table_name: `google_demo_reporting.Inventory` ;;
+  sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.Inventory` ;;
 
   dimension: batch_number {
     type: string

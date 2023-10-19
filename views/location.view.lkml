@@ -1,5 +1,5 @@
 view: location {
-  sql_table_name: `google_demo_reporting.Location` ;;
+  sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.location` ;;
   drill_fields: [location_id]
 
   dimension: location_id {

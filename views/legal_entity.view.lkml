@@ -1,5 +1,5 @@
 view: legal_entity {
-  sql_table_name: `google_demo_reporting.Legal_entity` ;;
+  sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.legal_entity` ;;
   drill_fields: [legal_entity_uid]
 
   dimension: legal_entity_uid {
