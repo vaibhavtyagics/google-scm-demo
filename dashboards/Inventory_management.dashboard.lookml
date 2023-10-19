@@ -55,11 +55,11 @@
     interpolation: linear
     defaults_version: 1
     listen:
-      Indusrtry: product.product_category
-      Category: product.product_type
-      Product: product.product_description
       Country: location.country
       Location Id: location.location_uid
+      Product: product.product_description
+      Category: product.product_type
+      Indusrtry: product.product_category
     row: 3
     col: 0
     width: 14
@@ -105,7 +105,12 @@
     header_font_size: 12
     rows_font_size: 12
     title_hidden: true
-    listen: {}
+    listen:
+      Country: location.country
+      Location Id: location.location_uid
+      Product: product.product_description
+      Category: product.product_type
+      Indusrtry: product.product_category
     row: 0
     col: 0
     width: 7
@@ -134,7 +139,12 @@
     conditional_formatting_include_nulls: false
     defaults_version: 0
     title_hidden: true
-    listen: {}
+    listen:
+      Country: location.country
+      Location Id: location.location_uid
+      Product: product.product_description
+      Category: product.product_type
+      Indusrtry: product.product_category
     row: 0
     col: 7
     width: 7
@@ -154,7 +164,12 @@
     show_view_names: true
     defaults_version: 0
     hidden_pivots: {}
-    listen: {}
+    listen:
+      Country: location.country
+      Location Id: location.location_uid
+      Product: product.product_description
+      Category: product.product_type
+      Indusrtry: product.product_category
     row: 0
     col: 14
     width: 10
