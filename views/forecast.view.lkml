@@ -1,5 +1,5 @@
 view: forecast {
-  sql_table_name: `google_demo_reporting.Forecast` ;;
+  sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.forecast` ;;
 
   dimension_group: forecast {
     type: time

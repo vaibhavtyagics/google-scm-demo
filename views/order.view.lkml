@@ -1,5 +1,5 @@
 view: order {
-  sql_table_name: `google_demo_reporting.Order` ;;
+  sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.order` ;;
   drill_fields: [order_id]
 
   dimension: order_id {
