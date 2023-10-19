@@ -28,8 +28,8 @@ explore: order {
   }
 
 join: inventory {
-  type: left_outer
-  sql_on: ${inventory.location_uid} = ${location.location_uid}
+  type: full_outer
+  sql_on: ${inventory.location_uid} = ${order.location_uid}
           and ${inventory.product_uid} = ${order.product_uid};;
   relationship: many_to_one
 }
