@@ -1,5 +1,5 @@
 view: location {
-  sql_table_name: `google_demo_reporting.Location` ;;
+  sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.location` ;;
   drill_fields: [location_id]
 
   dimension: location_id {
@@ -42,6 +42,13 @@ view: location {
     type: string
     sql: ${TABLE}.district ;;
   }
+
+  dimension: location {
+    type: location
+    sql_latitude: ${geo_lattitude} ;;
+    sql_longitude: ${geo_longitude} ;;
+  }
+
   dimension: geo_lattitude {
     type: number
     sql: ${TABLE}.geo_lattitude ;;

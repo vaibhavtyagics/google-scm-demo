@@ -1,5 +1,5 @@
 view: asset {
-  sql_table_name: `google_demo_reporting.Asset` ;;
+  sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.asset` ;;
   drill_fields: [asset_id]
 
   dimension: asset_id {

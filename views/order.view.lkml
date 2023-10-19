@@ -1,5 +1,5 @@
 view: order {
-  sql_table_name: `google_demo_reporting.Order` ;;
+  sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.order` ;;
   drill_fields: [order_id]
 
   dimension: order_id {
@@ -190,5 +190,13 @@ view: order {
   measure: count {
     type: count
     drill_fields: [order_id, asset.asset_id, asset.asset_name]
+  }
+
+# Derived Fields
+
+ measure: total_delivered_quantity {
+   type: sum
+  sql: ${delivered_quantity} ;;
+  filters: [order_category: "Purchase Order", status: "Completed"]
   }
 }

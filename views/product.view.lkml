@@ -1,5 +1,5 @@
 view: product {
-  sql_table_name: `google_demo_reporting.Product` ;;
+  sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.product` ;;
   drill_fields: [product_uid]
 
   dimension: product_uid {
@@ -156,18 +156,18 @@ view: product {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	product_uid,
-	product_hierarchy_level_name,
-	product_hierarchy_level_2_name,
-	product_hierarchy_level_1_name,
-	product_hierarchy_name,
-	product.product_uid,
-	product.product_hierarchy_level_name,
-	product.product_hierarchy_level_2_name,
-	product.product_hierarchy_level_1_name,
-	product.product_hierarchy_name,
-	product.count
-	]
+  product_uid,
+  product_hierarchy_level_name,
+  product_hierarchy_level_2_name,
+  product_hierarchy_level_1_name,
+  product_hierarchy_name,
+  product.product_uid,
+  product.product_hierarchy_level_name,
+  product.product_hierarchy_level_2_name,
+  product.product_hierarchy_level_1_name,
+  product.product_hierarchy_name,
+  product.count
+  ]
   }
 
 }

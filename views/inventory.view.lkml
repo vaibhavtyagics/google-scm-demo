@@ -1,5 +1,12 @@
 view: inventory {
-  sql_table_name: `google_demo_reporting.Inventory` ;;
+  sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.Inventory` ;;
+
+
+   dimension: pk {
+    type: string
+    primary_key: yes
+    sql: CONCAT(cast(${inv_gr_date} as string),'',${location_uid},'',${product_uid}) ;;
+  }
 
   dimension: batch_number {
     type: string
@@ -58,4 +65,27 @@ view: inventory {
   measure: count {
     type: count
   }
+
+# ----- Sets of fields for drilling ------
+  set: detail {
+    fields: [
+      product.product_id,
+      product.product_hierarchy_level_2_name,
+      product.product_hierarchy_level_1_name,
+      product.product_hierarchy_name,
+      location.location_id,
+      location.location_name
+    ]
+  }
+
+
+#Custom Measures for KPI'S
+
+  measure: total_inventory_quantity {
+    type: sum
+    sql: ${inventory_quantity} ;;
+    drill_fields: [detail*]
+  }
+
+
 }
