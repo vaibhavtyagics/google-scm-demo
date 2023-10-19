@@ -1,5 +1,5 @@
 constant: PROJECT {
-  value: "google_scm_demo"
+  value: "smart-nomad-401004"
   export: override_optional
 }
 constant: CONNECTION {
