@@ -199,4 +199,16 @@ view: order {
   sql: ${delivered_quantity} ;;
   filters: [order_category: "Purchase Order", status: "Completed"]
   }
+
+  measure: total_rejected_quantity {
+    type: sum
+    sql: ${rejected_quantity} ;;
+    filters: [order_category: "Purchase Order", status: "Completed"]
+  }
+
+  measure: order_quality{
+    type: number
+    sql: ((${total_delivered_quantity} - ${total_rejected_quantity})/${total_delivered_quantity}) ;;
+    value_format_name: percent_2
+  }
 }
