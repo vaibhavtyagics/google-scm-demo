@@ -46,6 +46,7 @@ explore: inventory_location {
 }
 
 explore: inventory {
+  label: "Inventory"
   join: location {
   type: inner
   sql_on: ${inventory.location_uid} = ${location.location_uid} ;;
@@ -63,6 +64,12 @@ join :product {
   sql_on: ${product.product_uid} = ${inventory.product_uid} ;;
   relationship: one_to_one
 }
+
+  join: legal_entity {
+    type: left_outer
+    sql_on: ${order.key_legal_entity_uid} = ${legal_entity.legal_entity_uid} ;;
+    relationship: many_to_one
+  }
 
 
 }
