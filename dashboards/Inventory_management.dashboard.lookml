@@ -221,7 +221,6 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
-      Actual Delivery Date: order.actual_delivery_date
     row: 9
     col: 16
     width: 8
@@ -561,7 +560,6 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
-      Actual Delivery Date: order.actual_delivery_date
     row: 3
     col: 16
     width: 8
