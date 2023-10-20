@@ -42,6 +42,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 0
     col: 0
     width: 6
@@ -81,6 +82,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 0
     col: 6
     width: 6
@@ -113,8 +115,8 @@
     map_marker_type: circle
     map_marker_icon_name: default
     map_marker_radius_mode: fixed
-    map_marker_units: meters
-    map_marker_radius_fixed: 1
+    map_marker_units: pixels
+    map_marker_radius_fixed: 4
     map_marker_proportional_scale_type: linear
     map_marker_color_mode: value
     show_legend: true
@@ -126,6 +128,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 9
     col: 0
     width: 8
@@ -171,6 +174,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 9
     col: 8
     width: 8
@@ -204,8 +208,8 @@
     map_marker_type: circle
     map_marker_icon_name: building
     map_marker_radius_mode: fixed
-    map_marker_units: meters
-    map_marker_radius_fixed: 20
+    map_marker_units: pixels
+    map_marker_radius_fixed: 4
     map_marker_proportional_scale_type: linear
     map_marker_color_mode: value
     show_legend: true
@@ -217,6 +221,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 9
     col: 16
     width: 8
@@ -251,6 +256,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 0
     col: 12
     width: 6
@@ -331,6 +337,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 17
     col: 0
     width: 24
@@ -441,6 +448,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 3
     col: 0
     width: 8
@@ -553,6 +561,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 3
     col: 16
     width: 8
@@ -665,6 +674,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 3
     col: 8
     width: 8
@@ -709,6 +719,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 26
     col: 0
     width: 24
@@ -737,6 +748,7 @@
       Product Type: product.product_type
       Country: location.country
       City: location.city
+      Actual Delivery Date: order.actual_delivery_date
     row: 0
     col: 18
     width: 6
@@ -794,3 +806,17 @@
     explore: inventory
     listens_to_filters: [Country]
     field: location.city
+  - name: Actual Delivery Date
+    title: Actual Delivery Date
+    type: field_filter
+    default_value: 30 day
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: relative_timeframes
+      display: inline
+      options: []
+    model: google-scm-demo
+    explore: inventory
+    listens_to_filters: []
+    field: order.actual_delivery_date
