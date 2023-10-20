@@ -233,6 +233,7 @@ on a.location_uid=b.location_uid;;
     sql: ${TABLE}.working_hour ;;
   }
 
+
   measure: count {
     type: count
   }

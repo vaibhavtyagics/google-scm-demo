@@ -18,7 +18,7 @@ explore: order {
   join: location {
   type: inner
   sql_on: ${order.location_uid} = ${location.location_uid} ;;
-  relationship: many_to_one
+  relationship: one_to_one
 }
 
   join: legal_entity {
@@ -39,4 +39,30 @@ join: product {
   sql_on: ${order.product_uid} = ${product.product_uid} ;;
   relationship: many_to_one
 }
+}
+
+explore: inventory_location {
+  view_name: inventory_location
+}
+
+explore: inventory {
+  join: location {
+  type: inner
+  sql_on: ${inventory.location_uid} = ${location.location_uid} ;;
+  relationship: one_to_one
+}
+
+join: order   {
+  type:  left_outer
+  sql_on: ${order.location_uid} = ${location.location_uid} ;;
+  relationship: many_to_one
+}
+
+join :product {
+  type: inner
+  sql_on: ${product.product_uid} = ${inventory.product_uid} ;;
+  relationship: one_to_one
+}
+
+
 }
