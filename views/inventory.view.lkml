@@ -54,6 +54,10 @@ view: inventory {
     type: string
     sql: ${TABLE}.product_uid ;;
   }
+  dimension: procurement_type {
+    type: string
+    sql: ${TABLE}.procurement_type ;;
+  }
   dimension: remaining_shelf_life {
     type: string
     sql: ${TABLE}.remaining_shelf_life ;;
