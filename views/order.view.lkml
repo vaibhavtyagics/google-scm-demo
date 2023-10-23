@@ -211,4 +211,8 @@ view: order {
     sql: ((${total_delivered_quantity} - ${total_rejected_quantity})/${total_delivered_quantity}) ;;
     value_format_name: percent_2
   }
+  measure: return_rate{
+    type: number
+    sql: ${total_rejected_quantity}/${total_delivered_quantity}  ;;
+  }
 }
