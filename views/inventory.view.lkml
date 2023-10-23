@@ -38,9 +38,14 @@ view: inventory {
     type: string
     sql: ${TABLE}.inventory_ownership ;;
   }
+  dimension: procurement_type {
+    type: string
+    sql: ${TABLE}.procurement_type;;
+  }
   dimension: inventory_quantity {
     type: number
     sql: ${TABLE}.inventory_quantity ;;
+
   }
   dimension: inventory_type {
     type: string
