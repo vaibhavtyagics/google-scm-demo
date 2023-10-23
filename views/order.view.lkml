@@ -213,6 +213,6 @@ view: order {
   }
   measure: return_rate{
     type: number
-    sql: (${total_rejected_quantity}/${total_delivered_quantity})*100  ;;
+    sql: ${total_rejected_quantity}/${total_delivered_quantity}  ;;
   }
 }
