@@ -114,9 +114,9 @@ view: product {
     type: string
     sql: ${TABLE}.product_type ;;
   }
-  dimension: safty_stock {
-    type: string
-    sql: ${TABLE}.safty_stock ;;
+  dimension: safety_stock {
+    type: number
+    sql: ${TABLE}.safety_stock ;;
   }
   dimension: shelf_life {
     type: string
@@ -168,6 +168,12 @@ view: product {
   product.product_hierarchy_name,
   product.count
   ]
+  }
+
+  measure: total_safety_stock {
+    type: sum
+    sql: ${safety_stock}/1000;;
+    value_format_name: decimal_0
   }
 
 }

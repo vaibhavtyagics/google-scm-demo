@@ -42,6 +42,13 @@ view: location {
     type: string
     sql: ${TABLE}.district ;;
   }
+
+  dimension: location {
+    type: location
+    sql_latitude: ${geo_lattitude} ;;
+    sql_longitude: ${geo_longitude} ;;
+  }
+
   dimension: geo_lattitude {
     type: number
     sql: ${TABLE}.geo_lattitude ;;
