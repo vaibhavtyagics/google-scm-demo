@@ -176,4 +176,9 @@ view: product {
     value_format_name: decimal_0
   }
 
+  measure: total_product_cost {
+    type: sum
+    sql: ${product_cost} ;;
+  }
+
 }
