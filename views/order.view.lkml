@@ -215,4 +215,9 @@ view: order {
     type: number
     sql: ${total_rejected_quantity}/${total_delivered_quantity}  ;;
   }
+  measure: order_backlog{
+    type: number
+    sql: ${count} - ${count_if(status = 'Completed')}  ;;
+  }
+
 }
