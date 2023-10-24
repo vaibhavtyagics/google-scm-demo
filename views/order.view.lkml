@@ -217,7 +217,7 @@ view: order {
   }
   measure: order_backlog{
     type: number
-    sql: ${count} - ${count_if(status = 'Completed')}  ;;
+    sql: COUNT(${order_id})- COUNT_IF(${order.status} = 'Completed') ;;
   }
 
 }
