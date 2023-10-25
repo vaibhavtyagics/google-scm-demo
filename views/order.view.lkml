@@ -208,6 +208,11 @@ view: order {
   }
 
 
+  measure: total_requested_quantity {
+    type: sum
+    sql: ${requested_quantity} ;;
+  }
+
   measure: total_rejected_quantity {
     type: sum
     sql: ${rejected_quantity} ;;
@@ -221,7 +226,13 @@ view: order {
   }
   measure: supplier_quality_index{
     type: number
-    sql: ${total_rejected_quantity}/${total_delivered_quantity}  ;;
+    sql: ${total_rejected_quantity}/IF(COALESCE(${total_delivered_quantity},0) = 0,null,${total_delivered_quantity})  ;;
+    value_format_name: decimal_3
+  }
+
+  measure: order_backlog{
+    type: number
+    sql:  (${total_requested_quantity}) - ${total_delivered_quantity};;
   }
 
 }
