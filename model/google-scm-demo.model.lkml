@@ -39,6 +39,12 @@ join: product {
   sql_on: ${order.product_uid} = ${product.product_uid} ;;
   relationship: many_to_one
 }
+join: date {
+  type: left_outer
+  sql_on: ${order.order_creation_date_date} = ${date.date_date} ;;
+  relationship: many_to_one
+}
+
 }
 
 explore: inventory_location {
