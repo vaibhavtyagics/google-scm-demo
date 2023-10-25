@@ -211,4 +211,13 @@ view: order {
     sql: ((${total_delivered_quantity} - ${total_rejected_quantity})/${total_delivered_quantity}) ;;
     value_format_name: percent_2
   }
+  measure: supplier_quality_index{
+    type: number
+    sql: ${total_rejected_quantity}/${total_delivered_quantity}  ;;
+  }
+  measure: order_backlog{
+    type: number
+    sql: ${count} - ${count_if(status = 'Completed')}  ;;
+  }
+
 }
