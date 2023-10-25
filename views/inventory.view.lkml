@@ -45,7 +45,6 @@ view: inventory {
   dimension: inventory_quantity {
     type: number
     sql: ${TABLE}.inventory_quantity ;;
-
   }
   dimension: inventory_type {
     type: string
@@ -90,6 +89,12 @@ view: inventory {
     type: sum
     sql: ${inventory_quantity} ;;
     drill_fields: [detail*]
+  }
+
+  measure: Cost {
+    type: sum
+    value_format_name: usd
+    sql: ${inventory_quantity}*${product.product_cost} ;;
   }
 
 
