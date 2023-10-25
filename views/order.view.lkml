@@ -45,7 +45,7 @@ view: order {
     type: number
     sql: ${TABLE}.confirmed_quantity ;;
   }
-  dimension_group: creation {
+  dimension_group: order_creation_date {
     type: time
     timeframes: [raw, date, week, month, quarter, year]
     convert_tz: no
