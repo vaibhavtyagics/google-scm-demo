@@ -50,7 +50,7 @@ view: order {
     timeframes: [raw, date, week, month, quarter, year]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}.creation_date ;;
+    sql: ${TABLE}.order_creation_date ;;
   }
   dimension: delivered_quantity {
     type: number
@@ -135,6 +135,12 @@ view: order {
     type: number
     sql: ${TABLE}.rejected_quantity ;;
   }
+
+  dimension: returned_quantity {
+    type: number
+    sql: ${TABLE}.returned_quantity ;;
+  }
+
   dimension: rejection_code {
     type: string
     sql: ${TABLE}.rejection_code ;;
@@ -187,6 +193,7 @@ view: order {
     type: string
     sql: ${TABLE}.valuation_area ;;
   }
+
   measure: count {
     type: count
     drill_fields: [order_id, asset.asset_id, asset.asset_name]
@@ -199,6 +206,7 @@ view: order {
   sql: ${delivered_quantity} ;;
   filters: [order_category: "Purchase Order", status: "Completed"]
   }
+
 
   measure: total_rejected_quantity {
     type: sum
@@ -214,10 +222,6 @@ view: order {
   measure: supplier_quality_index{
     type: number
     sql: ${total_rejected_quantity}/${total_delivered_quantity}  ;;
-  }
-  measure: order_backlog{
-    type: number
-    sql: COUNT(${order_id})- COUNT_IF(${order.status} = 'Completed') ;;
   }
 
 }
