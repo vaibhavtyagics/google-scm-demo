@@ -49,7 +49,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 16
+    row: 17
     col: 0
     width: 4
     height: 8
@@ -95,7 +95,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 34
+    row: 35
     col: 0
     width: 8
     height: 8
@@ -141,7 +141,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 34
+    row: 35
     col: 8
     width: 8
     height: 8
@@ -188,7 +188,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 34
+    row: 35
     col: 16
     width: 8
     height: 8
@@ -269,7 +269,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 42
+    row: 43
     col: 0
     width: 11
     height: 8
@@ -314,7 +314,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 42
+    row: 43
     col: 11
     width: 13
     height: 8
@@ -340,7 +340,7 @@
     hidden_fields: []
     hidden_points_if_no: []
     show_view_names: false
-    font_size_main: ''
+    font_size_main: '10.5'
     orientation: auto
     style_inventory.total_inventory_quantity: "#E52592"
     show_title_inventory.total_inventory_quantity: true
@@ -353,8 +353,10 @@
     value_format_inventory.Cost: ''
     show_comparison_inventory.Cost: false
     style_sell_value: "#7CB342"
+    show_title_sell_value: true
     title_placement_sell_value: below
     value_format_sell_value: ''
+    show_comparison_sell_value: false
     hidden_pivots: {}
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -401,7 +403,7 @@
     row: 2
     col: 0
     width: 4
-    height: 6
+    height: 7
   - title: DC inventory
     name: DC inventory
     model: google-scm-demo
@@ -424,7 +426,7 @@
     hidden_fields: []
     hidden_points_if_no: []
     show_view_names: false
-    font_size_main: ''
+    font_size_main: '10.5'
     orientation: auto
     style_inventory.total_inventory_quantity: "#E52592"
     show_title_inventory.total_inventory_quantity: true
@@ -437,7 +439,10 @@
     value_format_inventory.Cost: ''
     show_comparison_inventory.Cost: false
     style_sell_value: "#7CB342"
+    show_title_sell_value: true
     title_placement_sell_value: below
+    value_format_sell_value: ''
+    show_comparison_sell_value: false
     hidden_pivots: {}
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -484,7 +489,7 @@
     row: 2
     col: 10
     width: 4
-    height: 6
+    height: 7
   - title: Store inventory
     name: Store inventory
     model: google-scm-demo
@@ -507,7 +512,7 @@
     hidden_fields: []
     hidden_points_if_no: []
     show_view_names: false
-    font_size_main: ''
+    font_size_main: '10.5'
     orientation: auto
     style_inventory.total_inventory_quantity: "#E52592"
     show_title_inventory.total_inventory_quantity: true
@@ -520,6 +525,10 @@
     value_format_inventory.Cost: ''
     show_comparison_inventory.Cost: false
     style_sell_value: "#7CB342"
+    show_title_sell_value: true
+    title_placement_sell_value: below
+    value_format_sell_value: ''
+    show_comparison_sell_value: false
     hidden_pivots: {}
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -566,7 +575,7 @@
     row: 2
     col: 20
     width: 4
-    height: 6
+    height: 7
   - title: In Transit DC
     name: In Transit DC
     model: google-scm-demo
@@ -590,7 +599,7 @@
     hidden_fields: []
     hidden_points_if_no: []
     show_view_names: false
-    font_size_main: ''
+    font_size_main: '10.5'
     orientation: auto
     style_inventory.total_inventory_quantity: "#E52592"
     show_title_inventory.total_inventory_quantity: true
@@ -603,6 +612,10 @@
     value_format_inventory.Cost: ''
     show_comparison_inventory.Cost: false
     style_sell_value: "#7CB342"
+    show_title_sell_value: true
+    title_placement_sell_value: below
+    value_format_sell_value: ''
+    show_comparison_sell_value: false
     hidden_pivots: {}
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -649,7 +662,7 @@
     row: 2
     col: 5
     width: 4
-    height: 6
+    height: 7
   - title: In Transit Stores
     name: In Transit Stores
     model: google-scm-demo
@@ -673,7 +686,7 @@
     hidden_fields: []
     hidden_points_if_no: []
     show_view_names: false
-    font_size_main: ''
+    font_size_main: '10.5'
     orientation: auto
     style_inventory.total_inventory_quantity: "#E52592"
     show_title_inventory.total_inventory_quantity: true
@@ -686,7 +699,10 @@
     value_format_inventory.Cost: ''
     show_comparison_inventory.Cost: false
     style_sell_value: "#7CB342"
+    show_title_sell_value: true
     title_placement_sell_value: below
+    value_format_sell_value: ''
+    show_comparison_sell_value: false
     hidden_pivots: {}
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -733,7 +749,7 @@
     row: 2
     col: 15
     width: 4
-    height: 6
+    height: 7
   - title: Supplier
     name: Supplier
     model: google-scm-demo
@@ -839,7 +855,7 @@
     show_null_points: true
     interpolation: linear
     listen: {}
-    row: 10
+    row: 11
     col: 0
     width: 4
     height: 6
@@ -887,7 +903,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 16
+    row: 17
     col: 5
     width: 4
     height: 8
@@ -942,7 +958,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 16
+    row: 17
     col: 15
     width: 4
     height: 8
@@ -990,7 +1006,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 16
+    row: 17
     col: 20
     width: 4
     height: 8
@@ -1044,7 +1060,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 16
+    row: 17
     col: 10
     width: 4
     height: 8
@@ -1153,7 +1169,7 @@
     show_null_points: true
     interpolation: linear
     listen: {}
-    row: 10
+    row: 11
     col: 5
     width: 4
     height: 6
@@ -1263,7 +1279,7 @@
     show_null_points: true
     interpolation: linear
     listen: {}
-    row: 10
+    row: 11
     col: 20
     width: 4
     height: 6
@@ -1373,7 +1389,7 @@
     show_null_points: true
     interpolation: linear
     listen: {}
-    row: 10
+    row: 11
     col: 15
     width: 4
     height: 6
@@ -1482,7 +1498,7 @@
     show_null_points: true
     interpolation: linear
     listen: {}
-    row: 10
+    row: 11
     col: 10
     width: 4
     height: 6
@@ -1491,7 +1507,7 @@
     title_text: Stock Level Summary
     subtitle_text: What's our overall stock positioning?
     body_text: ''
-    row: 8
+    row: 9
     col: 0
     width: 24
     height: 2
@@ -1556,7 +1572,7 @@
     interpolation: linear
     defaults_version: 1
     listen: {}
-    row: 24
+    row: 25
     col: 0
     width: 24
     height: 10
