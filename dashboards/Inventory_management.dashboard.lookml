@@ -10,55 +10,26 @@
     name: Untitled
     model: google-scm-demo
     explore: inventory
-    type: single_value
-    fields: [order.order_backlog]
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index]
     filters:
-      order.status: ''
       inventory.procurement_type: Supplier
     limit: 500
     column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#F9AB00"
-    single_value_title: Order Backlog - Supplier
     hidden_fields: []
     hidden_points_if_no: []
     show_view_names: true
     font_size_main: ''
     orientation: auto
-    style_order.total_delivered_quantity: "#7CB342"
-    show_title_order.total_delivered_quantity: true
-    title_placement_order.total_delivered_quantity: below
-    value_format_order.total_delivered_quantity: ''
-    defaults_version: 1
-    title_hidden: true
-    listen:
-      Country: location.country
-      Industry: product.product_category
-      Category: product.product_type
-      Location ID: location.location_id
-      Product: product.product_id
-    row: 22
-    col: 0
-    width: 5
-    height: 3
-  - title: Untitled
-    name: Untitled (2)
-    model: google-scm-demo
-    explore: inventory
-    type: single_value
-    fields: [inventory.total_inventory_quantity]
-    filters:
-      inventory.procurement_type: Supplier
-    limit: 500
-    column_limit: 50
+    style_inventory.total_inventory_quantity: "#079c98"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total stocks - Supplier
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    style_order.order_backlog: "#F9AB00"
+    title_placement_order.order_backlog: below
+    style_order.supplier_quality_index: "#7CB342"
+    title_placement_order.supplier_quality_index: below
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -70,16 +41,7 @@
     conditional_formatting_include_nulls: false
     custom_color: "#079c98"
     single_value_title: Total Stocks -  Supplier
-    hidden_fields: []
-    hidden_points_if_no: []
-    show_view_names: true
-    font_size_main: ''
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#079c98"
-    show_title_inventory.total_inventory_quantity: true
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    defaults_version: 1
+    defaults_version: 0
     title_hidden: true
     listen:
       Country: location.country
@@ -89,8 +51,8 @@
       Product: product.product_id
     row: 16
     col: 0
-    width: 5
-    height: 3
+    width: 4
+    height: 8
   - title: Supplier Inventory Footprint
     name: Supplier Inventory Footprint
     model: google-scm-demo
@@ -133,7 +95,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 25
+    row: 34
     col: 0
     width: 8
     height: 8
@@ -179,7 +141,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 25
+    row: 34
     col: 8
     width: 8
     height: 8
@@ -226,45 +188,10 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 25
+    row: 34
     col: 16
     width: 8
     height: 8
-  - title: Untitled
-    name: Untitled (3)
-    model: google-scm-demo
-    explore: inventory
-    type: single_value
-    fields: [order.supplier_quality_index]
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: SQI - Supplier
-    conditional_formatting: [{type: greater than, value: 85, background_color: "#1A73E8",
-        font_color: "#7CB342", color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
-          palette_id: 56d0c358-10a0-4fd6-aa0b-b117bef527ab}, bold: false, italic: false,
-        strikethrough: false, fields: !!null ''}]
-    hidden_pivots: {}
-    defaults_version: 1
-    listen:
-      Country: location.country
-      Industry: product.product_category
-      Category: product.product_type
-      Location ID: location.location_id
-      Product: product.product_id
-    row: 19
-    col: 0
-    width: 5
-    height: 3
   - title: Untitled (Copy)
     name: Untitled (Copy)
     model: google-scm-demo
@@ -342,7 +269,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 33
+    row: 42
     col: 0
     width: 11
     height: 8
@@ -387,7 +314,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 33
+    row: 42
     col: 11
     width: 13
     height: 8
@@ -473,7 +400,7 @@
       Product: product.product_id
     row: 2
     col: 0
-    width: 5
+    width: 4
     height: 6
   - title: DC inventory
     name: DC inventory
@@ -637,8 +564,8 @@
     listen:
       Product: product.product_id
     row: 2
-    col: 19
-    width: 5
+    col: 20
+    width: 4
     height: 6
   - title: In Transit DC
     name: In Transit DC
@@ -721,7 +648,7 @@
       Product: product.product_id
     row: 2
     col: 5
-    width: 5
+    width: 4
     height: 6
   - title: In Transit Stores
     name: In Transit Stores
@@ -804,8 +731,8 @@
     listen:
       Product: product.product_id
     row: 2
-    col: 14
-    width: 5
+    col: 15
+    width: 4
     height: 6
   - title: Supplier
     name: Supplier
@@ -914,19 +841,33 @@
     listen: {}
     row: 10
     col: 0
-    width: 5
+    width: 4
     height: 6
   - title: Untitled (Copy 2)
     name: Untitled (Copy 2)
     model: google-scm-demo
     explore: inventory
-    type: single_value
-    fields: [inventory.total_inventory_quantity]
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index]
     filters:
       inventory.procurement_type: DC
       order.status: Open
     limit: 500
     column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    show_view_names: true
+    font_size_main: ''
+    orientation: auto
+    style_inventory.total_inventory_quantity: "#079c98"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total Stocks - In Transit DC
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    style_order.order_backlog: "#F9AB00"
+    title_placement_order.order_backlog: below
+    style_order.supplier_quality_index: "#7CB342"
+    title_placement_order.supplier_quality_index: below
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -938,16 +879,7 @@
     conditional_formatting_include_nulls: false
     custom_color: "#F9AB00"
     single_value_title: Total Stocks -  In Transit DC
-    hidden_fields: []
-    hidden_points_if_no: []
-    show_view_names: true
-    font_size_main: ''
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#079c98"
-    show_title_inventory.total_inventory_quantity: true
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    defaults_version: 1
+    defaults_version: 0
     title_hidden: true
     listen:
       Country: location.country
@@ -957,19 +889,40 @@
       Product: product.product_id
     row: 16
     col: 5
-    width: 5
-    height: 3
+    width: 4
+    height: 8
   - title: Untitled (Copy 3)
     name: Untitled (Copy 3)
     model: google-scm-demo
     explore: inventory
-    type: single_value
-    fields: [inventory.total_inventory_quantity]
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index]
     filters:
       inventory.procurement_type: Stores
       order.status: Open
     limit: 500
     column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    show_view_names: true
+    font_size_main: ''
+    orientation: auto
+    style_inventory.total_inventory_quantity: "#079c98"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total Stocks -  In Transit
+      Stores
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    style_order.order_backlog: "#F9AB00"
+    show_title_order.order_backlog: true
+    title_placement_order.order_backlog: below
+    value_format_order.order_backlog: ''
+    show_comparison_order.order_backlog: false
+    style_order.supplier_quality_index: "#7CB342"
+    show_title_order.supplier_quality_index: true
+    title_placement_order.supplier_quality_index: below
+    value_format_order.supplier_quality_index: ''
+    show_comparison_order.supplier_quality_index: false
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -981,16 +934,7 @@
     conditional_formatting_include_nulls: false
     custom_color: "#F9AB00"
     single_value_title: Total Stocks -  In Transit Stores
-    hidden_fields: []
-    hidden_points_if_no: []
-    show_view_names: true
-    font_size_main: ''
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#079c98"
-    show_title_inventory.total_inventory_quantity: true
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    defaults_version: 1
+    defaults_version: 0
     title_hidden: true
     listen:
       Country: location.country
@@ -999,20 +943,34 @@
       Location ID: location.location_id
       Product: product.product_id
     row: 16
-    col: 14
-    width: 5
-    height: 3
+    col: 15
+    width: 4
+    height: 8
   - title: Untitled (Copy 5)
     name: Untitled (Copy 5)
     model: google-scm-demo
     explore: inventory
-    type: single_value
-    fields: [inventory.total_inventory_quantity]
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index]
     filters:
       inventory.procurement_type: Stores
       order.status: ''
     limit: 500
     column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    show_view_names: true
+    font_size_main: ''
+    orientation: auto
+    style_inventory.total_inventory_quantity: "#079c98"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total Stocks -  Store Inventory
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    style_order.order_backlog: "#F9AB00"
+    title_placement_order.order_backlog: below
+    style_order.supplier_quality_index: "#7CB342"
+    title_placement_order.supplier_quality_index: below
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -1024,16 +982,7 @@
     conditional_formatting_include_nulls: false
     custom_color: "#12B5CB"
     single_value_title: Total Stocks -  Store Inventory
-    hidden_fields: []
-    hidden_points_if_no: []
-    show_view_names: true
-    font_size_main: ''
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#079c98"
-    show_title_inventory.total_inventory_quantity: true
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    defaults_version: 1
+    defaults_version: 0
     title_hidden: true
     listen:
       Country: location.country
@@ -1042,20 +991,40 @@
       Location ID: location.location_id
       Product: product.product_id
     row: 16
-    col: 19
-    width: 5
-    height: 3
+    col: 20
+    width: 4
+    height: 8
   - title: Untitled (Copy 4)
     name: Untitled (Copy 4)
     model: google-scm-demo
     explore: inventory
-    type: single_value
-    fields: [inventory.total_inventory_quantity]
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index]
     filters:
       inventory.procurement_type: DC
       order.status: Completed
     limit: 500
     column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    show_view_names: true
+    font_size_main: ''
+    orientation: auto
+    style_inventory.total_inventory_quantity: "#079c98"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total Stocks -  DC
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    style_order.order_backlog: "#F9AB00"
+    show_title_order.order_backlog: true
+    title_placement_order.order_backlog: below
+    value_format_order.order_backlog: ''
+    show_comparison_order.order_backlog: false
+    style_order.supplier_quality_index: "#7CB342"
+    show_title_order.supplier_quality_index: true
+    title_placement_order.supplier_quality_index: below
+    value_format_order.supplier_quality_index: ''
+    show_comparison_order.supplier_quality_index: false
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -1067,16 +1036,7 @@
     conditional_formatting_include_nulls: false
     custom_color: "#079c98"
     single_value_title: Total Stocks -  DC
-    hidden_fields: []
-    hidden_points_if_no: []
-    show_view_names: true
-    font_size_main: ''
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#079c98"
-    show_title_inventory.total_inventory_quantity: true
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    defaults_version: 1
+    defaults_version: 0
     title_hidden: true
     listen:
       Country: location.country
@@ -1087,7 +1047,7 @@
     row: 16
     col: 10
     width: 4
-    height: 3
+    height: 8
   - title: In Transit DC
     name: In Transit DC (2)
     model: google-scm-demo
@@ -1195,7 +1155,7 @@
     listen: {}
     row: 10
     col: 5
-    width: 5
+    width: 4
     height: 6
   - title: Stores
     name: Stores
@@ -1304,8 +1264,8 @@
     interpolation: linear
     listen: {}
     row: 10
-    col: 19
-    width: 5
+    col: 20
+    width: 4
     height: 6
   - title: In Transit Stores
     name: In Transit Stores (2)
@@ -1414,8 +1374,8 @@
     interpolation: linear
     listen: {}
     row: 10
-    col: 14
-    width: 5
+    col: 15
+    width: 4
     height: 6
   - title: DC Inventory
     name: DC Inventory
@@ -1526,155 +1486,6 @@
     col: 10
     width: 4
     height: 6
-  - title: Untitled (Copy 8)
-    name: Untitled (Copy 8)
-    model: google-scm-demo
-    explore: inventory
-    type: single_value
-    fields: [order.supplier_quality_index]
-    filters:
-      inventory.procurement_type: Stores
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: SQI - In Transit Stores
-    conditional_formatting: [{type: greater than, value: 85, background_color: "#1A73E8",
-        font_color: "#7CB342", color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
-          palette_id: 56d0c358-10a0-4fd6-aa0b-b117bef527ab}, bold: false, italic: false,
-        strikethrough: false, fields: !!null ''}]
-    hidden_pivots: {}
-    defaults_version: 1
-    listen:
-      Country: location.country
-      Industry: product.product_category
-      Category: product.product_type
-      Location ID: location.location_id
-      Product: product.product_id
-    row: 19
-    col: 14
-    width: 5
-    height: 3
-  - title: Untitled (Copy 9)
-    name: Untitled (Copy 9)
-    model: google-scm-demo
-    explore: inventory
-    type: single_value
-    fields: [order.supplier_quality_index]
-    filters:
-      inventory.procurement_type: Stores
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: SQI - Stores
-    conditional_formatting: [{type: greater than, value: 85, background_color: "#1A73E8",
-        font_color: "#7CB342", color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
-          palette_id: 56d0c358-10a0-4fd6-aa0b-b117bef527ab}, bold: false, italic: false,
-        strikethrough: false, fields: !!null ''}]
-    hidden_pivots: {}
-    defaults_version: 1
-    listen:
-      Country: location.country
-      Industry: product.product_category
-      Category: product.product_type
-      Location ID: location.location_id
-      Product: product.product_id
-    row: 19
-    col: 19
-    width: 5
-    height: 3
-  - title: Untitled (Copy 7)
-    name: Untitled (Copy 7)
-    model: google-scm-demo
-    explore: inventory
-    type: single_value
-    fields: [order.supplier_quality_index]
-    filters:
-      inventory.procurement_type: DC
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: SQI - Supplier
-    conditional_formatting: [{type: greater than, value: 85, background_color: "#1A73E8",
-        font_color: "#7CB342", color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
-          palette_id: 56d0c358-10a0-4fd6-aa0b-b117bef527ab}, bold: false, italic: false,
-        strikethrough: false, fields: !!null ''}]
-    hidden_pivots: {}
-    defaults_version: 1
-    listen:
-      Country: location.country
-      Industry: product.product_category
-      Category: product.product_type
-      Location ID: location.location_id
-      Product: product.product_id
-    row: 19
-    col: 10
-    width: 4
-    height: 3
-  - title: Untitled (Copy 6)
-    name: Untitled (Copy 6)
-    model: google-scm-demo
-    explore: inventory
-    type: single_value
-    fields: [order.supplier_quality_index]
-    filters:
-      inventory.procurement_type: DC
-      order.status: Open
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: SQI - In Transit DC
-    conditional_formatting: [{type: greater than, value: 85, background_color: "#1A73E8",
-        font_color: "#7CB342", color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
-          palette_id: 56d0c358-10a0-4fd6-aa0b-b117bef527ab}, bold: false, italic: false,
-        strikethrough: false, fields: !!null ''}]
-    hidden_pivots: {}
-    defaults_version: 1
-    listen:
-      Country: location.country
-      Industry: product.product_category
-      Category: product.product_type
-      Location ID: location.location_id
-      Product: product.product_id
-    row: 19
-    col: 5
-    width: 5
-    height: 3
   - name: Stock Level Summary
     type: text
     title_text: Stock Level Summary
@@ -1695,178 +1506,60 @@
     col: 0
     width: 24
     height: 2
-  - title: Untitled (Copy 12)
-    name: Untitled (Copy 12)
+  - title: Daily View at DC
+    name: Daily View at DC
     model: google-scm-demo
     explore: inventory
-    type: single_value
-    fields: [order.order_backlog]
-    filters:
-      order.status: Open
-      inventory.procurement_type: Stores
+    type: looker_grid
+    fields: [forecast.forecast_date, forecast.projected_inventory, forecast.total_forecast_quantity,
+      forecast.valuation_table, order.total_requested_quantity_po]
+    fill_fields: [forecast.forecast_date]
+    sorts: [forecast.forecast_date desc]
     limit: 500
     column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
     enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: 12
+    rows_font_size: 12
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    custom_color: "#F9AB00"
-    single_value_title: Order Backlog - In Transit Stores
-    hidden_fields: []
-    hidden_points_if_no: []
-    show_view_names: true
-    font_size_main: ''
-    orientation: auto
-    style_order.total_delivered_quantity: "#7CB342"
-    show_title_order.total_delivered_quantity: true
-    title_placement_order.total_delivered_quantity: below
-    value_format_order.total_delivered_quantity: ''
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
     defaults_version: 1
-    title_hidden: true
-    listen:
-      Country: location.country
-      Industry: product.product_category
-      Category: product.product_type
-      Location ID: location.location_id
-      Product: product.product_id
-    row: 22
-    col: 14
-    width: 5
-    height: 3
-  - title: Untitled (Copy 11)
-    name: Untitled (Copy 11)
-    model: google-scm-demo
-    explore: inventory
-    type: single_value
-    fields: [order.order_backlog]
-    filters:
-      order.status: ''
-      inventory.procurement_type: DC
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#F9AB00"
-    single_value_title: Order Backlog - DC
-    hidden_fields: []
-    hidden_points_if_no: []
-    show_view_names: true
-    font_size_main: ''
-    orientation: auto
-    style_order.total_delivered_quantity: "#7CB342"
-    show_title_order.total_delivered_quantity: true
-    title_placement_order.total_delivered_quantity: below
-    value_format_order.total_delivered_quantity: ''
-    defaults_version: 1
-    title_hidden: true
-    listen:
-      Country: location.country
-      Industry: product.product_category
-      Category: product.product_type
-      Location ID: location.location_id
-      Product: product.product_id
-    row: 22
-    col: 10
-    width: 4
-    height: 3
-  - title: Untitled (Copy 10)
-    name: Untitled (Copy 10)
-    model: google-scm-demo
-    explore: inventory
-    type: single_value
-    fields: [order.order_backlog]
-    filters:
-      order.status: Open
-      inventory.procurement_type: DC
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#F9AB00"
-    single_value_title: Order Backlog - In Transit DC
-    hidden_fields: []
-    hidden_points_if_no: []
-    show_view_names: true
-    font_size_main: ''
-    orientation: auto
-    style_order.total_delivered_quantity: "#7CB342"
-    show_title_order.total_delivered_quantity: true
-    title_placement_order.total_delivered_quantity: below
-    value_format_order.total_delivered_quantity: ''
-    defaults_version: 1
-    title_hidden: true
-    listen:
-      Country: location.country
-      Industry: product.product_category
-      Category: product.product_type
-      Location ID: location.location_id
-      Product: product.product_id
-    row: 22
-    col: 5
-    width: 5
-    height: 3
-  - title: Untitled (Copy 13)
-    name: Untitled (Copy 13)
-    model: google-scm-demo
-    explore: inventory
-    type: single_value
-    fields: [order.order_backlog]
-    filters:
-      order.status: ''
-      inventory.procurement_type: Stores
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#F9AB00"
-    single_value_title: Order Backlog - Stores
-    hidden_fields: []
-    hidden_points_if_no: []
-    show_view_names: true
-    font_size_main: ''
-    orientation: auto
-    style_order.total_delivered_quantity: "#7CB342"
-    show_title_order.total_delivered_quantity: true
-    title_placement_order.total_delivered_quantity: below
-    value_format_order.total_delivered_quantity: ''
-    defaults_version: 1
-    title_hidden: true
-    listen:
-      Country: location.country
-      Industry: product.product_category
-      Category: product.product_type
-      Location ID: location.location_id
-      Product: product.product_id
-    row: 22
-    col: 19
-    width: 5
-    height: 3
+    listen: {}
+    row: 24
+    col: 0
+    width: 24
+    height: 10
   filters:
   - name: Industry
     title: Industry

@@ -151,7 +151,7 @@ view: order {
   }
   dimension: requested_quantity {
     type: number
-    sql: ${TABLE}.requested_quantity ;;
+    sql: cast(${TABLE}.requested_quantity as int) ;;
   }
   dimension: route_id {
     type: string
@@ -234,5 +234,12 @@ view: order {
     type: number
     sql:  (${total_requested_quantity}) - ${total_delivered_quantity};;
   }
+
+  measure: total_requested_quantity_po{
+    label: "Incoming Arrivals"
+    type: sum
+    sql: Cast(${TABLE}.requested_quantity as int) ;;
+    # filters: [order_category: "Purchase Order", status: "Open"]
+    }
 
 }

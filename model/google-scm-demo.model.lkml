@@ -71,5 +71,12 @@ join :product {
     relationship: many_to_one
   }
 
+  join: forecast {
+    type: full_outer
+    sql_on: ${forecast.location_uid} = ${order.location_uid}
+    and ${forecast.product_uid} = ${order.product_uid} ;;
+    relationship: one_to_many
+  }
+
 
 }

@@ -1,6 +1,12 @@
 view: forecast {
   sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.forecast` ;;
 
+  dimension: pk {
+    type: string
+    primary_key: yes
+    sql: CONCAT(${forecast_date},${product_uid},${location_uid}) ;;
+  }
+
   dimension_group: forecast {
     type: time
     timeframes: [raw, date, week, month, quarter, year]
@@ -38,5 +44,29 @@ view: forecast {
   }
   measure: count {
     type: count
+  }
+
+  #Derived Views
+
+  measure: projected_inventory{
+    label: "Projected Inventory"
+    type: sum
+    sql: coalesce(${order.requested_quantity},0) - coalesce(${forecast_quantity},0);;
+    # filters: [order.order_category: "Purchase Order", order.status: "Open"]
+
+  }
+
+  measure: total_forecast_quantity{
+    label: "Projected Sales"
+    type: sum
+    sql: ${TABLE}.forecast_quantity ;;
+    # filters: [order.order_category: "Purchase Order", order.status: "Open"]
+  }
+
+  measure: valuation_table{
+    label: "Valuation"
+    type: sum
+    sql: (coalesce(${order.requested_quantity},0) - coalesce(${forecast_quantity},0)) * (coalesce(${order.sales_price},0)) ;;
+    # filters: [order.order_category: "Purchase Order", order.status: "Open"]
   }
 }
