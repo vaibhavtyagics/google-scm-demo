@@ -95,7 +95,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 35
+    row: 42
     col: 0
     width: 8
     height: 8
@@ -141,7 +141,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 35
+    row: 42
     col: 8
     width: 8
     height: 8
@@ -188,7 +188,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 35
+    row: 42
     col: 16
     width: 8
     height: 8
@@ -269,7 +269,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 43
+    row: 50
     col: 0
     width: 11
     height: 8
@@ -314,7 +314,7 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 43
+    row: 50
     col: 11
     width: 13
     height: 8
@@ -1572,10 +1572,359 @@
     interpolation: linear
     defaults_version: 1
     listen: {}
-    row: 25
+    row: 32
     col: 0
     width: 24
     height: 10
+  - title: Supplier Lead Time
+    name: Supplier Lead Time
+    model: google-scm-demo
+    explore: order
+    type: looker_line
+    fields: [date.date_date, order.lead_time]
+    fill_fields: [date.date_date]
+    filters:
+      order.order_creation_date_date: 14 days
+      order.order_category: Purchase Order
+      order.status: Completed
+    sorts: [date.date_date]
+    limit: 500
+    column_limit: 50
+    dynamic_fields:
+    - category: table_calculation
+      expression: sum(${order.lead_days})
+      label: Lead Time
+      value_format:
+      value_format_name:
+      _kind_hint: measure
+      table_calculation: lead_time
+      _type_hint: number
+      is_disabled: true
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    y_axes: [{label: '', orientation: left, series: [{axisId: order.lead_time, id: order.lead_time,
+            name: Lead Time}], showLabels: true, showValues: true, valueFormat: '',
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.lead_time: "#9334E6"
+    hidden_pivots: {}
+    defaults_version: 1
+    listen: {}
+    row: 26
+    col: 0
+    width: 4
+    height: 6
+  - name: 14 Day Lead Time
+    type: text
+    title_text: 14 Day Lead Time
+    subtitle_text: ''
+    body_text: ''
+    row: 25
+    col: 0
+    width: 24
+    height: 1
+  - title: In Transit Lead Time
+    name: In Transit Lead Time
+    model: google-scm-demo
+    explore: order
+    type: looker_line
+    fields: [date.date_date, order.lead_time]
+    fill_fields: [date.date_date]
+    filters:
+      order.order_creation_date_date: 14 days
+      order.order_category: Purchase Order
+      order.status: In Transit
+    sorts: [date.date_date]
+    limit: 500
+    column_limit: 50
+    dynamic_fields:
+    - category: table_calculation
+      expression: sum(${order.lead_days})
+      label: Lead Time
+      value_format:
+      value_format_name:
+      _kind_hint: measure
+      table_calculation: lead_time
+      _type_hint: number
+      is_disabled: true
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    y_axes: [{label: '', orientation: left, series: [{axisId: order.lead_time, id: order.lead_time,
+            name: Lead Time}], showLabels: true, showValues: true, valueFormat: '',
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.lead_time: "#9334E6"
+    hidden_pivots: {}
+    defaults_version: 1
+    listen: {}
+    row: 26
+    col: 5
+    width: 4
+    height: 6
+  - title: DC Lead Time
+    name: DC Lead Time
+    model: google-scm-demo
+    explore: order
+    type: looker_line
+    fields: [date.date_date, order.lead_time]
+    fill_fields: [date.date_date]
+    filters:
+      order.order_creation_date_date: 14 days
+      order.order_category: Transaction Order
+      order.status: Completed
+    sorts: [date.date_date]
+    limit: 500
+    column_limit: 50
+    dynamic_fields:
+    - category: table_calculation
+      expression: sum(${order.lead_days})
+      label: Lead Time
+      value_format:
+      value_format_name:
+      _kind_hint: measure
+      table_calculation: lead_time
+      _type_hint: number
+      is_disabled: true
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    y_axes: [{label: '', orientation: left, series: [{axisId: order.lead_time, id: order.lead_time,
+            name: Lead Time}], showLabels: true, showValues: true, valueFormat: '',
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.lead_time: "#9334E6"
+    hidden_pivots: {}
+    defaults_version: 1
+    listen: {}
+    row: 26
+    col: 10
+    width: 4
+    height: 6
+  - title: In Transit Stores Lead Time
+    name: In Transit Stores Lead Time
+    model: google-scm-demo
+    explore: order
+    type: looker_line
+    fields: [date.date_date, order.lead_time]
+    fill_fields: [date.date_date]
+    filters:
+      order.order_creation_date_date: 14 days
+      order.order_category: Transaction Order
+      order.status: In Transit
+    sorts: [date.date_date]
+    limit: 500
+    column_limit: 50
+    dynamic_fields:
+    - category: table_calculation
+      expression: sum(${order.lead_days})
+      label: Lead Time
+      value_format:
+      value_format_name:
+      _kind_hint: measure
+      table_calculation: lead_time
+      _type_hint: number
+      is_disabled: true
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    y_axes: [{label: '', orientation: left, series: [{axisId: order.lead_time, id: order.lead_time,
+            name: Lead Time}], showLabels: true, showValues: true, valueFormat: '',
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.lead_time: "#9334E6"
+    hidden_pivots: {}
+    defaults_version: 1
+    listen: {}
+    row: 26
+    col: 15
+    width: 4
+    height: 6
+  - title: Stores Lead Time
+    name: Stores Lead Time
+    model: google-scm-demo
+    explore: order
+    type: looker_line
+    fields: [date.date_date, order.lead_time]
+    fill_fields: [date.date_date]
+    filters:
+      order.order_creation_date_date: 14 days
+      order.order_category: Sales Order
+      order.status: Completed
+    sorts: [date.date_date]
+    limit: 500
+    column_limit: 50
+    dynamic_fields:
+    - category: table_calculation
+      expression: sum(${order.lead_days})
+      label: Lead Time
+      value_format:
+      value_format_name:
+      _kind_hint: measure
+      table_calculation: lead_time
+      _type_hint: number
+      is_disabled: true
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    y_axes: [{label: '', orientation: left, series: [{axisId: order.lead_time, id: order.lead_time,
+            name: Lead Time}], showLabels: true, showValues: true, valueFormat: '',
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.lead_time: "#9334E6"
+    hidden_pivots: {}
+    defaults_version: 1
+    listen: {}
+    row: 26
+    col: 20
+    width: 4
+    height: 6
   filters:
   - name: Industry
     title: Industry
