@@ -170,9 +170,9 @@ view: product {
   ]
   }
 
-  measure: total_safety_stock {
+  measure: at_stock {
     type: sum
-    sql: ${safety_stock}/1000;;
+    sql: ${safety_stock};;
     value_format_name: decimal_0
   }
 
