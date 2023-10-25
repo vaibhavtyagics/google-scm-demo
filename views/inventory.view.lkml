@@ -66,6 +66,15 @@ view: inventory {
     type: string
     sql: ${TABLE}.valuation_area ;;
   }
+  dimension: inventory_status {
+    type: string
+    sql: CASE
+      WHEN ${inventory.inventory_quantity} > 1.5 * ${product.safety_stock} THEN 'Over-Stock'
+      WHEN ${inventory.inventory_quantity} >= ${product.safety_stock} THEN 'At-Stock'
+      WHEN ${inventory.inventory_quantity} > 0 THEN 'Under-Stock'
+      ELSE 'Out-of-Stock'
+      END ;;
+  }
   measure: count {
     type: count
   }
@@ -96,6 +105,8 @@ view: inventory {
     value_format_name: usd
     sql: ${inventory_quantity}*${product.product_cost} ;;
   }
+
+
 
 
 }
