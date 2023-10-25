@@ -248,9 +248,5 @@ view: order {
     sql: ROUND(date_diff(${actual_delivery_date}, ${order_creation_date_date}, DAY), 0) ;;
   }
 
-  measure: backorder_count {
-    type: sum
-    sql: ${order_id};;
-    filters: [order_category: "Back Order", status: "On Hold"]
-  }
+
 }
