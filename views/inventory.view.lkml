@@ -101,11 +101,11 @@ view: inventory {
   value_format: "0.000,,\" M\""
 }
 
-measure: Cost {
-  type: sum
-  value_format_name: usd
-  sql: ${inventory_quantity}*${product.product_cost} ;;
-}
+  measure: inventory_cost {
+    type: sum
+    sql: ${inventory_quantity}*${product.product_cost} ;;
+    value_format: "$ 0.00,,\" M\""
+  }
 
 measure: shrinkage {
   type: number

@@ -275,7 +275,7 @@ view: order {
   measure: total_sales {
     type: sum
     sql: ${sales_price}*${inventory.inventory_quantity} ;;
-    value_format_name: usd
+    value_format: "$ 0.00,,\" M\""
   }
 
   measure: return_qty {
