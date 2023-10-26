@@ -99,14 +99,4 @@ view: inventory {
     sql: ${inventory_quantity} ;;
     drill_fields: [detail*]
   }
-
-  measure: Cost {
-    type: sum
-    value_format_name: usd
-    sql: ${inventory_quantity}*${product.product_cost} ;;
-  }
-
-
-
-
 }
