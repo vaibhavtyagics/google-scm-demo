@@ -272,6 +272,12 @@ view: order {
     value_format_name: percent_2
   }
 
+  measure: total_sales_price {
+    type: sum
+    sql: ${sales_price} ;;
+    value_format_name: usd
+  }
+
 
 
 }
