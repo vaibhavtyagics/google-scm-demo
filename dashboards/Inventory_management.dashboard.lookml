@@ -778,9 +778,11 @@
     model: google-scm-demo
     explore: order
     type: looker_bar
-    fields: [product.at_stock]
+    fields: [inventory.inventory_status, inventory.total_inventory_quantity]
+    pivots: [inventory.inventory_status]
     filters:
-      product.procurement_type: ''
+      inventory.procurement_type: Supplier
+    sorts: [inventory.inventory_status]
     limit: 500
     column_limit: 50
     dynamic_fields:
@@ -792,6 +794,7 @@
       _kind_hint: measure
       table_calculation: over_stock
       _type_hint: number
+      is_disabled: true
     - category: table_calculation
       expression: "${product.at_stock}*1.4"
       label: Under Stock
@@ -800,6 +803,7 @@
       _kind_hint: measure
       table_calculation: under_stock
       _type_hint: number
+      is_disabled: true
     - category: table_calculation
       expression: "${product.at_stock}*0.2"
       label: Out of Stock
@@ -808,6 +812,7 @@
       _kind_hint: measure
       table_calculation: out_of_stock
       _type_hint: number
+      is_disabled: true
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -860,7 +865,7 @@
     series_colors: {}
     series_labels: {}
     column_spacing_ratio: 0
-    column_group_spacing_ratio: 0.6
+    column_group_spacing_ratio: 0.5
     hidden_pivots: {}
     custom_color_enabled: true
     show_single_value_title: true
@@ -1116,9 +1121,12 @@
     model: google-scm-demo
     explore: order
     type: looker_bar
-    fields: [product.at_stock]
+    fields: [inventory.total_inventory_quantity, inventory.inventory_status]
+    pivots: [inventory.inventory_status]
     filters:
-      product.procurement_type: External (E)
+      inventory.procurement_type: DC
+      order.status: In Transit
+    sorts: [inventory.inventory_status]
     limit: 500
     column_limit: 50
     dynamic_fields:
@@ -1130,6 +1138,7 @@
       _kind_hint: measure
       table_calculation: over_stock
       _type_hint: number
+      is_disabled: true
     - category: table_calculation
       expression: "${product.at_stock}*1.4"
       label: Under Stock
@@ -1138,6 +1147,7 @@
       _kind_hint: measure
       table_calculation: under_stock
       _type_hint: number
+      is_disabled: true
     - category: table_calculation
       expression: "${product.at_stock}*0.2"
       label: Out of Stock
@@ -1146,6 +1156,7 @@
       _kind_hint: measure
       table_calculation: out_of_stock
       _type_hint: number
+      is_disabled: true
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -1198,7 +1209,7 @@
     series_colors: {}
     series_labels: {}
     column_spacing_ratio: 0
-    column_group_spacing_ratio: 0.6
+    column_group_spacing_ratio: 0.5
     hidden_pivots: {}
     custom_color_enabled: true
     show_single_value_title: true
@@ -1226,10 +1237,11 @@
     model: google-scm-demo
     explore: order
     type: looker_bar
-    fields: [product.at_stock]
+    fields: [inventory.total_inventory_quantity, inventory.inventory_status]
+    pivots: [inventory.inventory_status]
     filters:
-      product.procurement_type: Both (X)
-    sorts: [under_stock desc]
+      inventory.procurement_type: Stores
+    sorts: [inventory.inventory_status]
     limit: 500
     column_limit: 50
     dynamic_fields:
@@ -1241,6 +1253,7 @@
       _kind_hint: measure
       table_calculation: over_stock
       _type_hint: number
+      is_disabled: true
     - category: table_calculation
       expression: "${product.at_stock}/1.55"
       label: Under Stock
@@ -1249,6 +1262,7 @@
       _kind_hint: measure
       table_calculation: under_stock
       _type_hint: number
+      is_disabled: true
     - category: table_calculation
       expression: "${product.at_stock}*0.1"
       label: Out of Stock
@@ -1257,6 +1271,7 @@
       _kind_hint: measure
       table_calculation: out_of_stock
       _type_hint: number
+      is_disabled: true
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -1309,7 +1324,7 @@
     series_colors: {}
     series_labels: {}
     column_spacing_ratio: 0
-    column_group_spacing_ratio: 0.6
+    column_group_spacing_ratio: 0.5
     hidden_pivots: {}
     custom_color_enabled: true
     show_single_value_title: true
@@ -1337,10 +1352,12 @@
     model: google-scm-demo
     explore: order
     type: looker_bar
-    fields: [product.at_stock]
+    fields: [inventory.inventory_status, inventory.total_inventory_quantity]
+    pivots: [inventory.inventory_status]
     filters:
-      product.procurement_type: External (E)
-    sorts: [under_stock desc]
+      inventory.procurement_type: Stores
+      order.status: In Transit
+    sorts: [inventory.inventory_status]
     limit: 500
     column_limit: 50
     dynamic_fields:
@@ -1352,6 +1369,7 @@
       _kind_hint: measure
       table_calculation: over_stock
       _type_hint: number
+      is_disabled: true
     - category: table_calculation
       expression: "${product.at_stock}/1.30"
       label: Under Stock
@@ -1360,6 +1378,7 @@
       _kind_hint: measure
       table_calculation: under_stock
       _type_hint: number
+      is_disabled: true
     - category: table_calculation
       expression: "${product.at_stock}*0.3"
       label: Out of Stock
@@ -1368,6 +1387,7 @@
       _kind_hint: measure
       table_calculation: out_of_stock
       _type_hint: number
+      is_disabled: true
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -1420,7 +1440,7 @@
     series_colors: {}
     series_labels: {}
     column_spacing_ratio: 0
-    column_group_spacing_ratio: 0.6
+    column_group_spacing_ratio: 0.5
     hidden_pivots: {}
     custom_color_enabled: true
     show_single_value_title: true
@@ -1448,9 +1468,11 @@
     model: google-scm-demo
     explore: order
     type: looker_bar
-    fields: [product.at_stock]
+    fields: [inventory.inventory_status, inventory.total_inventory_quantity]
+    pivots: [inventory.inventory_status]
     filters:
-      product.procurement_type: Internnal (M)
+      inventory.procurement_type: DC
+    sorts: [inventory.inventory_status]
     limit: 500
     column_limit: 50
     dynamic_fields:
@@ -1462,6 +1484,7 @@
       _kind_hint: measure
       table_calculation: over_stock
       _type_hint: number
+      is_disabled: true
     - category: table_calculation
       expression: "${product.at_stock}*1.25"
       label: Under Stock
@@ -1470,6 +1493,7 @@
       _kind_hint: measure
       table_calculation: under_stock
       _type_hint: number
+      is_disabled: true
     - category: table_calculation
       expression: "${product.at_stock}/1.8"
       label: Out of Stock
@@ -1478,6 +1502,7 @@
       _kind_hint: measure
       table_calculation: out_of_stock
       _type_hint: number
+      is_disabled: true
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -1530,7 +1555,7 @@
     series_colors: {}
     series_labels: {}
     column_spacing_ratio: 0
-    column_group_spacing_ratio: 0.6
+    column_group_spacing_ratio: 0.5
     hidden_pivots: {}
     custom_color_enabled: true
     show_single_value_title: true
