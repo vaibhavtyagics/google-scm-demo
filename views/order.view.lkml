@@ -272,9 +272,9 @@ view: order {
     value_format_name: percent_2
   }
 
-  measure: total_sales_price {
+  measure: total_sales {
     type: sum
-    sql: ${sales_price} ;;
+    sql: ${sales_price}*${inventory.inventory_quantity} ;;
     value_format_name: usd
   }
 
