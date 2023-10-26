@@ -11,13 +11,15 @@
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index]
+    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index,
+      order.backorder_rate]
     filters:
       inventory.procurement_type: Supplier
     limit: 500
     column_limit: 50
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: true
     font_size_main: ''
     orientation: auto
@@ -27,9 +29,20 @@
     title_placement_inventory.total_inventory_quantity: below
     value_format_inventory.total_inventory_quantity: ''
     style_order.order_backlog: "#F9AB00"
+    show_title_order.order_backlog: true
     title_placement_order.order_backlog: below
+    value_format_order.order_backlog: ''
+    show_comparison_order.order_backlog: false
     style_order.supplier_quality_index: "#7CB342"
+    show_title_order.supplier_quality_index: true
     title_placement_order.supplier_quality_index: below
+    value_format_order.supplier_quality_index: ''
+    show_comparison_order.supplier_quality_index: false
+    style_order.backorder_rate: "#3A4245"
+    show_title_order.backorder_rate: true
+    title_placement_order.backorder_rate: below
+    value_format_order.backorder_rate: ''
+    show_comparison_order.backorder_rate: false
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -42,6 +55,7 @@
     custom_color: "#079c98"
     single_value_title: Total Stocks -  Supplier
     defaults_version: 0
+    hidden_pivots: {}
     title_hidden: true
     listen:
       Country: location.country
@@ -67,6 +81,7 @@
     column_limit: 50
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: true
     map_plot_mode: points
     heatmap_gridlines: false
@@ -113,6 +128,7 @@
     column_limit: 50
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: true
     map_plot_mode: points
     heatmap_gridlines: false
@@ -160,6 +176,7 @@
     column_limit: 50
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: true
     map_plot_mode: points
     heatmap_gridlines: false
@@ -304,6 +321,7 @@
     show_row_totals: true
     truncate_header: false
     minimum_column_width: 75
+    series_labels: {}
     hidden_fields: []
     hidden_points_if_no: []
     defaults_version: 1
@@ -339,6 +357,7 @@
       _type_hint: number
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: false
     font_size_main: '10.5'
     orientation: auto
@@ -425,6 +444,7 @@
       _type_hint: number
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: false
     font_size_main: '10.5'
     orientation: auto
@@ -511,6 +531,7 @@
       _type_hint: number
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: false
     font_size_main: '10.5'
     orientation: auto
@@ -598,6 +619,7 @@
       _type_hint: number
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: false
     font_size_main: '10.5'
     orientation: auto
@@ -685,6 +707,7 @@
       _type_hint: number
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: false
     font_size_main: '10.5'
     orientation: auto
@@ -835,6 +858,7 @@
     font_size: '12'
     label_value_format: ''
     series_colors: {}
+    series_labels: {}
     column_spacing_ratio: 0
     column_group_spacing_ratio: 0.6
     hidden_pivots: {}
@@ -864,7 +888,8 @@
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index]
+    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index,
+      order.backorder_rate]
     filters:
       inventory.procurement_type: DC
       order.status: Open
@@ -872,6 +897,7 @@
     column_limit: 50
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: true
     font_size_main: ''
     orientation: auto
@@ -884,6 +910,7 @@
     title_placement_order.order_backlog: below
     style_order.supplier_quality_index: "#7CB342"
     title_placement_order.supplier_quality_index: below
+    title_placement_order.backorder_rate: below
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -912,7 +939,8 @@
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index]
+    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index,
+      order.backorder_rate_fr]
     filters:
       inventory.procurement_type: Stores
       order.status: Open
@@ -920,6 +948,7 @@
     column_limit: 50
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: true
     font_size_main: ''
     orientation: auto
@@ -939,6 +968,17 @@
     title_placement_order.supplier_quality_index: below
     value_format_order.supplier_quality_index: ''
     show_comparison_order.supplier_quality_index: false
+    style_order.backorder_rate_fr: "#3A4245"
+    show_title_order.backorder_rate_fr: true
+    title_override_order.backorder_rate_fr: Backorder Rate
+    title_placement_order.backorder_rate_fr: below
+    value_format_order.backorder_rate_fr: ''
+    show_comparison_order.backorder_rate_fr: false
+    style_order.backorder_rate: "#3A4245"
+    show_title_order.backorder_rate: true
+    title_placement_order.backorder_rate: below
+    value_format_order.backorder_rate: ''
+    show_comparison_order.backorder_rate: false
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -967,7 +1007,8 @@
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index]
+    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index,
+      order.backorder_rate_fr]
     filters:
       inventory.procurement_type: Stores
       order.status: ''
@@ -975,6 +1016,7 @@
     column_limit: 50
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: true
     font_size_main: ''
     orientation: auto
@@ -987,6 +1029,8 @@
     title_placement_order.order_backlog: below
     style_order.supplier_quality_index: "#7CB342"
     title_placement_order.supplier_quality_index: below
+    title_override_order.backorder_rate_fr: Backorder Rate
+    title_placement_order.backorder_rate_fr: below
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -1015,7 +1059,8 @@
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index]
+    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index,
+      order.backorder_rate]
     filters:
       inventory.procurement_type: DC
       order.status: Completed
@@ -1023,6 +1068,7 @@
     column_limit: 50
     hidden_fields: []
     hidden_points_if_no: []
+    series_labels: {}
     show_view_names: true
     font_size_main: ''
     orientation: auto
@@ -1041,6 +1087,7 @@
     title_placement_order.supplier_quality_index: below
     value_format_order.supplier_quality_index: ''
     show_comparison_order.supplier_quality_index: false
+    title_placement_order.backorder_rate: below
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -1149,6 +1196,7 @@
     font_size: '12'
     label_value_format: ''
     series_colors: {}
+    series_labels: {}
     column_spacing_ratio: 0
     column_group_spacing_ratio: 0.6
     hidden_pivots: {}
@@ -1259,6 +1307,7 @@
     font_size: '12'
     label_value_format: ''
     series_colors: {}
+    series_labels: {}
     column_spacing_ratio: 0
     column_group_spacing_ratio: 0.6
     hidden_pivots: {}
@@ -1369,6 +1418,7 @@
     font_size: '12'
     label_value_format: ''
     series_colors: {}
+    series_labels: {}
     column_spacing_ratio: 0
     column_group_spacing_ratio: 0.6
     hidden_pivots: {}
@@ -1478,6 +1528,7 @@
     font_size: '12'
     label_value_format: ''
     series_colors: {}
+    series_labels: {}
     column_spacing_ratio: 0
     column_group_spacing_ratio: 0.6
     hidden_pivots: {}

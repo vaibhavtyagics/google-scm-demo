@@ -248,5 +248,30 @@ view: order {
     sql: ROUND(date_diff(${actual_delivery_date}, ${order_creation_date_date}, DAY), 0) ;;
   }
 
+  measure: backorders {
+    type: count_distinct
+    sql:  ${order_id};;
+    filters: [status: "On Hold"]
+
+  }
+
+  measure: total_orders {
+    type: count_distinct
+    sql: ${order_id} ;;
+  }
+
+  measure: backorder_rate {
+    type: number
+    sql: (COALESCE(${backorders},0) / (COALESCE(${total_orders},0)));;
+    value_format_name: percent_2
+  }
+
+  measure: backorder_rate_fr {
+    type: number
+    sql: 0;;
+    value_format_name: percent_2
+  }
+
+
 
 }
