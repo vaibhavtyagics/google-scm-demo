@@ -778,7 +778,7 @@
     model: google-scm-demo
     explore: order
     type: looker_bar
-    fields: [inventory.inventory_status, inventory.total_inventory_quantity]
+    fields: [inventory.inventory_status, inventory.count]
     pivots: [inventory.inventory_status]
     filters:
       inventory.procurement_type: Supplier
@@ -1121,7 +1121,7 @@
     model: google-scm-demo
     explore: order
     type: looker_bar
-    fields: [inventory.total_inventory_quantity, inventory.inventory_status]
+    fields: [inventory.inventory_status, inventory.count]
     pivots: [inventory.inventory_status]
     filters:
       inventory.procurement_type: DC
@@ -1237,7 +1237,7 @@
     model: google-scm-demo
     explore: order
     type: looker_bar
-    fields: [inventory.total_inventory_quantity, inventory.inventory_status]
+    fields: [inventory.inventory_status, inventory.count]
     pivots: [inventory.inventory_status]
     filters:
       inventory.procurement_type: Stores
@@ -1352,7 +1352,7 @@
     model: google-scm-demo
     explore: order
     type: looker_bar
-    fields: [inventory.inventory_status, inventory.total_inventory_quantity]
+    fields: [inventory.inventory_status, inventory.count]
     pivots: [inventory.inventory_status]
     filters:
       inventory.procurement_type: Stores
@@ -1360,34 +1360,6 @@
     sorts: [inventory.inventory_status]
     limit: 500
     column_limit: 50
-    dynamic_fields:
-    - category: table_calculation
-      expression: "${product.at_stock}/5"
-      label: Over Stock
-      value_format:
-      value_format_name: decimal_0
-      _kind_hint: measure
-      table_calculation: over_stock
-      _type_hint: number
-      is_disabled: true
-    - category: table_calculation
-      expression: "${product.at_stock}/1.30"
-      label: Under Stock
-      value_format:
-      value_format_name: decimal_0
-      _kind_hint: measure
-      table_calculation: under_stock
-      _type_hint: number
-      is_disabled: true
-    - category: table_calculation
-      expression: "${product.at_stock}*0.3"
-      label: Out of Stock
-      value_format:
-      value_format_name: decimal_0
-      _kind_hint: measure
-      table_calculation: out_of_stock
-      _type_hint: number
-      is_disabled: true
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -1468,7 +1440,7 @@
     model: google-scm-demo
     explore: order
     type: looker_bar
-    fields: [inventory.inventory_status, inventory.total_inventory_quantity]
+    fields: [inventory.inventory_status, inventory.count]
     pivots: [inventory.inventory_status]
     filters:
       inventory.procurement_type: DC
