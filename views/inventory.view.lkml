@@ -101,7 +101,7 @@ view: inventory {
   }
 
   measure: inventory_cost {
-    type: number
+    type: sum
     sql: ${inventory_quantity}*${product.product_cost} ;;
     value_format_name: usd
   }
