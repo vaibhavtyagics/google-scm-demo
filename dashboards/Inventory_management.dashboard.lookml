@@ -1793,7 +1793,7 @@
     model: google-scm-demo
     explore: inventory
     listens_to_filters: []
-    field: product.product_id
+    field: product.product_description
   - name: Country
     title: Country
     type: field_filter
