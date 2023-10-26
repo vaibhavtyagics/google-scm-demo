@@ -173,6 +173,7 @@ view: product {
   measure: total_product_cost {
     type: sum
     sql: ${product_cost} ;;
+    value_format_name: usd
   }
 
 }
