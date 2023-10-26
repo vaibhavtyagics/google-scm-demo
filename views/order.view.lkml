@@ -278,6 +278,30 @@ view: order {
     value_format_name: usd
   }
 
+  measure: return_qty {
+    hidden: yes
+    type: sum
+    sql: ${returned_quantity} ;;
+  }
+
+  measure: delivered_qty {
+    hidden: yes
+    type: sum
+    sql: ${delivered_quantity} ;;
+  }
+
+  measure: return_rate {
+    type: number
+    sql: ${return_qty} / ${delivered_qty} ;;
+    value_format_name: percent_2
+  }
+
+  measure: cycle_time {
+    hidden: no
+    type: average
+    sql: ROUND(date_diff(${order_creation_date_date} ,${actual_delivery_date}, DAY), 0) ;;
+    value_format_name: decimal_2
+  }
 
 
 }

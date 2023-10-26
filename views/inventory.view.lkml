@@ -94,15 +94,22 @@ view: inventory {
 
 #Custom Measures for KPI'S
 
-  measure: total_inventory_quantity {
-    type: sum
-    sql: ${inventory_quantity} ;;
-    drill_fields: [detail*]
-  }
+ measure: total_inventory_quantity {
+  type: sum
+  sql: ${inventory_quantity} ;;
+  drill_fields: [detail*]
+  value_format: "0.000,,\" M\""
+}
 
-  measure: inventory_cost {
-    type: sum
-    sql: ${inventory_quantity}*${product.product_cost} ;;
-    value_format_name: usd
-  }
+measure: Cost {
+  type: sum
+  value_format_name: usd
+  sql: ${inventory_quantity}*${product.product_cost} ;;
+}
+
+measure: shrinkage {
+  type: number
+  sql: 9.8 ;;
+}
+
 }
