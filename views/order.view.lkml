@@ -274,7 +274,7 @@ view: order {
 
   measure: total_sales {
     type: sum
-    sql: ${sales_price}*${inventory.inventory_quantity} ;;
+    sql: ${sales_price}*${delivered_quantity} ;;
     value_format: "$ 0.00,,\" M\""
   }
 
