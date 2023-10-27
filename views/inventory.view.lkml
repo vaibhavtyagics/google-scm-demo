@@ -101,6 +101,13 @@ view: inventory {
   value_format: "0.000,,\" M\""
 }
 
+  measure: total_inventory_quantity_in_number {
+    type: sum
+    sql: ${inventory_quantity} ;;
+    drill_fields: [detail*]
+  }
+
+
   measure: inventory_cost {
     type: sum
     sql: ${inventory_quantity}*${product.product_cost} ;;
