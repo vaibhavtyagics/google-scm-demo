@@ -109,7 +109,62 @@ view: inventory {
 
 measure: shrinkage {
   type: number
-  sql: 9.8 ;;
+  sql: 2.1 ;;
 }
+
+  dimension: shrinkage_category {
+    type: number
+    sql: CASE WHEN ${product.product_category} = "Chemicals"
+              THEN 2.1
+              WHEN ${product.product_category} = "Beauty"
+              THEN 2.3
+              WHEN ${product.product_category} = "Clothing"
+              THEN 2.0
+              WHEN ${product.product_category} = "Electronics"
+              THEN 3.0
+              WHEN ${product.product_category} = "Sports"
+              THEN 2.7
+              WHEN ${product.product_category}= "Manufacturing"
+              THEN 2.5
+              WHEN ${product.product_category} = "Home"
+              THEN 2.2
+              ELSE
+              2.3
+              END;;
+
+  }
+
+  measure: average_inventory_quantity {
+    type: average
+    sql: ${inventory_quantity} ;;
+
+    }
+
+  measure:  cogs{
+    type: sum
+    sql:  ${product.product_cost};;
+  }
+
+  measure: inventory_turnover {
+    type: number
+    sql: ${cogs}/${average_inventory_quantity} ;;
+    value_format_name: decimal_2
+  }
+
+  measure: number_of_days_in_period {
+    type: sum
+    sql: ${product.lead_time} ;;
+  }
+
+  measure: dsi {
+    type: number
+    sql: (${average_inventory_quantity}/ ${cogs}) * ${number_of_days_in_period};;
+    value_format_name: decimal_2
+  }
+
+  measure: stock_to_sales_ratio {
+    type: number
+    sql: ${average_inventory_quantity} * ${order.total_sales}  ;;
+  }
 
 }

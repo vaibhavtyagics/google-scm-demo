@@ -176,4 +176,10 @@ view: product {
     value_format_name: usd
   }
 
+  measure: avg_lead_time {
+    type: average
+    sql: ${lead_time} ;;
+    value_format_name: decimal_2
+  }
+
 }
