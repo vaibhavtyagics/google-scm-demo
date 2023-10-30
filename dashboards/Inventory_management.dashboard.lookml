@@ -65,7 +65,8 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 17
+      Location Type: location.location_type
+    row: 18
     col: 0
     width: 4
     height: 12
@@ -76,7 +77,7 @@
     type: looker_google_map
     fields: [inventory.product_uid, location.location, location.location_type, inventory.inventory_quantity]
     filters:
-      location.location_type: Supplier
+      inventory.inventory_month: this week
     sorts: [inventory.product_uid]
     limit: 5000
     column_limit: 50
@@ -111,7 +112,8 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 46
+      Location Type: location.location_type
+    row: 54
     col: 0
     width: 8
     height: 8
@@ -122,7 +124,7 @@
     type: looker_google_map
     fields: [inventory.product_uid, location.location, location.location_type, inventory.inventory_quantity]
     filters:
-      location.location_type: DC
+      inventory.inventory_month: this week
     sorts: [inventory.product_uid]
     limit: 5000
     column_limit: 50
@@ -157,7 +159,8 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 46
+      Location Type: location.location_type
+    row: 54
     col: 8
     width: 8
     height: 8
@@ -169,7 +172,7 @@
     fields: [inventory.product_uid, location.city, location.location, location.location_type,
       inventory.inventory_quantity]
     filters:
-      location.location_type: Stores
+      inventory.inventory_month: this week
     sorts: [inventory.product_uid]
     limit: 5000
     column_limit: 50
@@ -204,7 +207,8 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 46
+      Location Type: location.location_type
+    row: 54
     col: 16
     width: 8
     height: 8
@@ -285,7 +289,8 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 54
+      Location Type: location.location_type
+    row: 68
     col: 0
     width: 11
     height: 8
@@ -331,7 +336,8 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 54
+      Location Type: location.location_type
+    row: 68
     col: 11
     width: 13
     height: 8
@@ -342,9 +348,6 @@
     type: marketplace_viz_multiple_value::multiple_value-marketplace
     fields: [inventory.total_inventory_quantity, order.lead_time, order.order_quality,
       inventory.shrinkage, order.cycle_time]
-    filters:
-      inventory.procurement_type: ''
-      order.status: ''
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -352,6 +355,7 @@
     series_labels: {}
     show_view_names: false
     font_size_main: ''
+    orientation: auto
     style_inventory.total_inventory_quantity: "#12B5CB"
     show_title_inventory.total_inventory_quantity: true
     title_override_inventory.total_inventory_quantity: Total Stocks - DC
@@ -361,6 +365,7 @@
     show_title_order.lead_time: true
     title_override_order.lead_time: Average Lead Time
     title_placement_order.lead_time: below
+    value_format_order.lead_time: "#.##"
     show_comparison_order.lead_time: false
     style_order.order_quality: "#7CB342"
     show_title_order.order_quality: true
@@ -368,9 +373,16 @@
     title_placement_order.order_quality: below
     value_format_order.order_quality: ''
     show_comparison_order.order_quality: false
+    style_inventory.shrinkage: "#3A4245"
+    show_title_inventory.shrinkage: true
     title_placement_inventory.shrinkage: below
     value_format_inventory.shrinkage: ''
+    show_comparison_inventory.shrinkage: false
+    style_order.cycle_time: "#3A4245"
+    show_title_order.cycle_time: true
     title_placement_order.cycle_time: below
+    value_format_order.cycle_time: ''
+    show_comparison_order.cycle_time: false
     show_row_numbers: true
     truncate_column_names: false
     hide_totals: false
@@ -388,7 +400,8 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 17
+      Location Type: location.location_type
+    row: 18
     col: 5
     width: 4
     height: 12
@@ -397,11 +410,12 @@
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index,
-      order.backorder_rate_fr]
+    fields: [inventory.shrinkage_category, inventory.total_inventory_quantity, order.order_backlog,
+      order.supplier_quality_index, order.backorder_rate_fr]
     filters:
       inventory.procurement_type: Stores
-      order.status: Open
+      order.status: ''
+    sorts: [inventory.total_inventory_quantity desc 0]
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -456,7 +470,8 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 17
+      Location Type: location.location_type
+    row: 18
     col: 15
     width: 4
     height: 12
@@ -465,11 +480,12 @@
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index,
-      order.backorder_rate_fr]
+    fields: [inventory.shrinkage_category, inventory.total_inventory_quantity, order.order_backlog,
+      order.supplier_quality_index, order.backorder_rate_fr]
     filters:
       inventory.procurement_type: Stores
       order.status: ''
+    sorts: [inventory.total_inventory_quantity desc]
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -508,7 +524,8 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 17
+      Location Type: location.location_type
+    row: 18
     col: 20
     width: 4
     height: 12
@@ -517,8 +534,7 @@
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index,
-      order.backorder_rate, order.return_rate]
+    fields: [inventory.total_inventory_quantity, inventory.inventory_turnover, inventory.dsi]
     filters:
       inventory.procurement_type: DC
       order.status: Completed
@@ -535,19 +551,34 @@
     title_override_inventory.total_inventory_quantity: Total Stocks -  DC
     title_placement_inventory.total_inventory_quantity: below
     value_format_inventory.total_inventory_quantity: ''
-    style_order.order_backlog: "#F9AB00"
-    show_title_order.order_backlog: true
-    title_placement_order.order_backlog: below
-    value_format_order.order_backlog: ''
-    show_comparison_order.order_backlog: false
+    style_inventory.inventory_turnover: "#3A4245"
+    show_title_inventory.inventory_turnover: true
+    title_placement_inventory.inventory_turnover: below
+    value_format_inventory.inventory_turnover: ''
+    show_comparison_inventory.inventory_turnover: false
     style_order.supplier_quality_index: "#7CB342"
     show_title_order.supplier_quality_index: true
     title_placement_order.supplier_quality_index: below
     value_format_order.supplier_quality_index: ''
     show_comparison_order.supplier_quality_index: false
+    style_order.backorder_rate: "#3A4245"
+    show_title_order.backorder_rate: true
     title_placement_order.backorder_rate: below
+    value_format_order.backorder_rate: ''
+    show_comparison_order.backorder_rate: false
     style_order.return_rate: "#EA4335"
+    show_title_order.return_rate: true
     title_placement_order.return_rate: below
+    value_format_order.return_rate: ''
+    show_comparison_order.return_rate: false
+    style_inventory.dsi: "#1A73E8"
+    title_override_inventory.dsi: DSI
+    title_placement_inventory.dsi: below
+    style_order.order_backlog: "#F9AB00"
+    show_title_order.order_backlog: true
+    title_placement_order.order_backlog: below
+    value_format_order.order_backlog: ''
+    show_comparison_order.order_backlog: false
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -560,6 +591,7 @@
     custom_color: "#079c98"
     single_value_title: Total Stocks -  DC
     defaults_version: 0
+    hidden_pivots: {}
     title_hidden: true
     listen:
       Country: location.country
@@ -567,7 +599,8 @@
       Category: product.product_type
       Location ID: location.location_id
       Product: product.product_id
-    row: 17
+      Location Type: location.location_type
+    row: 18
     col: 10
     width: 4
     height: 12
@@ -682,8 +715,9 @@
     label_type: labPer
     show_null_points: true
     interpolation: linear
-    listen: {}
-    row: 11
+    listen:
+      Location Type: location.location_type
+    row: 12
     col: 5
     width: 4
     height: 6
@@ -770,8 +804,9 @@
     label_type: labPer
     show_null_points: true
     interpolation: linear
-    listen: {}
-    row: 11
+    listen:
+      Location Type: location.location_type
+    row: 12
     col: 15
     width: 4
     height: 6
@@ -780,7 +815,7 @@
     title_text: Stock Level Summary
     subtitle_text: What's our overall stock positioning?
     body_text: ''
-    row: 9
+    row: 10
     col: 0
     width: 24
     height: 2
@@ -844,8 +879,9 @@
     show_null_points: true
     interpolation: linear
     defaults_version: 1
-    listen: {}
-    row: 36
+    listen:
+      Location Type: location.location_type
+    row: 44
     col: 0
     width: 24
     height: 10
@@ -912,8 +948,9 @@
       order.lead_time: "#9334E6"
     hidden_pivots: {}
     defaults_version: 1
-    listen: {}
-    row: 30
+    listen:
+      Location Type: location.location_type
+    row: 31
     col: 0
     width: 4
     height: 6
@@ -922,7 +959,7 @@
     title_text: 14 Day Lead Time
     subtitle_text: ''
     body_text: ''
-    row: 29
+    row: 30
     col: 0
     width: 24
     height: 1
@@ -989,8 +1026,9 @@
       order.lead_time: "#9334E6"
     hidden_pivots: {}
     defaults_version: 1
-    listen: {}
-    row: 30
+    listen:
+      Location Type: location.location_type
+    row: 31
     col: 5
     width: 4
     height: 6
@@ -1057,8 +1095,9 @@
       order.lead_time: "#9334E6"
     hidden_pivots: {}
     defaults_version: 1
-    listen: {}
-    row: 30
+    listen:
+      Location Type: location.location_type
+    row: 31
     col: 10
     width: 4
     height: 6
@@ -1125,8 +1164,9 @@
       order.lead_time: "#9334E6"
     hidden_pivots: {}
     defaults_version: 1
-    listen: {}
-    row: 30
+    listen:
+      Location Type: location.location_type
+    row: 31
     col: 15
     width: 4
     height: 6
@@ -1193,372 +1233,14 @@
       order.lead_time: "#9334E6"
     hidden_pivots: {}
     defaults_version: 1
-    listen: {}
-    row: 30
+    listen:
+      Location Type: location.location_type
+    row: 31
     col: 20
     width: 4
     height: 6
   - title: Supplier Inventory
     name: Supplier Inventory
-    model: google-scm-demo
-    explore: order
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, inventory.inventory_cost, order.total_sales]
-    filters:
-      inventory.procurement_type: Supplier
-    limit: 500
-    column_limit: 50
-    hidden_fields: []
-    hidden_points_if_no: []
-    series_labels: {}
-    show_view_names: false
-    font_size_main: '12'
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#1A73E8"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total Stock Units
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    style_inventory.inventory_cost: "#E52592"
-    show_title_inventory.inventory_cost: true
-    title_override_inventory.inventory_cost: Cost
-    title_placement_inventory.inventory_cost: below
-    value_format_inventory.inventory_cost: ''
-    show_comparison_inventory.inventory_cost: false
-    style_order.total_sales: "#7CB342"
-    title_override_order.total_sales: Sell Value
-    title_placement_order.total_sales: below
-    style_order.total_sales_price: "#7CB342"
-    show_title_order.total_sales_price: true
-    title_override_order.total_sales_price: Sell Value
-    title_placement_order.total_sales_price: below
-    value_format_order.total_sales_price: ''
-    show_comparison_order.total_sales_price: false
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 0
-    hidden_pivots: {}
-    listen: {}
-    row: 2
-    col: 0
-    width: 4
-    height: 7
-  - title: In Tranit Stores
-    name: In Tranit Stores
-    model: google-scm-demo
-    explore: order
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, inventory.inventory_cost, order.total_sales]
-    filters:
-      inventory.procurement_type: DC
-      order.status: In Transit
-    limit: 500
-    column_limit: 50
-    hidden_fields: []
-    hidden_points_if_no: []
-    series_labels: {}
-    show_view_names: false
-    font_size_main: '12'
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#1A73E8"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total Stock Units
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    style_inventory.inventory_cost: "#E52592"
-    show_title_inventory.inventory_cost: true
-    title_override_inventory.inventory_cost: Cost
-    title_placement_inventory.inventory_cost: below
-    value_format_inventory.inventory_cost: ''
-    show_comparison_inventory.inventory_cost: false
-    style_order.total_sales: "#7CB342"
-    show_title_order.total_sales: true
-    title_placement_order.total_sales: below
-    value_format_order.total_sales: ''
-    show_comparison_order.total_sales: false
-    style_order.total_sales_price: "#7CB342"
-    show_title_order.total_sales_price: true
-    title_override_order.total_sales_price: Sell Value
-    title_placement_order.total_sales_price: below
-    value_format_order.total_sales_price: ''
-    show_comparison_order.total_sales_price: false
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 0
-    hidden_pivots: {}
-    listen: {}
-    row: 2
-    col: 15
-    width: 4
-    height: 7
-  - title: In Transit DC
-    name: In Transit DC (2)
-    model: google-scm-demo
-    explore: order
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, inventory.inventory_cost, order.total_sales]
-    filters:
-      inventory.procurement_type: DC
-      order.status: In Transit
-    limit: 500
-    column_limit: 50
-    hidden_fields: []
-    hidden_points_if_no: []
-    series_labels: {}
-    show_view_names: false
-    font_size_main: '12'
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#1A73E8"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total Stock Units
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    style_inventory.inventory_cost: "#E52592"
-    show_title_inventory.inventory_cost: true
-    title_override_inventory.inventory_cost: Cost
-    title_placement_inventory.inventory_cost: below
-    value_format_inventory.inventory_cost: ''
-    show_comparison_inventory.inventory_cost: false
-    style_order.total_sales: "#7CB342"
-    show_title_order.total_sales: true
-    title_override_order.total_sales: Sell Value
-    title_placement_order.total_sales: below
-    value_format_order.total_sales: ''
-    show_comparison_order.total_sales: false
-    style_order.total_sales_price: "#7CB342"
-    show_title_order.total_sales_price: true
-    title_override_order.total_sales_price: Sell Value
-    title_placement_order.total_sales_price: below
-    value_format_order.total_sales_price: ''
-    show_comparison_order.total_sales_price: false
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 0
-    hidden_pivots: {}
-    listen: {}
-    row: 2
-    col: 5
-    width: 4
-    height: 7
-  - title: DC Inventory
-    name: DC Inventory
-    model: google-scm-demo
-    explore: order
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, inventory.inventory_cost, order.total_sales]
-    filters:
-      inventory.procurement_type: DC
-      order.status: ''
-    limit: 500
-    column_limit: 50
-    hidden_fields: []
-    hidden_points_if_no: []
-    series_labels: {}
-    show_view_names: false
-    font_size_main: '12'
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#1A73E8"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total Stock Units
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    style_inventory.inventory_cost: "#E52592"
-    show_title_inventory.inventory_cost: true
-    title_override_inventory.inventory_cost: Cost
-    title_placement_inventory.inventory_cost: below
-    value_format_inventory.inventory_cost: ''
-    show_comparison_inventory.inventory_cost: false
-    style_order.total_sales: "#7CB342"
-    show_title_order.total_sales: true
-    title_override_order.total_sales: Sell Value
-    title_placement_order.total_sales: below
-    value_format_order.total_sales: ''
-    show_comparison_order.total_sales: false
-    style_order.total_sales_price: "#7CB342"
-    show_title_order.total_sales_price: true
-    title_override_order.total_sales_price: Sell Value
-    title_placement_order.total_sales_price: below
-    value_format_order.total_sales_price: ''
-    show_comparison_order.total_sales_price: false
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 0
-    hidden_pivots: {}
-    listen: {}
-    row: 2
-    col: 10
-    width: 4
-    height: 7
-  - title: Store Inventory
-    name: Store Inventory
-    model: google-scm-demo
-    explore: order
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, inventory.inventory_cost, order.total_sales]
-    filters:
-      inventory.procurement_type: Stores
-    limit: 500
-    column_limit: 50
-    hidden_fields: []
-    hidden_points_if_no: []
-    series_labels: {}
-    show_view_names: false
-    font_size_main: '12'
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#1A73E8"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total Stock Units
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    style_inventory.inventory_cost: "#E52592"
-    show_title_inventory.inventory_cost: true
-    title_override_inventory.inventory_cost: Cost
-    title_placement_inventory.inventory_cost: below
-    value_format_inventory.inventory_cost: ''
-    show_comparison_inventory.inventory_cost: false
-    style_order.total_sales: "#7CB342"
-    show_title_order.total_sales: true
-    title_override_order.total_sales: Sell Value
-    title_placement_order.total_sales: below
-    value_format_order.total_sales: ''
-    show_comparison_order.total_sales: false
-    style_order.total_sales_price: "#7CB342"
-    show_title_order.total_sales_price: true
-    title_override_order.total_sales_price: Sell Value
-    title_placement_order.total_sales_price: below
-    value_format_order.total_sales_price: ''
-    show_comparison_order.total_sales_price: false
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 0
-    hidden_pivots: {}
-    listen: {}
-    row: 2
-    col: 20
-    width: 4
-    height: 7
-  - title: Supplier Inventory
-    name: Supplier Inventory (2)
     model: google-scm-demo
     explore: inventory
     type: looker_bar
@@ -1614,7 +1296,8 @@
     defaults_version: 1
     listen:
       Inventory Date: inventory.inventory_date
-    row: 11
+      Location Type: location.location_type
+    row: 12
     col: 0
     width: 4
     height: 6
@@ -1675,7 +1358,8 @@
     defaults_version: 1
     listen:
       Inventory Date: inventory.inventory_date
-    row: 11
+      Location Type: location.location_type
+    row: 12
     col: 10
     width: 4
     height: 6
@@ -1736,10 +1420,652 @@
     defaults_version: 1
     listen:
       Inventory Date: inventory.inventory_date
-    row: 11
+      Location Type: location.location_type
+    row: 12
     col: 20
     width: 4
     height: 6
+  - title: Supplier Inventory
+    name: Supplier Inventory (2)
+    model: google-scm-demo
+    explore: inventory
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
+    filters:
+      inventory.procurement_type: Supplier
+    limit: 500
+    column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: true
+    font_size_main: '14'
+    orientation: auto
+    style_inventory.total_inventory_quantity: "#1A73E8"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total Stock Units
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    style_inventory.inventory_cost: "#E52592"
+    show_title_inventory.inventory_cost: true
+    title_placement_inventory.inventory_cost: below
+    value_format_inventory.inventory_cost: ''
+    show_comparison_inventory.inventory_cost: false
+    defaults_version: 0
+    listen:
+      Inventory Date: inventory.inventory_date
+      Location Type: location.location_type
+    row: 2
+    col: 0
+    width: 4
+    height: 6
+  - title: Supplier Sell Value
+    name: Supplier Sell Value
+    model: google-scm-demo
+    explore: order
+    type: single_value
+    fields: [order.total_sales]
+    filters:
+      order.order_category: Purchase Order
+      order.status: Completed,Open
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    listen:
+      Location Type: location.location_type
+    row: 8
+    col: 0
+    width: 4
+    height: 2
+  - title: DC Inventory
+    name: DC Inventory
+    model: google-scm-demo
+    explore: inventory
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
+    filters:
+      inventory.procurement_type: DC
+    limit: 500
+    column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: true
+    font_size_main: '14'
+    orientation: auto
+    style_inventory.total_inventory_quantity: "#1A73E8"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total Stock Units
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    style_inventory.inventory_cost: "#E52592"
+    show_title_inventory.inventory_cost: true
+    title_placement_inventory.inventory_cost: below
+    value_format_inventory.inventory_cost: ''
+    show_comparison_inventory.inventory_cost: false
+    defaults_version: 0
+    listen:
+      Inventory Date: inventory.inventory_date
+      Location Type: location.location_type
+    row: 2
+    col: 10
+    width: 4
+    height: 6
+  - title: In Transit DC
+    name: In Transit DC (2)
+    model: google-scm-demo
+    explore: inventory
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
+    filters:
+      inventory.procurement_type: DC
+      order.status: In Transit
+    limit: 500
+    column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: true
+    font_size_main: '14'
+    orientation: auto
+    style_inventory.total_inventory_quantity: "#1A73E8"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total Stock Units
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    style_inventory.inventory_cost: "#E52592"
+    show_title_inventory.inventory_cost: true
+    title_placement_inventory.inventory_cost: below
+    value_format_inventory.inventory_cost: ''
+    show_comparison_inventory.inventory_cost: false
+    defaults_version: 0
+    listen:
+      Inventory Date: inventory.inventory_date
+      Location Type: location.location_type
+    row: 2
+    col: 5
+    width: 4
+    height: 6
+  - title: In Transit DC
+    name: In Transit DC (3)
+    model: google-scm-demo
+    explore: order
+    type: single_value
+    fields: [order.total_sales]
+    filters:
+      order.order_category: Delivery Order
+      order.status: In Transit
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    listen:
+      Location Type: location.location_type
+    row: 8
+    col: 5
+    width: 4
+    height: 2
+  - title: DC Inventory
+    name: DC Inventory (2)
+    model: google-scm-demo
+    explore: order
+    type: single_value
+    fields: [order.total_sales]
+    filters:
+      order.order_category: Delivery Order
+      order.status: Completed,Open
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    listen:
+      Location Type: location.location_type
+    row: 8
+    col: 10
+    width: 4
+    height: 2
+  - title: In Transit Sotres
+    name: In Transit Sotres
+    model: google-scm-demo
+    explore: order
+    type: single_value
+    fields: [order.total_sales]
+    filters:
+      order.order_category: Sales Order
+      order.status: In Transit
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    listen:
+      Location Type: location.location_type
+    row: 8
+    col: 15
+    width: 4
+    height: 2
+  - title: In Transit Stores
+    name: In Transit Stores (2)
+    model: google-scm-demo
+    explore: inventory
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
+    filters:
+      inventory.procurement_type: Stores
+      order.status: In Transit
+    limit: 500
+    column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: true
+    font_size_main: '14'
+    orientation: auto
+    style_inventory.total_inventory_quantity: "#1A73E8"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total Stock Units
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    style_inventory.inventory_cost: "#E52592"
+    show_title_inventory.inventory_cost: true
+    title_placement_inventory.inventory_cost: below
+    value_format_inventory.inventory_cost: ''
+    show_comparison_inventory.inventory_cost: false
+    defaults_version: 0
+    listen:
+      Inventory Date: inventory.inventory_date
+      Location Type: location.location_type
+    row: 2
+    col: 15
+    width: 4
+    height: 6
+  - title: Store Inventory
+    name: Store Inventory
+    model: google-scm-demo
+    explore: order
+    type: single_value
+    fields: [order.total_sales]
+    filters:
+      order.order_category: Sales Order
+      order.status: Completed,Open
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    listen:
+      Location Type: location.location_type
+    row: 8
+    col: 20
+    width: 4
+    height: 2
+  - title: Sotre Inventory
+    name: Sotre Inventory
+    model: google-scm-demo
+    explore: inventory
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
+    filters:
+      inventory.procurement_type: Stores
+      order.status: ''
+    limit: 500
+    column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: true
+    font_size_main: '14'
+    orientation: auto
+    style_inventory.total_inventory_quantity: "#1A73E8"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total Stock Units
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    style_inventory.inventory_cost: "#E52592"
+    show_title_inventory.inventory_cost: true
+    title_placement_inventory.inventory_cost: below
+    value_format_inventory.inventory_cost: ''
+    show_comparison_inventory.inventory_cost: false
+    defaults_version: 0
+    listen:
+      Inventory Date: inventory.inventory_date
+      Location Type: location.location_type
+    row: 2
+    col: 20
+    width: 4
+    height: 6
+  - title: Supplier Locations
+    name: Supplier Locations
+    model: google-scm-demo
+    explore: inventory
+    type: looker_bar
+    fields: [location.city, inventory.total_inventory_quantity_in_number]
+    filters:
+      inventory.procurement_type: Supplier
+    sorts: [inventory.total_inventory_quantity_in_number desc 0]
+    limit: 10
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    y_axes: [{label: Inventory, orientation: bottom, series: [{axisId: inventory.total_inventory_quantity,
+            id: inventory.total_inventory_quantity, name: Total Inventory Quantity}],
+        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
+    x_axis_label: Location
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: "#"
+    defaults_version: 1
+    hidden_pivots: {}
+    listen:
+      Inventory Date: inventory.inventory_date
+      Location Type: location.location_type
+    row: 62
+    col: 0
+    width: 8
+    height: 6
+  - title: Store Locations
+    name: Store Locations
+    model: google-scm-demo
+    explore: inventory
+    type: looker_bar
+    fields: [location.city, inventory.total_inventory_quantity_in_number]
+    filters:
+      inventory.procurement_type: Stores
+    sorts: [inventory.total_inventory_quantity_in_number desc 0]
+    limit: 10
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    y_axes: [{label: Inventory, orientation: bottom, series: [{axisId: inventory.total_inventory_quantity,
+            id: inventory.total_inventory_quantity, name: Total Inventory Quantity}],
+        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
+    x_axis_label: Location
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: "#"
+    defaults_version: 1
+    hidden_pivots: {}
+    listen:
+      Inventory Date: inventory.inventory_date
+      Location Type: location.location_type
+    row: 62
+    col: 16
+    width: 8
+    height: 6
+  - title: DC Locations
+    name: DC Locations
+    model: google-scm-demo
+    explore: inventory
+    type: looker_bar
+    fields: [location.city, inventory.total_inventory_quantity_in_number]
+    filters:
+      inventory.procurement_type: DC
+    sorts: [inventory.total_inventory_quantity_in_number desc 0]
+    limit: 10
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    y_axes: [{label: Inventory, orientation: bottom, series: [{axisId: inventory.total_inventory_quantity,
+            id: inventory.total_inventory_quantity, name: Total Inventory Quantity}],
+        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
+    x_axis_label: Location
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: "#"
+    defaults_version: 1
+    hidden_pivots: {}
+    listen:
+      Inventory Date: inventory.inventory_date
+      Location Type: location.location_type
+    row: 62
+    col: 8
+    width: 8
+    height: 6
+  - title: Needed Products (Supplier)
+    name: Needed Products (Supplier)
+    model: google-scm-demo
+    explore: inventory
+    type: looker_grid
+    fields: [inventory.product_uid, inventory.Alert, inventory.total_inventory_quantity_in_number]
+    filters:
+      inventory.procurement_type: Supplier
+      inventory.total_inventory_quantity_in_number: '0'
+    sorts: [inventory.total_inventory_quantity_in_number desc 0]
+    limit: 500
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    minimum_column_width: 75
+    series_labels:
+      inventory.product_uid: Product
+      inventory.Alert: Alert
+      inventory.total_inventory_quantity_in_number: Inventory
+    series_cell_visualizations:
+      inventory.total_inventory_quantity_in_number:
+        is_active: true
+        palette:
+          palette_id: ca6e5558-a5bb-db14-1e76-a6e390676057
+          collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+          custom_colors:
+          - "#ff100d"
+          - "#E52592"
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 1
+    hidden_pivots: {}
+    listen:
+      Inventory Date: inventory.inventory_date
+      Location Type: location.location_type
+    row: 37
+    col: 2
+    width: 9
+    height: 7
+  - title: Needed Products (DC)
+    name: Needed Products (DC)
+    model: google-scm-demo
+    explore: inventory
+    type: looker_grid
+    fields: [inventory.product_uid, inventory.Alert, inventory.total_inventory_quantity_in_number]
+    filters:
+      inventory.procurement_type: DC
+      inventory.total_inventory_quantity_in_number: '0'
+    sorts: [inventory.total_inventory_quantity_in_number desc 0]
+    limit: 500
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    minimum_column_width: 75
+    series_labels:
+      inventory.product_uid: Product
+      inventory.Alert: Alert
+      inventory.total_inventory_quantity_in_number: Inventory
+    series_cell_visualizations:
+      inventory.total_inventory_quantity_in_number:
+        is_active: true
+        palette:
+          palette_id: ee293a86-144c-1eea-bd45-f48e2ceda70b
+          collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+          custom_colors:
+          - "#ed290d"
+          - "#1a73e8"
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 1
+    hidden_pivots: {}
+    listen:
+      Inventory Date: inventory.inventory_date
+      Location Type: location.location_type
+    row: 37
+    col: 13
+    width: 9
+    height: 7
   filters:
   - name: Industry
     title: Industry
@@ -1788,7 +2114,7 @@
     allow_multiple_values: true
     required: false
     ui_config:
-      type: tag_list
+      type: advanced
       display: popover
     model: google-scm-demo
     explore: inventory
@@ -1820,3 +2146,16 @@
     explore: inventory
     listens_to_filters: []
     field: location.location_id
+  - name: Location Type
+    title: Location Type
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: dropdown_menu
+      display: inline
+    model: google-scm-demo
+    explore: inventory
+    listens_to_filters: []
+    field: location.location_type

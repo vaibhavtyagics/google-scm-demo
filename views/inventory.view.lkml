@@ -75,6 +75,17 @@ view: inventory {
       ELSE 'Out-of-Stock'
       END ;;
   }
+
+  dimension : Alert {
+    type: string
+    sql: CASE
+      WHEN ${inventory.inventory_quantity} = 0 THEN 'Restock'
+      ELSE 'Instock'
+      END ;;
+  }
+
+
+
   measure: count {
     type: count
   }
@@ -97,6 +108,7 @@ view: inventory {
  measure: total_inventory_quantity {
   type: sum
   sql: ${inventory_quantity} ;;
+  label: "Total Inventory Quantity (in millions)"
   drill_fields: [detail*]
   value_format: "0.000,,\" M\""
 }
@@ -104,7 +116,8 @@ view: inventory {
   measure: total_inventory_quantity_in_number {
     type: sum
     sql: ${inventory_quantity} ;;
-    drill_fields: [detail*]
+    label: "Total Inventory Quantity"
+    drill_fields: [procurement_type, location_uid ,total_inventory_quantity_in_number]
   }
 
 
