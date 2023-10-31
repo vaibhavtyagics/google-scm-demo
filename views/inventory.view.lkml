@@ -110,7 +110,9 @@ view: inventory {
       product.procurement_type,
       order.status,
       location.location_id,
-      location.location_name
+      location.location_name,
+      inventory_quantity,
+      product.product_cost
     ]
   }
 

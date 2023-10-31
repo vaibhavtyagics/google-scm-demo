@@ -1,6 +1,6 @@
 view: order {
   sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.order` ;;
-  drill_fields: [order_id,product_uid,order_category,status,mode_of_transport]
+  drill_fields: [order_creation_date_date,order_id,order_category,status,location_uid,delivered_quantity,sales_price]
 
   dimension: order_id {
     primary_key: yes
@@ -229,11 +229,34 @@ view: order {
     type: number
     sql: ${total_rejected_quantity}/IF(COALESCE(${total_delivered_quantity},0) = 0,null,${total_delivered_quantity})  ;;
     value_format_name: decimal_3
+    drill_fields: [supplier_quality_index_drills*]
+  }
+
+  set: supplier_quality_index_drills {
+    fields: [
+      order_id,
+      order_creation_date_date,
+      status,
+      order_category,
+      supplier_quality_index
+    ]
+  }
+
+  set: order_backlog_drills {
+    fields: [
+      order_id,
+      order_creation_date_date,
+      status,
+      order_category,
+      order_backlog,
+      backorder_rate
+      ]
   }
 
   measure: order_backlog{
     type: number
     sql:  (${total_requested_quantity}) - ${total_delivered_quantity};;
+    drill_fields: [order_backlog_drills*]
   }
 
   # measure: total_requested_quantity_po{
@@ -243,16 +266,42 @@ view: order {
   #   # filters: [order_category: "Purchase Order", status: "Open"]
   #   }
 
+  set: lead_time_details {
+    fields: [
+      order_id,
+      order_creation_date_date,
+      actual_delivery_date,
+      order_category,
+      status,
+      location_uid,
+      lead_time
+    ]
+  }
+
+  set: lead_time_details_in_transit {
+    fields: [
+      order_id,
+      order_creation_date_date,
+      requested_delivery_date,
+      order_category,
+      status,
+      location_uid,
+      in_transit_lead_time
+    ]
+  }
+
   measure: lead_time {
     hidden: yes
     type: average
     sql: ROUND(date_diff(${actual_delivery_date}, ${order_creation_date_date}, DAY), 0) ;;
+    drill_fields: [lead_time_details*]
   }
 
   measure: in_transit_lead_time {
     hidden: yes
     type: average
     sql: date_diff(${requested_delivery_date}, ${order_creation_date_date}, DAY);;
+    drill_fields: [lead_time_details_in_transit*]
   }
 
   measure: backorders {
@@ -271,6 +320,7 @@ view: order {
     type: number
     sql: (COALESCE(${backorders},0) / (COALESCE(${total_orders},0)));;
     value_format_name: percent_2
+    drill_fields: [order_backlog_drills*]
   }
 
   measure: backorder_rate_fr {
@@ -297,10 +347,21 @@ view: order {
     sql: ${delivered_quantity} ;;
   }
 
+  set: return_rate_drills {
+    fields: [
+      order_id,
+      order_creation_date_date,
+      status,
+      order_category,
+      delivered_qty,
+      return_qty
+      ]
+  }
   measure: return_rate {
     type: number
-    sql: ${return_qty} / ${delivered_qty} ;;
+    sql: COALESCE(${return_qty},0) / COALESCE(${delivered_qty},0) ;;
     value_format_name: percent_2
+    drill_fields: [return_rate_drills*]
   }
 
   measure: cycle_time {
