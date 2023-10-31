@@ -239,7 +239,7 @@ view: order {
   measure: total_requested_quantity_po{
     label: "Incoming Arrivals"
     type: sum
-    sql: Cast(${TABLE}.requested_quantity as int) ;;
+    sql: ${TABLE}.requested_quantity ;;
     # filters: [order_category: "Purchase Order", status: "Open"]
     }
 
@@ -306,8 +306,13 @@ view: order {
   measure: cycle_time {
     hidden: no
     type: average
-    sql: ROUND(date_diff(${order_creation_date_date} ,${actual_delivery_date}, DAY), 0) ;;
-    value_format_name: decimal_2
+    sql: ROUND(date_diff(${actual_delivery_date}, ${order_creation_date_date}, DAY), 0) ;;
+    value_format_name: decimal_0
+  }
+
+  measure: average_lead_time {
+    type: number
+    sql: 14 ;;
   }
 
   measure: intransit_sell_value {
