@@ -61,8 +61,16 @@ view: forecast {
     type: sum
     sql: ${TABLE}.forecast_quantity * 1.2 ;;
     # filters: [order.order_category: "Purchase Order", order.status: "Open"]
+
+
   }
 
+  measure: total_requested_quantity_po{
+    label: "Incoming Arrivals"
+    type: number
+    sql: ${total_forecast_quantity}*1.2;;
+    # filters: [order_category: "Purchase Order", status: "Open"]
+  }
   measure: valuation_table{
     label: "Valuation"
     type: sum
