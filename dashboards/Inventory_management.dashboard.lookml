@@ -21,18 +21,12 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: ''
+    font_size_main: '14'
     orientation: auto
-    style_inventory.total_inventory_quantity: "#079c98"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total stocks - Supplier
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
     style_order.order_backlog: "#F9AB00"
     show_title_order.order_backlog: true
     title_placement_order.order_backlog: below
     value_format_order.order_backlog: ''
-    show_comparison_order.order_backlog: false
     style_order.supplier_quality_index: "#7CB342"
     show_title_order.supplier_quality_index: true
     title_placement_order.supplier_quality_index: below
@@ -44,7 +38,16 @@
     value_format_order.backorder_rate: ''
     show_comparison_order.backorder_rate: false
     style_order.return_rate: "#EA4335"
+    show_title_order.return_rate: true
     title_placement_order.return_rate: below
+    value_format_order.return_rate: ''
+    show_comparison_order.return_rate: false
+    style_inventory.total_inventory_quantity: "#079c98"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total stocks - Supplier
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    show_comparison_order.order_backlog: false
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -410,7 +413,7 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: false
-    font_size_main: ''
+    font_size_main: '14'
     orientation: auto
     style_order.lead_time: "#A8A116"
     show_title_order.lead_time: true
@@ -502,7 +505,7 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: ''
+    font_size_main: '14'
     orientation: auto
     style_inventory.shrinkage_category: "#EA4335"
     show_title_inventory.shrinkage_category: true
@@ -620,7 +623,7 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: ''
+    font_size_main: '14'
     orientation: auto
     style_inventory.inventory_health_index: "#1A73E8"
     show_title_inventory.inventory_health_index: true
@@ -637,7 +640,12 @@
     title_placement_inventory.dsi: below
     value_format_inventory.dsi: ''
     show_comparison_inventory.dsi: false
+    style_order.stocks_to_sales_ration: "#3A4245"
+    show_title_order.stocks_to_sales_ration: true
     title_override_order.stocks_to_sales_ration: Stocks to Sales Ratio
+    title_placement_order.stocks_to_sales_ration: above
+    value_format_order.stocks_to_sales_ration: ''
+    show_comparison_order.stocks_to_sales_ration: false
     style_inventory.total_inventory_quantity: "#079c98"
     show_title_inventory.total_inventory_quantity: true
     title_override_inventory.total_inventory_quantity: Total Stocks -  Store Inventory
@@ -716,7 +724,7 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: ''
+    font_size_main: '14'
     orientation: auto
     style_inventory.inventory_health_index: "#7CB342"
     show_title_inventory.inventory_health_index: true
