@@ -1,7 +1,6 @@
 view: inventory {
   sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.Inventory` ;;
 
-
    dimension: pk {
     type: string
     primary_key: yes
@@ -40,6 +39,7 @@ view: inventory {
   }
   dimension: procurement_type {
     type: string
+    label: "Location Type"
     sql: ${TABLE}.procurement_type;;
   }
   dimension: inventory_quantity {
@@ -52,10 +52,14 @@ view: inventory {
   }
   dimension: location_uid {
     type: string
+    label: "Location UID"
     sql: ${TABLE}.location_uid ;;
   }
+
+
   dimension: product_uid {
     type: string
+    label: "Product UID"
     sql: ${TABLE}.product_uid ;;
   }
   dimension: remaining_shelf_life {
@@ -76,6 +80,7 @@ view: inventory {
       END ;;
   }
 
+
   dimension : Alert {
     type: string
     sql: CASE
@@ -86,8 +91,15 @@ view: inventory {
 
 
 
+
   measure: count {
     type: count
+  }
+
+  measure: count_inventory {
+    type:  count
+    label: "Inventory Count"
+    drill_fields: [inventory_stock_details*]
   }
 
 # ----- Sets of fields for drilling ------
@@ -99,6 +111,31 @@ view: inventory {
       product.product_hierarchy_name,
       location.location_id,
       location.location_name
+    ]
+  }
+
+  set: location_stock_details {
+    fields: [
+      inventory_date,
+      location_uid,
+      location.country,
+      location.city,
+      product_uid,
+      product.product_category,
+      product.product_type,
+      inventory_quantity
+    ]
+  }
+
+  set: inventory_stock_details {
+    fields: [
+      procurement_type,
+      product_uid,
+      product.product_category,
+      product.product_type,
+      product.safety_stock,
+      inventory_quantity,
+      inventory_status
     ]
   }
 
@@ -117,7 +154,7 @@ view: inventory {
     type: sum
     sql: ${inventory_quantity} ;;
     label: "Total Inventory Quantity"
-    drill_fields: [procurement_type, location_uid ,total_inventory_quantity_in_number]
+    drill_fields: [location_stock_details*]
   }
 
 
