@@ -6,13 +6,13 @@
   description: ''
   preferred_slug: PdIDa1qYtdEZc6RWtfH1Q7
   elements:
-  - title: Untitled
-    name: Untitled
+  - title: Supplier Inventory
+    name: Supplier Inventory
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, order.order_backlog, order.supplier_quality_index,
-      order.backorder_rate, order.return_rate]
+    fields: [order.order_backlog, order.supplier_quality_index, order.backorder_rate,
+      order.return_rate]
     filters:
       inventory.procurement_type: Supplier
     limit: 500
@@ -58,7 +58,20 @@
     single_value_title: Total Stocks -  Supplier
     defaults_version: 0
     hidden_pivots: {}
-    title_hidden: true
+    note_state: collapsed
+    note_display: hover
+    note_text: |
+      Order Backlog:
+      The number of customer orders that are pending and have not been fulfilled within the expected time frame.
+
+      Supplier Quality Index:
+      Measures the quality of products received from suppliers by calculating the percentage of defective units.
+
+      Backorder Rate:
+      Measures the percentage of orders that couldn't be fulfilled immediately and were put on backorder.
+
+      Return Rate:
+      A higher return rate may indicate issues such as product defects, inaccurate product descriptions, or dissatisfaction with the product. Monitoring the return rate can help businesses identify areas for improvement in product quality, customer service, and marketing.
     listen:
       Country: location.country
       Industry: product.product_category
@@ -69,7 +82,7 @@
     row: 18
     col: 0
     width: 4
-    height: 12
+    height: 10
   - title: Supplier Inventory Footprint
     name: Supplier Inventory Footprint
     model: google-scm-demo
@@ -106,6 +119,12 @@
     quantize_map_value_colors: false
     reverse_map_value_colors: true
     defaults_version: 0
+    note_state: collapsed
+    note_display: below
+    note_text: |-
+      Supplier Inventory Footprint offers a comprehensive map view of our supplier inventory footprint, allowing us to visualize the geographical distribution of the suppliers and the associated inventory quantities. It's a powerful tool for understanding the supply chain's spatial dynamics and identifying regions with varying inventory levels.
+
+      The tile presents an interactive map with location pins representing supplier sites. Each location pin is color-coded, with a gradient ranging from green to red, reflecting the inventory quantity at that specific location. Locations with higher inventory quantities are depicted in green, while those with lower quantities gradually shift to red, providing an intuitive and immediate understanding of inventory levels.
     listen:
       Country: location.country
       Industry: product.product_category
@@ -113,7 +132,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 54
+    row: 52
     col: 0
     width: 8
     height: 8
@@ -153,6 +172,12 @@
     quantize_map_value_colors: false
     reverse_map_value_colors: true
     defaults_version: 0
+    note_state: collapsed
+    note_display: below
+    note_text: |-
+      DC Inventory Footprint provides an interactive map view of the Distribution Centers, showcasing their locations and the corresponding inventory quantities. It's an invaluable tool for visualizing the spatial distribution of inventory in our distribution network and gaining insights into stock levels across different regions.
+
+      The map view presents an interactive map featuring location pins that represent our distribution centers. Each pin is color-coded, with a gradient ranging from green to red, reflecting the inventory quantity at each specific distribution center. Centers with higher inventory quantities are depicted in green, while those with lower quantities gradually transition to red, making it easy to discern inventory levels at a glance.
     listen:
       Country: location.country
       Industry: product.product_category
@@ -160,7 +185,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 54
+    row: 52
     col: 8
     width: 8
     height: 8
@@ -201,6 +226,12 @@
     quantize_map_value_colors: false
     reverse_map_value_colors: true
     defaults_version: 0
+    note_state: collapsed
+    note_display: below
+    note_text: |-
+      Stores Inventory Footprint offers an interactive map view of the stores, presenting their locations and the associated inventory quantities for gaining insights into the geographical distribution of inventory across the retail network and for identifying stores with varying stock levels.
+
+      The map view features an interactive map displaying location pins that represent your stores. Each pin is color-coded, with a gradient ranging from green to red, signifying the inventory quantity at each specific store. Stores with higher inventory quantities are represented in green, while those with lower quantities gradually shift to red. This intuitive color gradient enables us to quickly assess inventory levels at each store.
     listen:
       Country: location.country
       Industry: product.product_category
@@ -208,7 +239,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 54
+    row: 52
     col: 16
     width: 8
     height: 8
@@ -290,7 +321,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 68
+    row: 66
     col: 0
     width: 11
     height: 8
@@ -337,17 +368,16 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 68
+    row: 66
     col: 11
     width: 13
     height: 8
-  - title: Untitled (Copy 2)
-    name: Untitled (Copy 2)
+  - title: In Transit DC
+    name: In Transit DC
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, order.lead_time, order.order_quality,
-      inventory.shrinkage, order.cycle_time]
+    fields: [order.lead_time, order.order_quality, inventory.shrinkage, order.cycle_time]
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -393,7 +423,6 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     defaults_version: 0
-    title_hidden: true
     listen:
       Country: location.country
       Industry: product.product_category
@@ -404,18 +433,17 @@
     row: 18
     col: 5
     width: 4
-    height: 12
-  - title: Untitled (Copy 3)
-    name: Untitled (Copy 3)
+    height: 10
+  - title: In Transit Stores
+    name: In Transit Stores
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.shrinkage_category, inventory.total_inventory_quantity, order.order_backlog,
-      order.supplier_quality_index, order.backorder_rate_fr]
+    fields: [inventory.shrinkage_category, order.total_sales, order.cycle_time, order.average_lead_time]
     filters:
-      inventory.procurement_type: Stores
+      inventory.procurement_type: ''
       order.status: ''
-    sorts: [inventory.total_inventory_quantity desc 0]
+    sorts: [order.total_sales desc 0]
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -424,6 +452,16 @@
     show_view_names: true
     font_size_main: ''
     orientation: auto
+    style_inventory.shrinkage_category: "#EA4335"
+    style_order.total_sales: "#7CB342"
+    style_order.cycle_time: "#079c98"
+    style_order.average_lead_time: "#80868B"
+    style_order.backorder_rate_fr: "#3A4245"
+    show_title_order.backorder_rate_fr: true
+    title_override_order.backorder_rate_fr: Backorder Rate
+    title_placement_order.backorder_rate_fr: below
+    value_format_order.backorder_rate_fr: ''
+    show_comparison_order.backorder_rate_fr: false
     style_inventory.total_inventory_quantity: "#079c98"
     show_title_inventory.total_inventory_quantity: true
     title_override_inventory.total_inventory_quantity: Total Stocks -  In Transit
@@ -440,12 +478,6 @@
     title_placement_order.supplier_quality_index: below
     value_format_order.supplier_quality_index: ''
     show_comparison_order.supplier_quality_index: false
-    style_order.backorder_rate_fr: "#3A4245"
-    show_title_order.backorder_rate_fr: true
-    title_override_order.backorder_rate_fr: Backorder Rate
-    title_placement_order.backorder_rate_fr: below
-    value_format_order.backorder_rate_fr: ''
-    show_comparison_order.backorder_rate_fr: false
     style_order.backorder_rate: "#3A4245"
     show_title_order.backorder_rate: true
     title_placement_order.backorder_rate: below
@@ -463,7 +495,7 @@
     custom_color: "#F9AB00"
     single_value_title: Total Stocks -  In Transit Stores
     defaults_version: 0
-    title_hidden: true
+    hidden_pivots: {}
     listen:
       Country: location.country
       Industry: product.product_category
@@ -474,18 +506,17 @@
     row: 18
     col: 15
     width: 4
-    height: 12
-  - title: Untitled (Copy 5)
-    name: Untitled (Copy 5)
+    height: 10
+  - title: Store Inventory
+    name: Store Inventory
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.shrinkage_category, inventory.total_inventory_quantity, order.order_backlog,
-      order.supplier_quality_index, order.backorder_rate_fr]
+    fields: [inventory.inventory_health_index, inventory.dsi, inventory.stocks_cover]
     filters:
       inventory.procurement_type: Stores
       order.status: ''
-    sorts: [inventory.total_inventory_quantity desc]
+    sorts: [inventory.inventory_health_index]
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -494,6 +525,21 @@
     show_view_names: true
     font_size_main: ''
     orientation: auto
+    style_inventory.inventory_health_index: "#1A73E8"
+    show_title_inventory.inventory_health_index: true
+    title_placement_inventory.inventory_health_index: below
+    value_format_inventory.inventory_health_index: ''
+    style_inventory.stocks_cover: "#A8A116"
+    show_title_inventory.stocks_cover: true
+    title_placement_inventory.stocks_cover: below
+    value_format_inventory.stocks_cover: ''
+    show_comparison_inventory.stocks_cover: false
+    style_inventory.dsi: "#F9AB00"
+    show_title_inventory.dsi: true
+    title_override_inventory.dsi: Days Sales of Inventory
+    title_placement_inventory.dsi: below
+    value_format_inventory.dsi: ''
+    show_comparison_inventory.dsi: false
     style_inventory.total_inventory_quantity: "#079c98"
     show_title_inventory.total_inventory_quantity: true
     title_override_inventory.total_inventory_quantity: Total Stocks -  Store Inventory
@@ -517,7 +563,6 @@
     custom_color: "#12B5CB"
     single_value_title: Total Stocks -  Store Inventory
     defaults_version: 0
-    title_hidden: true
     listen:
       Country: location.country
       Industry: product.product_category
@@ -528,16 +573,18 @@
     row: 18
     col: 20
     width: 4
-    height: 12
-  - title: Untitled (Copy 4)
-    name: Untitled (Copy 4)
+    height: 10
+  - title: DC inventory
+    name: DC inventory
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, inventory.inventory_turnover, inventory.dsi]
+    fields: [inventory.inventory_turnover, inventory.dsi, inventory.inventory_health_index,
+      inventory.inventory_accuracy]
     filters:
       inventory.procurement_type: DC
       order.status: Completed
+    sorts: [inventory.inventory_turnover desc 0]
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -546,16 +593,22 @@
     show_view_names: true
     font_size_main: ''
     orientation: auto
-    style_inventory.total_inventory_quantity: "#079c98"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total Stocks -  DC
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
+    style_inventory.inventory_health_index: "#7CB342"
+    value_format_inventory.inventory_health_index: ''
+    style_inventory.inventory_accuracy: "#079c98"
     style_inventory.inventory_turnover: "#3A4245"
     show_title_inventory.inventory_turnover: true
     title_placement_inventory.inventory_turnover: below
     value_format_inventory.inventory_turnover: ''
     show_comparison_inventory.inventory_turnover: false
+    style_inventory.dsi: "#1A73E8"
+    title_override_inventory.dsi: Days Sales of Inventory
+    title_placement_inventory.dsi: below
+    style_inventory.total_inventory_quantity: "#079c98"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total Stocks -  DC
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
     style_order.supplier_quality_index: "#7CB342"
     show_title_order.supplier_quality_index: true
     title_placement_order.supplier_quality_index: below
@@ -571,9 +624,6 @@
     title_placement_order.return_rate: below
     value_format_order.return_rate: ''
     show_comparison_order.return_rate: false
-    style_inventory.dsi: "#1A73E8"
-    title_override_inventory.dsi: DSI
-    title_placement_inventory.dsi: below
     style_order.order_backlog: "#F9AB00"
     show_title_order.order_backlog: true
     title_placement_order.order_backlog: below
@@ -592,7 +642,6 @@
     single_value_title: Total Stocks -  DC
     defaults_version: 0
     hidden_pivots: {}
-    title_hidden: true
     listen:
       Country: location.country
       Industry: product.product_category
@@ -603,213 +652,7 @@
     row: 18
     col: 10
     width: 4
-    height: 12
-  - title: In Transit DC
-    name: In Transit DC
-    model: google-scm-demo
-    explore: order
-    type: looker_bar
-    fields: [inventory.inventory_status, inventory.count]
-    pivots: [inventory.inventory_status]
-    filters:
-      inventory.procurement_type: DC
-      order.status: In Transit
-    sorts: [inventory.inventory_status]
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - category: table_calculation
-      expression: "${product.at_stock}/4"
-      label: Over Stock
-      value_format:
-      value_format_name: decimal_0
-      _kind_hint: measure
-      table_calculation: over_stock
-      _type_hint: number
-      is_disabled: true
-    - category: table_calculation
-      expression: "${product.at_stock}*1.4"
-      label: Under Stock
-      value_format:
-      value_format_name: decimal_0
-      _kind_hint: measure
-      table_calculation: under_stock
-      _type_hint: number
-      is_disabled: true
-    - category: table_calculation
-      expression: "${product.at_stock}*0.2"
-      label: Out of Stock
-      value_format:
-      value_format_name: decimal_0
-      _kind_hint: measure
-      table_calculation: out_of_stock
-      _type_hint: number
-      is_disabled: true
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    color_application:
-      collection_id: aed851c8-b22d-4b01-8fff-4b02b91fe78d
-      palette_id: e26878fa-802e-47d9-9478-62fb4307f763
-      options:
-        steps: 5
-        reverse: true
-    y_axes: [{label: Stock, orientation: bottom, series: [{axisId: product.at_stock,
-            id: product.at_stock, name: At Stock}, {axisId: over_stock, id: over_stock,
-            name: Over Stock}, {axisId: under_stock, id: under_stock, name: Under
-              Stock}, {axisId: out_of_stock, id: out_of_stock, name: Out of Stock}],
-        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
-    x_axis_label: Stock
-    x_axis_zoom: true
-    y_axis_zoom: true
-    limit_displayed_rows_values:
-      show_hide: hide
-      first_last: first
-      num_rows: 0
-    hide_legend: false
-    font_size: '12'
-    label_value_format: ''
-    series_colors: {}
-    series_labels: {}
-    column_spacing_ratio: 0
-    column_group_spacing_ratio: 0.5
-    hidden_pivots: {}
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    defaults_version: 1
-    hidden_fields: []
-    hidden_points_if_no: []
-    value_labels: legend
-    label_type: labPer
-    show_null_points: true
-    interpolation: linear
-    listen:
-      Location Type: location.location_type
-    row: 12
-    col: 5
-    width: 4
-    height: 6
-  - title: In Transit Stores
-    name: In Transit Stores
-    model: google-scm-demo
-    explore: order
-    type: looker_bar
-    fields: [inventory.inventory_status, inventory.count]
-    pivots: [inventory.inventory_status]
-    filters:
-      inventory.procurement_type: Stores
-      order.status: In Transit
-    sorts: [inventory.inventory_status]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    color_application:
-      collection_id: aed851c8-b22d-4b01-8fff-4b02b91fe78d
-      palette_id: e26878fa-802e-47d9-9478-62fb4307f763
-      options:
-        steps: 5
-        reverse: true
-    y_axes: [{label: Stock, orientation: bottom, series: [{axisId: product.at_stock,
-            id: product.at_stock, name: At Stock}, {axisId: over_stock, id: over_stock,
-            name: Over Stock}, {axisId: under_stock, id: under_stock, name: Under
-              Stock}, {axisId: out_of_stock, id: out_of_stock, name: Out of Stock}],
-        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
-    x_axis_label: Stock
-    x_axis_zoom: true
-    y_axis_zoom: true
-    limit_displayed_rows_values:
-      show_hide: hide
-      first_last: first
-      num_rows: 0
-    hide_legend: false
-    font_size: '12'
-    label_value_format: ''
-    series_colors: {}
-    series_labels: {}
-    column_spacing_ratio: 0
-    column_group_spacing_ratio: 0.5
-    hidden_pivots: {}
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    defaults_version: 1
-    hidden_fields: []
-    hidden_points_if_no: []
-    value_labels: legend
-    label_type: labPer
-    show_null_points: true
-    interpolation: linear
-    listen:
-      Location Type: location.location_type
-    row: 12
-    col: 15
-    width: 4
-    height: 6
+    height: 10
   - name: Stock Level Summary
     type: text
     title_text: Stock Level Summary
@@ -852,10 +695,20 @@
     limit_displayed_rows: false
     enable_conditional_formatting: false
     header_text_alignment: left
-    header_font_size: 12
-    rows_font_size: 12
+    header_font_size: '12'
+    rows_font_size: '12'
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    minimum_column_width: 75
+    series_cell_visualizations:
+      forecast.projected_inventory:
+        is_active: true
+      forecast.total_forecast_quantity:
+        is_active: true
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_y_axis_labels: true
@@ -879,9 +732,10 @@
     show_null_points: true
     interpolation: linear
     defaults_version: 1
+    hidden_pivots: {}
     listen:
       Location Type: location.location_type
-    row: 44
+    row: 42
     col: 0
     width: 24
     height: 10
@@ -950,7 +804,7 @@
     defaults_version: 1
     listen:
       Location Type: location.location_type
-    row: 31
+    row: 29
     col: 0
     width: 4
     height: 6
@@ -959,79 +813,10 @@
     title_text: 14 Day Lead Time
     subtitle_text: ''
     body_text: ''
-    row: 30
+    row: 28
     col: 0
     width: 24
     height: 1
-  - title: In Transit Lead Time
-    name: In Transit Lead Time
-    model: google-scm-demo
-    explore: order
-    type: looker_line
-    fields: [date.date_date, order.lead_time]
-    fill_fields: [date.date_date]
-    filters:
-      order.order_creation_date_date: 14 days
-      order.order_category: Purchase Order
-      order.status: In Transit
-    sorts: [date.date_date]
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - category: table_calculation
-      expression: sum(${order.lead_days})
-      label: Lead Time
-      value_format:
-      value_format_name:
-      _kind_hint: measure
-      table_calculation: lead_time
-      _type_hint: number
-      is_disabled: true
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: circle_outline
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    color_application:
-      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
-      options:
-        steps: 5
-    y_axes: [{label: '', orientation: left, series: [{axisId: order.lead_time, id: order.lead_time,
-            name: Lead Time}], showLabels: true, showValues: true, valueFormat: '',
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
-    x_axis_zoom: true
-    y_axis_zoom: true
-    label_value_format: '0'
-    series_colors:
-      order.lead_time: "#9334E6"
-    hidden_pivots: {}
-    defaults_version: 1
-    listen:
-      Location Type: location.location_type
-    row: 31
-    col: 5
-    width: 4
-    height: 6
   - title: DC Lead Time
     name: DC Lead Time
     model: google-scm-demo
@@ -1097,77 +882,8 @@
     defaults_version: 1
     listen:
       Location Type: location.location_type
-    row: 31
+    row: 29
     col: 10
-    width: 4
-    height: 6
-  - title: In Transit Stores Lead Time
-    name: In Transit Stores Lead Time
-    model: google-scm-demo
-    explore: order
-    type: looker_line
-    fields: [date.date_date, order.lead_time]
-    fill_fields: [date.date_date]
-    filters:
-      order.order_creation_date_date: 14 days
-      order.order_category: Transaction Order
-      order.status: In Transit
-    sorts: [date.date_date]
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - category: table_calculation
-      expression: sum(${order.lead_days})
-      label: Lead Time
-      value_format:
-      value_format_name:
-      _kind_hint: measure
-      table_calculation: lead_time
-      _type_hint: number
-      is_disabled: true
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: circle_outline
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    color_application:
-      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
-      options:
-        steps: 5
-    y_axes: [{label: '', orientation: left, series: [{axisId: order.lead_time, id: order.lead_time,
-            name: Lead Time}], showLabels: true, showValues: true, valueFormat: '',
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
-    x_axis_zoom: true
-    y_axis_zoom: true
-    label_value_format: '0'
-    series_colors:
-      order.lead_time: "#9334E6"
-    hidden_pivots: {}
-    defaults_version: 1
-    listen:
-      Location Type: location.location_type
-    row: 31
-    col: 15
     width: 4
     height: 6
   - title: Stores Lead Time
@@ -1235,16 +951,16 @@
     defaults_version: 1
     listen:
       Location Type: location.location_type
-    row: 31
+    row: 29
     col: 20
     width: 4
     height: 6
   - title: Supplier Inventory
-    name: Supplier Inventory
+    name: Supplier Inventory (2)
     model: google-scm-demo
     explore: inventory
     type: looker_bar
-    fields: [inventory.inventory_status, inventory.count]
+    fields: [inventory.inventory_status, inventory.count_inventory]
     pivots: [inventory.inventory_status]
     filters:
       inventory.procurement_type: Supplier
@@ -1278,12 +994,13 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    y_axes: [{label: '', orientation: bottom, series: [{axisId: inventory.count, id: At-Stock
-              - inventory.count, name: At-Stock}, {axisId: inventory.count, id: Out-of-Stock
-              - inventory.count, name: Out-of-Stock}, {axisId: inventory.count, id: Over-Stock
-              - inventory.count, name: Over-Stock}, {axisId: inventory.count, id: Under-Stock
-              - inventory.count, name: Under-Stock}], showLabels: true, showValues: true,
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
+    y_axes: [{label: Inventory, orientation: bottom, series: [{axisId: inventory.count_inventory,
+            id: At-Stock - inventory.count_inventory, name: At-Stock}, {axisId: inventory.count_inventory,
+            id: Out-of-Stock - inventory.count_inventory, name: Out-of-Stock}, {axisId: inventory.count_inventory,
+            id: Over-Stock - inventory.count_inventory, name: Over-Stock}, {axisId: inventory.count_inventory,
+            id: Under-Stock - inventory.count_inventory, name: Under-Stock}], showLabels: true,
+        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}]
     x_axis_label: Stocks
     x_axis_zoom: true
     y_axis_zoom: true
@@ -1292,21 +1009,35 @@
       At-Stock - inventory.count: "#12B5CB"
       Under-Stock - inventory.count: "#E8710A"
       Out-of-Stock - inventory.count: "#EA4335"
+      Over-Stock - inventory.count_inventory: "#F9AB00"
+      At-Stock - inventory.count_inventory: "#12B5CB"
+      Under-Stock - inventory.count_inventory: "#E8710A"
+      Out-of-Stock - inventory.count_inventory: "#EA4335"
     hidden_pivots: {}
     defaults_version: 1
+    note_state: collapsed
+    note_display: below
+    note_text: "Supplier Inventory helps us monitor product stock levels at Supplier\
+      \ Level to ensure efficient inventory management.This helps us to quickly identify\
+      \ and address stock imbalances to optimize inventory levels and meet customer\
+      \ demands. It has four segments, categorized on basis of Safety Stocks defined\
+      \ for each product: \n\nOver-Stock: Products with quantities exceeding safety\
+      \ stock levels by more than 50%.\nAt-Stock: Products with quantities within\
+      \ safety stock levels.\nUnder-Stock: Products with quantities below safety stock\
+      \ levels.\nOut-of-Stock: Products with no stock on hand."
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
     row: 12
     col: 0
-    width: 4
+    width: 8
     height: 6
   - title: 'DC Inventory '
     name: 'DC Inventory '
     model: google-scm-demo
     explore: inventory
     type: looker_bar
-    fields: [inventory.inventory_status, inventory.count]
+    fields: [inventory.inventory_status, inventory.count_inventory]
     pivots: [inventory.inventory_status]
     filters:
       inventory.procurement_type: DC
@@ -1340,12 +1071,13 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    y_axes: [{label: '', orientation: bottom, series: [{axisId: inventory.count, id: At-Stock
-              - inventory.count, name: At-Stock}, {axisId: inventory.count, id: Out-of-Stock
-              - inventory.count, name: Out-of-Stock}, {axisId: inventory.count, id: Over-Stock
-              - inventory.count, name: Over-Stock}, {axisId: inventory.count, id: Under-Stock
-              - inventory.count, name: Under-Stock}], showLabels: true, showValues: true,
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
+    y_axes: [{label: Inventory, orientation: bottom, series: [{axisId: inventory.count_inventory,
+            id: At-Stock - inventory.count_inventory, name: At-Stock}, {axisId: inventory.count_inventory,
+            id: Out-of-Stock - inventory.count_inventory, name: Out-of-Stock}, {axisId: inventory.count_inventory,
+            id: Over-Stock - inventory.count_inventory, name: Over-Stock}, {axisId: inventory.count_inventory,
+            id: Under-Stock - inventory.count_inventory, name: Under-Stock}], showLabels: true,
+        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}]
     x_axis_label: Stocks
     x_axis_zoom: true
     y_axis_zoom: true
@@ -1354,21 +1086,34 @@
       At-Stock - inventory.count: "#12B5CB"
       Under-Stock - inventory.count: "#E8710A"
       Out-of-Stock - inventory.count: "#EA4335"
+      Over-Stock - inventory.count_inventory: "#F9AB00"
+      Out-of-Stock - inventory.count_inventory: "#EA4335"
+      At-Stock - inventory.count_inventory: "#12B5CB"
     hidden_pivots: {}
     defaults_version: 1
+    note_state: collapsed
+    note_display: below
+    note_text: "DC Inventory helps us monitor product stock levels at various DCs\
+      \ to ensure efficient inventory management. This helps us to quickly identify\
+      \ and address stock imbalances to optimize inventory levels and meet customer\
+      \ demands. It has four segments, categorized on basis of Safety Stocks defined\
+      \ for each product: \n\nOver-Stock: Products with quantities exceeding safety\
+      \ stock levels by more than 50%.\nAt-Stock: Products with quantities within\
+      \ safety stock levels.\nUnder-Stock: Products with quantities below safety stock\
+      \ levels.\nOut-of-Stock: Products with no stock on hand."
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
     row: 12
-    col: 10
-    width: 4
+    col: 8
+    width: 8
     height: 6
   - title: 'Stores Inventory  '
     name: 'Stores Inventory  '
     model: google-scm-demo
     explore: inventory
     type: looker_bar
-    fields: [inventory.inventory_status, inventory.count]
+    fields: [inventory.inventory_status, inventory.count_inventory]
     pivots: [inventory.inventory_status]
     filters:
       inventory.procurement_type: Stores
@@ -1402,12 +1147,13 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    y_axes: [{label: '', orientation: bottom, series: [{axisId: inventory.count, id: At-Stock
-              - inventory.count, name: At-Stock}, {axisId: inventory.count, id: Out-of-Stock
-              - inventory.count, name: Out-of-Stock}, {axisId: inventory.count, id: Over-Stock
-              - inventory.count, name: Over-Stock}, {axisId: inventory.count, id: Under-Stock
-              - inventory.count, name: Under-Stock}], showLabels: true, showValues: true,
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
+    y_axes: [{label: Inventory, orientation: bottom, series: [{axisId: inventory.count_inventory,
+            id: At-Stock - inventory.count_inventory, name: At-Stock}, {axisId: inventory.count_inventory,
+            id: Out-of-Stock - inventory.count_inventory, name: Out-of-Stock}, {axisId: inventory.count_inventory,
+            id: Over-Stock - inventory.count_inventory, name: Over-Stock}, {axisId: inventory.count_inventory,
+            id: Under-Stock - inventory.count_inventory, name: Under-Stock}], showLabels: true,
+        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}]
     x_axis_label: Stocks
     x_axis_zoom: true
     y_axis_zoom: true
@@ -1416,17 +1162,30 @@
       At-Stock - inventory.count: "#12B5CB"
       Under-Stock - inventory.count: "#E8710A"
       Out-of-Stock - inventory.count: "#EA4335"
+      At-Stock - inventory.count_inventory: "#12B5CB"
+      Out-of-Stock - inventory.count_inventory: "#EA4335"
+      Over-Stock - inventory.count_inventory: "#F9AB00"
     hidden_pivots: {}
     defaults_version: 1
+    note_state: collapsed
+    note_display: below
+    note_text: "Stores Inventory helps us monitor product stock levels at various\
+      \ Stores to ensure efficient inventory management. This helps us to quickly\
+      \ identify and address stock imbalances to optimize inventory levels and meet\
+      \ customer demands. It has four segments, categorized on basis of Safety Stocks\
+      \ defined for each product: \n\nOver-Stock: Products with quantities exceeding\
+      \ safety stock levels by more than 50%.\nAt-Stock: Products with quantities\
+      \ within safety stock levels.\nUnder-Stock: Products with quantities below safety\
+      \ stock levels.\nOut-of-Stock: Products with no stock on hand."
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
     row: 12
-    col: 20
-    width: 4
+    col: 16
+    width: 8
     height: 6
   - title: Supplier Inventory
-    name: Supplier Inventory (2)
+    name: Supplier Inventory (3)
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
@@ -1452,6 +1211,12 @@
     value_format_inventory.inventory_cost: ''
     show_comparison_inventory.inventory_cost: false
     defaults_version: 0
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      Total Stock Units - refers to the overall quantity or sum of available products or items at Supplier level
+
+      Inventory Cost - the expenses associated with acquiring, storing, and managing goods within a supply chain at Supplier level
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
@@ -1482,6 +1247,11 @@
     custom_color: "#7CB342"
     single_value_title: Sell Value
     defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: Sell Value in Supplier Inventory refers to the monetary worth assigned
+      to products or goods available for sale, representing the potential revenue
+      generated upon their sale
     listen:
       Location Type: location.location_type
     row: 8
@@ -1515,6 +1285,13 @@
     value_format_inventory.inventory_cost: ''
     show_comparison_inventory.inventory_cost: false
     defaults_version: 0
+    note_state: collapsed
+    note_display: hover
+    note_text: |+
+      Inventory cost in the context of DC (Distribution Center) refers to the total expenses associated with acquiring, storing, and managing goods within the distribution facility.
+
+      "Total Quantity" in the context of DC (Distribution Center) Inventory refers to the overall sum or aggregate quantity of goods or products available in the warehouse at a given point in time.
+
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
@@ -1522,70 +1299,6 @@
     col: 10
     width: 4
     height: 6
-  - title: In Transit DC
-    name: In Transit DC (2)
-    model: google-scm-demo
-    explore: inventory
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
-    filters:
-      inventory.procurement_type: DC
-      order.status: In Transit
-    limit: 500
-    column_limit: 50
-    hidden_fields: []
-    hidden_points_if_no: []
-    series_labels: {}
-    show_view_names: true
-    font_size_main: '14'
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#1A73E8"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total Stock Units
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    style_inventory.inventory_cost: "#E52592"
-    show_title_inventory.inventory_cost: true
-    title_placement_inventory.inventory_cost: below
-    value_format_inventory.inventory_cost: ''
-    show_comparison_inventory.inventory_cost: false
-    defaults_version: 0
-    listen:
-      Inventory Date: inventory.inventory_date
-      Location Type: location.location_type
-    row: 2
-    col: 5
-    width: 4
-    height: 6
-  - title: In Transit DC
-    name: In Transit DC (3)
-    model: google-scm-demo
-    explore: order
-    type: single_value
-    fields: [order.total_sales]
-    filters:
-      order.order_category: Delivery Order
-      order.status: In Transit
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: Sell Value
-    defaults_version: 1
-    listen:
-      Location Type: location.location_type
-    row: 8
-    col: 5
-    width: 4
-    height: 2
   - title: DC Inventory
     name: DC Inventory (2)
     model: google-scm-demo
@@ -1609,78 +1322,19 @@
     custom_color: "#7CB342"
     single_value_title: Sell Value
     defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: Sell Value in DC (Distribution Center) Inventory refers to the monetary
+      worth assigned to goods available for sale, reflecting their market value or
+      predetermined pricing
     listen:
       Location Type: location.location_type
     row: 8
     col: 10
     width: 4
     height: 2
-  - title: In Transit Sotres
-    name: In Transit Sotres
-    model: google-scm-demo
-    explore: order
-    type: single_value
-    fields: [order.total_sales]
-    filters:
-      order.order_category: Sales Order
-      order.status: In Transit
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: Sell Value
-    defaults_version: 1
-    listen:
-      Location Type: location.location_type
-    row: 8
-    col: 15
-    width: 4
-    height: 2
-  - title: In Transit Stores
-    name: In Transit Stores (2)
-    model: google-scm-demo
-    explore: inventory
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
-    filters:
-      inventory.procurement_type: Stores
-      order.status: In Transit
-    limit: 500
-    column_limit: 50
-    hidden_fields: []
-    hidden_points_if_no: []
-    series_labels: {}
-    show_view_names: true
-    font_size_main: '14'
-    orientation: auto
-    style_inventory.total_inventory_quantity: "#1A73E8"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total Stock Units
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    style_inventory.inventory_cost: "#E52592"
-    show_title_inventory.inventory_cost: true
-    title_placement_inventory.inventory_cost: below
-    value_format_inventory.inventory_cost: ''
-    show_comparison_inventory.inventory_cost: false
-    defaults_version: 0
-    listen:
-      Inventory Date: inventory.inventory_date
-      Location Type: location.location_type
-    row: 2
-    col: 15
-    width: 4
-    height: 6
   - title: Store Inventory
-    name: Store Inventory
+    name: Store Inventory (2)
     model: google-scm-demo
     explore: order
     type: single_value
@@ -1702,14 +1356,18 @@
     custom_color: "#7CB342"
     single_value_title: Sell Value
     defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: Sell value in store inventory refers to the total monetary worth of
+      products available for sale, reflecting their market value or retail price.
     listen:
       Location Type: location.location_type
     row: 8
     col: 20
     width: 4
     height: 2
-  - title: Sotre Inventory
-    name: Sotre Inventory
+  - title: Store Inventory
+    name: Store Inventory (3)
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
@@ -1736,6 +1394,12 @@
     value_format_inventory.inventory_cost: ''
     show_comparison_inventory.inventory_cost: false
     defaults_version: 0
+    note_state: collapsed
+    note_display: hover
+    note_text: |
+      Inventory cost refers to the total expenses incurred in acquiring, storing, and managing goods within a store's inventory, encompassing purchase costs, storage expenses, and associated carrying costs.
+
+      "Total Quantity" refers to the overall sum or aggregate amount of a specific item or product stocked in a store's inventory at a given point in time.
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
@@ -1791,10 +1455,18 @@
     label_value_format: "#"
     defaults_version: 1
     hidden_pivots: {}
+    note_state: collapsed
+    note_display: below
+    note_text: "Supplier Locations features a bar chart  that showcases the top 10\
+      \ cities having Suppliers with the most significant inventory quantities. The\
+      \ visualization provides a clear overview of the cities that are leading in\
+      \ terms of inventory holdings on a Supplier Level. \n\nIt's a valuable tool\
+      \ for understanding the geographical distribution of your inventory and identifying\
+      \ cities where stock levels are particularly high."
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
-    row: 62
+    row: 60
     col: 0
     width: 8
     height: 6
@@ -1846,10 +1518,18 @@
     label_value_format: "#"
     defaults_version: 1
     hidden_pivots: {}
+    note_state: collapsed
+    note_display: below
+    note_text: "Stores Locations features a bar chart  that showcases the top 10 cities\
+      \ having stores with the most significant inventory quantities. The visualization\
+      \ provides a clear overview of the cities that are leading in terms of inventory\
+      \ holdings. \n\nIt's a valuable tool for understanding the geographical distribution\
+      \ of your inventory and identifying cities where stock levels are particularly\
+      \ high."
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
-    row: 62
+    row: 60
     col: 16
     width: 8
     height: 6
@@ -1901,10 +1581,18 @@
     label_value_format: "#"
     defaults_version: 1
     hidden_pivots: {}
+    note_state: collapsed
+    note_display: below
+    note_text: "DC Locations features a bar chart  that showcases the top 10 cities\
+      \ having Distribution Centres with the most significant inventory quantities.\
+      \ The visualization provides a clear overview of the cities that are leading\
+      \ in terms of inventory holdings at various DCs. \n\nIt's a valuable tool for\
+      \ understanding the geographical distribution of your inventory across the DCs\
+      \ and identifying cities where stock levels are particularly high."
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
-    row: 62
+    row: 60
     col: 8
     width: 8
     height: 6
@@ -1913,7 +1601,8 @@
     model: google-scm-demo
     explore: inventory
     type: looker_grid
-    fields: [inventory.product_uid, inventory.Alert, inventory.total_inventory_quantity_in_number]
+    fields: [inventory.product_uid, inventory.Alert, inventory.total_inventory_quantity_in_number,
+      product.product_category, product.product_type]
     filters:
       inventory.procurement_type: Supplier
       inventory.total_inventory_quantity_in_number: '0'
@@ -1980,19 +1669,29 @@
     totals_color: "#808080"
     defaults_version: 1
     hidden_pivots: {}
+    column_order: ["$$$_row_numbers_$$$", inventory.product_uid, product.product_category,
+      product.product_hierarchy_level_1_name, product.product_type, inventory.Alert,
+      inventory.total_inventory_quantity_in_number]
+    note_state: collapsed
+    note_display: below
+    note_text: 'Needed Products (Supplier) is designed to provide immediate visibility
+      into products at Supplier Level that are in urgent need of restocking. It''s
+      a crucial tool for inventory management, ensuring that you can prevent stockouts
+      and maintain a high level of customer satisfaction. '
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
-    row: 37
-    col: 2
-    width: 9
+    row: 35
+    col: 0
+    width: 12
     height: 7
   - title: Needed Products (DC)
     name: Needed Products (DC)
     model: google-scm-demo
     explore: inventory
     type: looker_grid
-    fields: [inventory.product_uid, inventory.Alert, inventory.total_inventory_quantity_in_number]
+    fields: [inventory.product_uid, inventory.Alert, inventory.total_inventory_quantity_in_number,
+      product.product_category, product.product_type]
     filters:
       inventory.procurement_type: DC
       inventory.total_inventory_quantity_in_number: '0'
@@ -2059,13 +1758,371 @@
     totals_color: "#808080"
     defaults_version: 1
     hidden_pivots: {}
+    column_order: ["$$$_row_numbers_$$$", inventory.product_uid, product.product_category,
+      product.product_type, inventory.Alert, inventory.total_inventory_quantity_in_number]
+    note_state: collapsed
+    note_display: below
+    note_text: 'Needed Products (DC) is designed to provide immediate visibility into
+      products at DC Level that are in urgent need of restocking. It''s a crucial
+      tool for inventory management, ensuring that you can prevent stockouts and maintain
+      a high level of customer satisfaction. '
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
-    row: 37
-    col: 13
-    width: 9
+    row: 35
+    col: 12
+    width: 12
     height: 7
+  - title: In Transit Store
+    name: In Transit Store
+    model: google-scm-demo
+    explore: order
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [order.total_requested_quantity, product.total_product_cost]
+    filters:
+      order.order_category: Sales Order
+      order.status: In Transit
+    limit: 500
+    column_limit: 50
+    dynamic_fields:
+    - category: table_calculation
+      expression: "${product.total_product_cost}*${order.total_requested_quantity}"
+      label: Inventory Cost
+      value_format:
+      value_format_name: usd_0
+      _kind_hint: measure
+      table_calculation: inventory_cost
+      _type_hint: number
+    hidden_fields: [product.total_product_cost]
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: false
+    font_size_main: '14'
+    orientation: auto
+    style_order.total_requested_quantity: "#1A73E8"
+    show_title_order.total_requested_quantity: true
+    title_override_order.total_requested_quantity: Total Stock Units
+    title_placement_order.total_requested_quantity: below
+    value_format_order.total_requested_quantity: ''
+    style_inventory_cost: "#E52592"
+    title_placement_inventory_cost: below
+    value_format_inventory_cost: "$ 0,,, \\M"
+    style_product.total_product_cost: "#E52592"
+    show_title_product.total_product_cost: true
+    title_override_product.total_product_cost: Inventory Cost
+    title_placement_product.total_product_cost: below
+    value_format_product.total_product_cost: ''
+    show_comparison_product.total_product_cost: false
+    hidden_pivots: {}
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 0
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      Total Stock Units - refers to the overall quantity or sum of available products or items that are shipped to DC.
+
+      Inventory Cost - the cost of the goods in transit.
+    listen: {}
+    row: 2
+    col: 15
+    width: 4
+    height: 6
+  - title: In Transit DC
+    name: In Transit DC (2)
+    model: google-scm-demo
+    explore: order
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [order.total_requested_quantity, product.total_product_cost]
+    filters:
+      order.order_category: Delivery Order
+      order.status: In Transit
+    limit: 500
+    column_limit: 50
+    dynamic_fields:
+    - category: table_calculation
+      expression: "${product.total_product_cost}*${order.total_requested_quantity}"
+      label: Inventory Cost
+      value_format:
+      value_format_name: usd_0
+      _kind_hint: measure
+      table_calculation: inventory_cost
+      _type_hint: number
+    hidden_fields: [product.total_product_cost]
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: false
+    font_size_main: '14'
+    orientation: auto
+    style_order.total_requested_quantity: "#1A73E8"
+    show_title_order.total_requested_quantity: true
+    title_override_order.total_requested_quantity: Total Stock Units
+    title_placement_order.total_requested_quantity: below
+    value_format_order.total_requested_quantity: ''
+    style_inventory_cost: "#E52592"
+    title_placement_inventory_cost: below
+    value_format_inventory_cost: "$ 0,,, \\M"
+    style_product.total_product_cost: "#E52592"
+    show_title_product.total_product_cost: true
+    title_override_product.total_product_cost: Inventory Cost
+    title_placement_product.total_product_cost: below
+    value_format_product.total_product_cost: "$ 0, \\K"
+    show_comparison_product.total_product_cost: false
+    hidden_pivots: {}
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 0
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      Total Stock Units - refers to the overall quantity or sum of available products or items that are shipped to Stores.
+
+      Inventory Cost - the cost of the goods in transit.
+    listen: {}
+    row: 2
+    col: 5
+    width: 4
+    height: 6
+  - title: In Transit Store Sell Value
+    name: In Transit Store Sell Value
+    model: google-scm-demo
+    explore: order
+    type: single_value
+    fields: [order.intransit_sell_value]
+    filters:
+      order.order_category: Sales Order
+      order.status: In Transit
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: Sell Value in In Transit Stores refers to the monetary worth assigned
+      to products or goods available for sale, representing the potential revenue
+      generated upon their sale
+    listen: {}
+    row: 8
+    col: 15
+    width: 4
+    height: 2
+  - title: In Transit DC Sell Value
+    name: In Transit DC Sell Value
+    model: google-scm-demo
+    explore: order
+    type: single_value
+    fields: [order.intransit_sell_value]
+    filters:
+      order.order_category: Delivery Order
+      order.status: In Transit
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: Sell Value in In Transit DC refers to the monetary worth assigned to
+      products or goods available for sale, representing the potential revenue generated
+      upon their sale
+    listen: {}
+    row: 8
+    col: 5
+    width: 4
+    height: 2
+  - title: In Transit DC Lead Time
+    name: In Transit DC Lead Time
+    model: google-scm-demo
+    explore: order
+    type: looker_line
+    fields: [date.date_date, order.in_transit_lead_time]
+    fill_fields: [date.date_date]
+    filters:
+      order.order_category: Delivery Order
+      order.status: In Transit
+      order.order_creation_date_date: 2023/11/01 to 2023/11/15
+    sorts: [date.date_date desc]
+    limit: 500
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.in_transit_lead_time: "#9334E6"
+    defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: '"Lead Time" in the supply chain context refers to the duration between
+      the initiation of an order and the actual receipt of the ordered goods, encompassing
+      the time required for processing, production, and transportation.'
+    listen: {}
+    row: 29
+    col: 5
+    width: 4
+    height: 6
+  - title: In Transit Stores Lead Time
+    name: In Transit Stores Lead Time
+    model: google-scm-demo
+    explore: order
+    type: looker_line
+    fields: [date.date_date, order.in_transit_lead_time]
+    fill_fields: [date.date_date]
+    filters:
+      order.order_category: Sales Order
+      order.status: In Transit
+      order.order_creation_date_date: 2023/11/01 to 2023/11/15
+    sorts: [date.date_date desc]
+    limit: 500
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.in_transit_lead_time: "#9334E6"
+    defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: '"Lead Time" in the supply chain context refers to the duration between
+      the initiation of an order and the actual receipt of the ordered goods, encompassing
+      the time required for processing, production, and transportation.'
+    listen: {}
+    row: 29
+    col: 15
+    width: 4
+    height: 6
   filters:
   - name: Industry
     title: Industry
@@ -2096,7 +2153,7 @@
   - name: Inventory Date
     title: Inventory Date
     type: field_filter
-    default_value: 90 day
+    default_value: ''
     allow_multiple_values: true
     required: false
     ui_config:
