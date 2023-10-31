@@ -211,6 +211,7 @@ view: order {
   measure: total_requested_quantity {
     type: sum
     sql: ${requested_quantity} ;;
+    value_format: "0,\" K\""
   }
 
   measure: total_rejected_quantity {
@@ -248,6 +249,12 @@ view: order {
     sql: ROUND(date_diff(${actual_delivery_date}, ${order_creation_date_date}, DAY), 0) ;;
   }
 
+  measure: in_transit_lead_time {
+    hidden: yes
+    type: average
+    sql: date_diff(${requested_delivery_date}, ${order_creation_date_date}, DAY);;
+  }
+
   measure: backorders {
     type: count_distinct
     sql:  ${order_id};;
@@ -275,7 +282,7 @@ view: order {
   measure: total_sales {
     type: sum
     sql: ${sales_price}*${delivered_quantity} ;;
-    value_format: "$ 0.00,,\" M\""
+    value_format: "$ 0,,\" M\""
   }
 
   measure: return_qty {
@@ -301,6 +308,12 @@ view: order {
     type: average
     sql: ROUND(date_diff(${order_creation_date_date} ,${actual_delivery_date}, DAY), 0) ;;
     value_format_name: decimal_2
+  }
+
+  measure: intransit_sell_value {
+    type: sum
+    sql: ${requested_quantity}*${sales_price} ;;
+    value_format: "$ 0,,\" M\""
   }
 
 

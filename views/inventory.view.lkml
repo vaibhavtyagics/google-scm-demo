@@ -110,7 +110,7 @@ view: inventory {
   sql: ${inventory_quantity} ;;
   label: "Total Inventory Quantity (in millions)"
   drill_fields: [detail*]
-  value_format: "0.000,,\" M\""
+  value_format: "0,,\" M\""
 }
 
   measure: total_inventory_quantity_in_number {
@@ -124,7 +124,7 @@ view: inventory {
   measure: inventory_cost {
     type: sum
     sql: ${inventory_quantity}*${product.product_cost} ;;
-    value_format: "$ 0.00,,\" M\""
+    value_format: "$ 0,,\" M\""
   }
 
 measure: shrinkage {
