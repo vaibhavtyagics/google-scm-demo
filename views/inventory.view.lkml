@@ -105,10 +105,10 @@ view: inventory {
 # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-      product.product_id,
-      product.product_hierarchy_level_2_name,
-      product.product_hierarchy_level_1_name,
-      product.product_hierarchy_name,
+      product.product_uid,
+      product.product_categoty,
+      product.procurement_type,
+      order.status,
       location.location_id,
       location.location_name
     ]
@@ -162,6 +162,7 @@ view: inventory {
     type: sum
     sql: ${inventory_quantity}*${product.product_cost} ;;
     value_format: "$ 0,,\" M\""
+    drill_fields: [detail*]
   }
 
 measure: shrinkage {

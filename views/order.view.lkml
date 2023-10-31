@@ -1,6 +1,6 @@
 view: order {
   sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.order` ;;
-  drill_fields: [order_id]
+  drill_fields: [order_id,product_uid,order_category,status,mode_of_transport]
 
   dimension: order_id {
     primary_key: yes
@@ -313,6 +313,11 @@ view: order {
   measure: average_lead_time {
     type: number
     sql: 14 ;;
+  }
+
+  measure: stocks_to_sales_ration {
+    type: number
+    sql: 0.17 ;;
   }
 
   measure: intransit_sell_value {
