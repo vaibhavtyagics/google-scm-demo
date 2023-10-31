@@ -236,12 +236,12 @@ view: order {
     sql:  (${total_requested_quantity}) - ${total_delivered_quantity};;
   }
 
-  measure: total_requested_quantity_po{
-    label: "Incoming Arrivals"
-    type: sum
-    sql: ${TABLE}.requested_quantity ;;
-    # filters: [order_category: "Purchase Order", status: "Open"]
-    }
+  # measure: total_requested_quantity_po{
+  #   label: "Incoming Arrivals"
+  #   type: number
+  #   sql: ${forecast.total_forecast_quantity}*1.2;;
+  #   # filters: [order_category: "Purchase Order", status: "Open"]
+  #   }
 
   measure: lead_time {
     hidden: yes

@@ -21,18 +21,12 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: ''
+    font_size_main: '14'
     orientation: auto
-    style_inventory.total_inventory_quantity: "#079c98"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total stocks - Supplier
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
     style_order.order_backlog: "#F9AB00"
     show_title_order.order_backlog: true
     title_placement_order.order_backlog: below
     value_format_order.order_backlog: ''
-    show_comparison_order.order_backlog: false
     style_order.supplier_quality_index: "#7CB342"
     show_title_order.supplier_quality_index: true
     title_placement_order.supplier_quality_index: below
@@ -44,7 +38,16 @@
     value_format_order.backorder_rate: ''
     show_comparison_order.backorder_rate: false
     style_order.return_rate: "#EA4335"
+    show_title_order.return_rate: true
     title_placement_order.return_rate: below
+    value_format_order.return_rate: ''
+    show_comparison_order.return_rate: false
+    style_inventory.total_inventory_quantity: "#079c98"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total stocks - Supplier
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    show_comparison_order.order_backlog: false
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -60,18 +63,16 @@
     hidden_pivots: {}
     note_state: collapsed
     note_display: hover
-    note_text: |
-      Order Backlog:
-      The number of customer orders that are pending and have not been fulfilled within the expected time frame.
-
-      Supplier Quality Index:
-      Measures the quality of products received from suppliers by calculating the percentage of defective units.
-
-      Backorder Rate:
-      Measures the percentage of orders that couldn't be fulfilled immediately and were put on backorder.
-
-      Return Rate:
-      A higher return rate may indicate issues such as product defects, inaccurate product descriptions, or dissatisfaction with the product. Monitoring the return rate can help businesses identify areas for improvement in product quality, customer service, and marketing.
+    note_text: "<div style=\"text-align: left;\">  \nOrder Backlog:\nThe number of\
+      \ customer orders that are pending and have not been fulfilled within the expected\
+      \ time frame.\n\n<br>\n<br>\n\nSupplier Quality Index:\nMeasures the quality\
+      \ of products received from suppliers by calculating the percentage of defective\
+      \ units.\n\n<br>\n<br>\n\nBackorder Rate:\nMeasures the percentage of orders\
+      \ that couldn't be fulfilled immediately and were put on backorder.\n\n<br>\n\
+      <br>\n\nReturn Rate:\nA higher return rate may indicate issues such as product\
+      \ defects, inaccurate product descriptions, or dissatisfaction with the product.\
+      \ Monitoring the return rate can help businesses identify areas for improvement\
+      \ in product quality, customer service, and marketing.\n</div>"
     listen:
       Country: location.country
       Industry: product.product_category
@@ -82,7 +83,7 @@
     row: 18
     col: 0
     width: 4
-    height: 10
+    height: 11
   - title: Supplier Inventory Footprint
     name: Supplier Inventory Footprint
     model: google-scm-demo
@@ -120,11 +121,18 @@
     reverse_map_value_colors: true
     defaults_version: 0
     note_state: collapsed
-    note_display: below
-    note_text: |-
-      Supplier Inventory Footprint offers a comprehensive map view of our supplier inventory footprint, allowing us to visualize the geographical distribution of the suppliers and the associated inventory quantities. It's a powerful tool for understanding the supply chain's spatial dynamics and identifying regions with varying inventory levels.
-
-      The tile presents an interactive map with location pins representing supplier sites. Each location pin is color-coded, with a gradient ranging from green to red, reflecting the inventory quantity at that specific location. Locations with higher inventory quantities are depicted in green, while those with lower quantities gradually shift to red, providing an intuitive and immediate understanding of inventory levels.
+    note_display: hover
+    note_text: "<div style=\"text-align: justify;\">\n<p>Supplier Inventory Footprint\
+      \ offers a comprehensive map view of our supplier inventory footprint, allowing\
+      \ us to visualize the geographical distribution of the suppliers and the associated\
+      \ inventory quantities. It's a powerful tool for understanding the supply chain's\
+      \ spatial dynamics and identifying regions with varying inventory levels.</p>\n\
+      \n<p>The tile presents an interactive map with location pins representing supplier\
+      \ sites. Each location pin is color-coded, with a gradient ranging from green\
+      \ to red, reflecting the inventory quantity at that specific location.</p> \n\
+      \n<p>Locations with higher inventory quantities are depicted in green, while\
+      \ those with lower quantities gradually shift to red, providing an intuitive\
+      \ and immediate understanding of inventory levels.</p>\n</div>"
     listen:
       Country: location.country
       Industry: product.product_category
@@ -132,7 +140,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 52
+    row: 53
     col: 0
     width: 8
     height: 8
@@ -173,11 +181,15 @@
     reverse_map_value_colors: true
     defaults_version: 0
     note_state: collapsed
-    note_display: below
+    note_display: hover
     note_text: |-
-      DC Inventory Footprint provides an interactive map view of the Distribution Centers, showcasing their locations and the corresponding inventory quantities. It's an invaluable tool for visualizing the spatial distribution of inventory in our distribution network and gaining insights into stock levels across different regions.
+      <div style="text-align: justify;">
+      <p>DC Inventory Footprint provides an interactive map view of the Distribution Centers, showcasing their locations and the corresponding inventory quantities. It's an invaluable tool for visualizing the spatial distribution of inventory in our distribution network and gaining insights into stock levels across different regions.</p>
 
-      The map view presents an interactive map featuring location pins that represent our distribution centers. Each pin is color-coded, with a gradient ranging from green to red, reflecting the inventory quantity at each specific distribution center. Centers with higher inventory quantities are depicted in green, while those with lower quantities gradually transition to red, making it easy to discern inventory levels at a glance.
+      <p>The map view presents an interactive map featuring location pins that represent our distribution centers. Each pin is color-coded, with a gradient ranging from green to red, reflecting the inventory quantity at each specific distribution center. </p>
+
+      <p>Centers with higher inventory quantities are depicted in green, while those with lower quantities gradually transition to red, making it easy to discern inventory levels at a glance.</p>
+      </div>
     listen:
       Country: location.country
       Industry: product.product_category
@@ -185,7 +197,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 52
+    row: 53
     col: 8
     width: 8
     height: 8
@@ -227,11 +239,15 @@
     reverse_map_value_colors: true
     defaults_version: 0
     note_state: collapsed
-    note_display: below
+    note_display: hover
     note_text: |-
-      Stores Inventory Footprint offers an interactive map view of the stores, presenting their locations and the associated inventory quantities for gaining insights into the geographical distribution of inventory across the retail network and for identifying stores with varying stock levels.
+      <div style="text-align: justify;">
+      <p>Stores Inventory Footprint offers an interactive map view of the stores, presenting their locations and the associated inventory quantities for gaining insights into the geographical distribution of inventory across the retail network and for identifying stores with varying stock levels.</p>
 
-      The map view features an interactive map displaying location pins that represent your stores. Each pin is color-coded, with a gradient ranging from green to red, signifying the inventory quantity at each specific store. Stores with higher inventory quantities are represented in green, while those with lower quantities gradually shift to red. This intuitive color gradient enables us to quickly assess inventory levels at each store.
+      <p>The map view features an interactive map displaying location pins that represent your stores. Each pin is color-coded, with a gradient ranging from green to red, signifying the inventory quantity at each specific store. </p>
+
+      <p>Stores with higher inventory quantities are represented in green, while those with lower quantities gradually shift to red. This intuitive color gradient enables us to quickly assess inventory levels at each store.</p>
+      </div>
     listen:
       Country: location.country
       Industry: product.product_category
@@ -239,7 +255,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 52
+    row: 53
     col: 16
     width: 8
     height: 8
@@ -321,7 +337,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 66
+    row: 67
     col: 0
     width: 11
     height: 8
@@ -368,7 +384,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 66
+    row: 67
     col: 11
     width: 13
     height: 8
@@ -384,19 +400,13 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: false
-    font_size_main: ''
+    font_size_main: '14'
     orientation: auto
-    style_inventory.total_inventory_quantity: "#12B5CB"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total Stocks - DC
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
     style_order.lead_time: "#A8A116"
     show_title_order.lead_time: true
     title_override_order.lead_time: Average Lead Time
     title_placement_order.lead_time: below
     value_format_order.lead_time: "#.##"
-    show_comparison_order.lead_time: false
     style_order.order_quality: "#7CB342"
     show_title_order.order_quality: true
     title_override_order.order_quality: Fill Rate
@@ -410,9 +420,16 @@
     show_comparison_inventory.shrinkage: false
     style_order.cycle_time: "#3A4245"
     show_title_order.cycle_time: true
+    title_override_order.cycle_time: Order Cycle Time
     title_placement_order.cycle_time: below
     value_format_order.cycle_time: ''
     show_comparison_order.cycle_time: false
+    style_inventory.total_inventory_quantity: "#12B5CB"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total Stocks - DC
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
+    show_comparison_order.lead_time: false
     show_row_numbers: true
     truncate_column_names: false
     hide_totals: false
@@ -423,6 +440,20 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     defaults_version: 0
+    note_state: collapsed
+    note_display: hover
+    note_text: "<div style=\"text-align: left;\">  \nAverage Lead Time:\nMeasures\
+      \ the average time it takes for an order to be fulfilled from the moment it's\
+      \ placed until it's received.\n\n<br>\n<br>\n\nFill Rate:\nMeasures the percentage\
+      \ of orders that were successfully fulfilled.\n\n<br>\n<br>\n\nShrinkage:\n\
+      Shrinkage measures inventory that cannot be accounted for. The “reasonable”\
+      \ causes (accidental damage, miscounting) still indicate potential errors in\
+      \ processes that must be corrected, while theft and/or fraud are among the most\
+      \ serious issues a merchant can face and must be investigated and rectified\
+      \ ASAP.\n\n<br>\n<br>\n\nOrder Cycle Time:\nThe average duration it takes for\
+      \ a business to process and fulfill a customer order, from the point of order\
+      \ placement to the moment of delivery. A shorter Order Cycle Time generally\
+      \ indicates a more responsive and agile supply chain.\n</div>"
     listen:
       Country: location.country
       Industry: product.product_category
@@ -433,7 +464,7 @@
     row: 18
     col: 5
     width: 4
-    height: 10
+    height: 11
   - title: In Transit Stores
     name: In Transit Stores
     model: google-scm-demo
@@ -442,7 +473,7 @@
     fields: [inventory.shrinkage_category, order.total_sales, order.cycle_time, order.average_lead_time]
     filters:
       inventory.procurement_type: ''
-      order.status: ''
+      order.status: In Transit
     sorts: [order.total_sales desc 0]
     limit: 500
     column_limit: 50
@@ -450,12 +481,30 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: ''
+    font_size_main: '14'
     orientation: auto
     style_inventory.shrinkage_category: "#EA4335"
+    show_title_inventory.shrinkage_category: true
+    title_override_inventory.shrinkage_category: Shrinkage
+    title_placement_inventory.shrinkage_category: below
+    value_format_inventory.shrinkage_category: ''
     style_order.total_sales: "#7CB342"
+    show_title_order.total_sales: true
+    title_override_order.total_sales: Cost per Shipped Unit
+    title_placement_order.total_sales: below
+    value_format_order.total_sales: ''
+    show_comparison_order.total_sales: false
     style_order.cycle_time: "#079c98"
+    show_title_order.cycle_time: true
+    title_override_order.cycle_time: Order Cycle Time
+    title_placement_order.cycle_time: below
+    value_format_order.cycle_time: ''
+    show_comparison_order.cycle_time: false
     style_order.average_lead_time: "#80868B"
+    show_title_order.average_lead_time: true
+    title_placement_order.average_lead_time: below
+    value_format_order.average_lead_time: ''
+    show_comparison_order.average_lead_time: false
     style_order.backorder_rate_fr: "#3A4245"
     show_title_order.backorder_rate_fr: true
     title_override_order.backorder_rate_fr: Backorder Rate
@@ -496,6 +545,22 @@
     single_value_title: Total Stocks -  In Transit Stores
     defaults_version: 0
     hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: "<div style=\"text-align: left;\">  \nShrinkage:\nShrinkage measures\
+      \ inventory that cannot be accounted for. The “reasonable” causes (accidental\
+      \ damage, miscounting) still indicate potential errors in processes that must\
+      \ be corrected, while theft and/or fraud are among the most serious issues a\
+      \ merchant can face and must be investigated and rectified ASAP.\n\n<br>\n<br>\n\
+      \nCost per Shipped Unit:\nAssesses the average cost incurred by a business for\
+      \ shipping each unit of product to customers. It encompasses various expenses\
+      \ associated with the transportation and delivery of goods\n\n<br>\n<br>\n\n\
+      \n\n\nOrder Cycle Time:\nThe average duration it takes for a business to process\
+      \ and fulfill a customer order, from the point of order placement to the moment\
+      \ of delivery. A shorter Order Cycle Time generally indicates a more responsive\
+      \ and agile supply chain.\n<br>\n<br>\nAverage Lead Time:\nMeasures the average\
+      \ time it takes for an order to be fulfilled from the moment it's placed until\
+      \ it's received.\n</div>"
     listen:
       Country: location.country
       Industry: product.product_category
@@ -506,13 +571,14 @@
     row: 18
     col: 15
     width: 4
-    height: 10
+    height: 11
   - title: Store Inventory
     name: Store Inventory
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [inventory.inventory_health_index, inventory.dsi, inventory.stocks_cover]
+    fields: [inventory.inventory_health_index, inventory.dsi, inventory.stocks_cover,
+      order.stocks_to_sales_ration]
     filters:
       inventory.procurement_type: Stores
       order.status: ''
@@ -523,7 +589,7 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: ''
+    font_size_main: '14'
     orientation: auto
     style_inventory.inventory_health_index: "#1A73E8"
     show_title_inventory.inventory_health_index: true
@@ -540,6 +606,12 @@
     title_placement_inventory.dsi: below
     value_format_inventory.dsi: ''
     show_comparison_inventory.dsi: false
+    style_order.stocks_to_sales_ration: "#3A4245"
+    show_title_order.stocks_to_sales_ration: true
+    title_override_order.stocks_to_sales_ration: Stocks to Sales Ratio
+    title_placement_order.stocks_to_sales_ration: below
+    value_format_order.stocks_to_sales_ration: ''
+    show_comparison_order.stocks_to_sales_ration: false
     style_inventory.total_inventory_quantity: "#079c98"
     show_title_inventory.total_inventory_quantity: true
     title_override_inventory.total_inventory_quantity: Total Stocks -  Store Inventory
@@ -563,6 +635,17 @@
     custom_color: "#12B5CB"
     single_value_title: Total Stocks -  Store Inventory
     defaults_version: 0
+    note_state: collapsed
+    note_display: hover
+    note_text: "<div style=\"text-align: left;\">  \nInventory Health Index:\nAssesses\
+      \ the health of your inventory by quantifying the proportion of slow-moving\
+      \ or stagnant inventory.\n\n<br>\n<br>\n\nStocks Cover (Days of Supply):\nIndicates\
+      \ the number of days your current inventory will last based on your average\
+      \ daily usage. Helps in managing stockouts and overstock situations.\n\n<br>\n\
+      <br>\n\n\n\nDays Sales of Inventory (DSI):\nIndicates how long it takes to sell\
+      \ the average inventory on hand.\n\n<br>\n<br>\n\nStocks to Sales Ratio:\nstock\
+      \ to sales ratio, compares the average inventory value to the average sales\
+      \ value and is one measure of a company's inventory level health.\n</div>"
     listen:
       Country: location.country
       Industry: product.product_category
@@ -573,7 +656,7 @@
     row: 18
     col: 20
     width: 4
-    height: 10
+    height: 11
   - title: DC inventory
     name: DC inventory
     model: google-scm-demo
@@ -591,19 +674,28 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: ''
+    font_size_main: '14'
     orientation: auto
     style_inventory.inventory_health_index: "#7CB342"
+    show_title_inventory.inventory_health_index: true
+    title_placement_inventory.inventory_health_index: below
     value_format_inventory.inventory_health_index: ''
     style_inventory.inventory_accuracy: "#079c98"
+    show_title_inventory.inventory_accuracy: true
+    title_placement_inventory.inventory_accuracy: below
+    value_format_inventory.inventory_accuracy: ''
+    show_comparison_inventory.inventory_accuracy: false
     style_inventory.inventory_turnover: "#3A4245"
     show_title_inventory.inventory_turnover: true
     title_placement_inventory.inventory_turnover: below
     value_format_inventory.inventory_turnover: ''
     show_comparison_inventory.inventory_turnover: false
     style_inventory.dsi: "#1A73E8"
+    show_title_inventory.dsi: true
     title_override_inventory.dsi: Days Sales of Inventory
     title_placement_inventory.dsi: below
+    value_format_inventory.dsi: ''
+    show_comparison_inventory.dsi: false
     style_inventory.total_inventory_quantity: "#079c98"
     show_title_inventory.total_inventory_quantity: true
     title_override_inventory.total_inventory_quantity: Total Stocks -  DC
@@ -642,6 +734,16 @@
     single_value_title: Total Stocks -  DC
     defaults_version: 0
     hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: "<div style=\"text-align: left;\">  \nInventory Health Index:\nAssesses\
+      \ the health of your inventory by quantifying the proportion of slow-moving\
+      \ or stagnant inventory.\n\n<br>\n<br>\n\nInventory Accuracy:\nMeasures the\
+      \ accuracy of recorded inventory levels compared to physical counts.\n\n<br>\n\
+      <br>\n\nInventory Turn Over:\nMeasures how efficiently inventory is being managed.\
+      \ A higher turnover ratio indicates better inventory optimization.\n\n<br>\n\
+      <br>\n\nDays Sales of Inventory:\nIndicates how long it takes to sell the average\
+      \ inventory on hand.\n</div>"
     listen:
       Country: location.country
       Industry: product.product_category
@@ -652,7 +754,7 @@
     row: 18
     col: 10
     width: 4
-    height: 10
+    height: 11
   - name: Stock Level Summary
     type: text
     title_text: Stock Level Summary
@@ -679,7 +781,7 @@
     explore: inventory
     type: looker_grid
     fields: [forecast.forecast_date, forecast.projected_inventory, forecast.total_forecast_quantity,
-      forecast.valuation_table, order.total_requested_quantity_po]
+      forecast.valuation_table, forecast.total_requested_quantity_po]
     fill_fields: [forecast.forecast_date]
     sorts: [forecast.forecast_date desc]
     limit: 500
@@ -733,9 +835,15 @@
     interpolation: linear
     defaults_version: 1
     hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      Shows Day level view of Projected sales, Projected Inventory, Valuation and Incoming arrivals.
+      </div>
     listen:
       Location Type: location.location_type
-    row: 42
+    row: 43
     col: 0
     width: 24
     height: 10
@@ -804,7 +912,7 @@
     defaults_version: 1
     listen:
       Location Type: location.location_type
-    row: 29
+    row: 30
     col: 0
     width: 4
     height: 6
@@ -813,7 +921,7 @@
     title_text: 14 Day Lead Time
     subtitle_text: ''
     body_text: ''
-    row: 28
+    row: 29
     col: 0
     width: 24
     height: 1
@@ -882,7 +990,7 @@
     defaults_version: 1
     listen:
       Location Type: location.location_type
-    row: 29
+    row: 30
     col: 10
     width: 4
     height: 6
@@ -951,7 +1059,7 @@
     defaults_version: 1
     listen:
       Location Type: location.location_type
-    row: 29
+    row: 30
     col: 20
     width: 4
     height: 6
@@ -1016,15 +1124,16 @@
     hidden_pivots: {}
     defaults_version: 1
     note_state: collapsed
-    note_display: below
-    note_text: "Supplier Inventory helps us monitor product stock levels at Supplier\
-      \ Level to ensure efficient inventory management.This helps us to quickly identify\
-      \ and address stock imbalances to optimize inventory levels and meet customer\
-      \ demands. It has four segments, categorized on basis of Safety Stocks defined\
-      \ for each product: \n\nOver-Stock: Products with quantities exceeding safety\
-      \ stock levels by more than 50%.\nAt-Stock: Products with quantities within\
-      \ safety stock levels.\nUnder-Stock: Products with quantities below safety stock\
-      \ levels.\nOut-of-Stock: Products with no stock on hand."
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      <p>Supplier Inventory helps us monitor product stock levels at Supplier Level to ensure efficient inventory management.This helps us to quickly identify and address stock imbalances to optimize inventory levels and meet customer demands. It has four segments, categorized on basis of Safety Stocks defined for each product: </p>
+
+      <li>Over-Stock: Products with quantities exceeding safety stock levels by more than 50%.</li>
+      <li>At-Stock: Products with quantities within safety stock levels.</li>
+      <li>Under-Stock: Products with quantities below safety stock levels.</li>
+      <li>Out-of-Stock: Products with no stock on hand.</li>
+      </div>
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
@@ -1092,15 +1201,16 @@
     hidden_pivots: {}
     defaults_version: 1
     note_state: collapsed
-    note_display: below
-    note_text: "DC Inventory helps us monitor product stock levels at various DCs\
-      \ to ensure efficient inventory management. This helps us to quickly identify\
-      \ and address stock imbalances to optimize inventory levels and meet customer\
-      \ demands. It has four segments, categorized on basis of Safety Stocks defined\
-      \ for each product: \n\nOver-Stock: Products with quantities exceeding safety\
-      \ stock levels by more than 50%.\nAt-Stock: Products with quantities within\
-      \ safety stock levels.\nUnder-Stock: Products with quantities below safety stock\
-      \ levels.\nOut-of-Stock: Products with no stock on hand."
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      <p>DC Inventory helps us monitor product stock levels at various DCs to ensure efficient inventory management. This helps us to quickly identify and address stock imbalances to optimize inventory levels and meet customer demands. It has four segments, categorized on basis of Safety Stocks defined for each product:</p>
+
+      <li>Over-Stock: Products with quantities exceeding safety stock levels by more than 50%.</li>
+      <li>At-Stock: Products with quantities within safety stock levels.</li>
+      <li>Under-Stock: Products with quantities below safety stock levels.</li>
+      <li>Out-of-Stock: Products with no stock on hand.</li>
+      </div>
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
@@ -1168,15 +1278,15 @@
     hidden_pivots: {}
     defaults_version: 1
     note_state: collapsed
-    note_display: below
-    note_text: "Stores Inventory helps us monitor product stock levels at various\
-      \ Stores to ensure efficient inventory management. This helps us to quickly\
-      \ identify and address stock imbalances to optimize inventory levels and meet\
-      \ customer demands. It has four segments, categorized on basis of Safety Stocks\
-      \ defined for each product: \n\nOver-Stock: Products with quantities exceeding\
-      \ safety stock levels by more than 50%.\nAt-Stock: Products with quantities\
-      \ within safety stock levels.\nUnder-Stock: Products with quantities below safety\
-      \ stock levels.\nOut-of-Stock: Products with no stock on hand."
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      <p>Stores Inventory helps us monitor product stock levels at various Stores to ensure efficient inventory management. This helps us to quickly identify and address stock imbalances to optimize inventory levels and meet customer demands. It has four segments, categorized on basis of Safety Stocks defined for each product: </p>
+
+      <li>Over-Stock: Products with quantities exceeding safety stock levels by more than 50%.</li>
+      <li>At-Stock: Products with quantities within safety stock levels.</li>
+      <li>Under-Stock: Products with quantities below safety stock levels.</li>
+      <li>Out-of-Stock: Products with no stock on hand.</li>
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
@@ -1214,9 +1324,13 @@
     note_state: collapsed
     note_display: hover
     note_text: |-
-      Total Stock Units - refers to the overall quantity or sum of available products or items at Supplier level
+      <div style="text-align: justify;">
 
-      Inventory Cost - the expenses associated with acquiring, storing, and managing goods within a supply chain at Supplier level
+      <p>Total Stock Units - refers to the overall quantity or sum of available products or items at Supplier level</p>
+
+      <p>Inventory Cost - the expenses associated with acquiring, storing, and managing goods within a supply chain at Supplier level </p>
+
+      </div>
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
@@ -1249,9 +1363,10 @@
     defaults_version: 1
     note_state: collapsed
     note_display: hover
-    note_text: Sell Value in Supplier Inventory refers to the monetary worth assigned
-      to products or goods available for sale, representing the potential revenue
-      generated upon their sale
+    note_text: |-
+      <div style="text-align: left;">
+      Sell Value in Supplier Inventory refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
+      </div>
     listen:
       Location Type: location.location_type
     row: 8
@@ -1287,11 +1402,12 @@
     defaults_version: 0
     note_state: collapsed
     note_display: hover
-    note_text: |+
-      Inventory cost in the context of DC (Distribution Center) refers to the total expenses associated with acquiring, storing, and managing goods within the distribution facility.
+    note_text: |-
+      <div style="text-align: justify;">
+      <p>Inventory cost, in the context of DC (Distribution Center), refers to the total expenses associated with acquiring, storing, and managing goods within the distribution facility.</p>
 
-      "Total Quantity" in the context of DC (Distribution Center) Inventory refers to the overall sum or aggregate quantity of goods or products available in the warehouse at a given point in time.
-
+      <p>Total Quantity, in the context of DC (Distribution Center) Inventory, refers to the overall sum or aggregate quantity of goods or products available in the warehouse at a given point in time. </p>
+      </div>
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
@@ -1324,9 +1440,10 @@
     defaults_version: 1
     note_state: collapsed
     note_display: hover
-    note_text: Sell Value in DC (Distribution Center) Inventory refers to the monetary
-      worth assigned to goods available for sale, reflecting their market value or
-      predetermined pricing
+    note_text: |-
+      <div style="text-align: left;">
+      Sell Value in DC (Distribution Center) Inventory refers to the monetary worth assigned to goods available for sale, reflecting their market value or predetermined pricing
+      </div>
     listen:
       Location Type: location.location_type
     row: 8
@@ -1358,8 +1475,10 @@
     defaults_version: 1
     note_state: collapsed
     note_display: hover
-    note_text: Sell value in store inventory refers to the total monetary worth of
-      products available for sale, reflecting their market value or retail price.
+    note_text: |-
+      <div style="text-align: left;">
+      Sell value in store inventory refers to the total monetary worth of products available for sale, reflecting their market value or retail price.
+      </div>
     listen:
       Location Type: location.location_type
     row: 8
@@ -1397,9 +1516,11 @@
     note_state: collapsed
     note_display: hover
     note_text: |
-      Inventory cost refers to the total expenses incurred in acquiring, storing, and managing goods within a store's inventory, encompassing purchase costs, storage expenses, and associated carrying costs.
+      <div style="text-align: justify;">
+      <p>Inventory cost refers to the total expenses incurred in acquiring, storing, and managing goods within a store's inventory, encompassing purchase costs, storage expenses, and associated carrying costs.</p>
 
-      "Total Quantity" refers to the overall sum or aggregate amount of a specific item or product stocked in a store's inventory at a given point in time.
+      <p> Total Quantity refers to the overall sum or aggregate amount of a specific item or product stocked in a store's inventory at a given point in time.</p>
+      </div>
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
@@ -1456,17 +1577,17 @@
     defaults_version: 1
     hidden_pivots: {}
     note_state: collapsed
-    note_display: below
-    note_text: "Supplier Locations features a bar chart  that showcases the top 10\
-      \ cities having Suppliers with the most significant inventory quantities. The\
-      \ visualization provides a clear overview of the cities that are leading in\
-      \ terms of inventory holdings on a Supplier Level. \n\nIt's a valuable tool\
-      \ for understanding the geographical distribution of your inventory and identifying\
-      \ cities where stock levels are particularly high."
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      <p>Supplier Locations features a bar chart  that showcases the top 10 cities having Suppliers with the most significant inventory quantities. The visualization provides a clear overview of the cities that are leading in terms of inventory holdings on a Supplier Level. </p>
+
+      <p>It's a valuable tool for understanding the geographical distribution of your inventory and identifying cities where stock levels are particularly high.</p>
+      </div>
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
-    row: 60
+    row: 61
     col: 0
     width: 8
     height: 6
@@ -1519,17 +1640,17 @@
     defaults_version: 1
     hidden_pivots: {}
     note_state: collapsed
-    note_display: below
-    note_text: "Stores Locations features a bar chart  that showcases the top 10 cities\
-      \ having stores with the most significant inventory quantities. The visualization\
-      \ provides a clear overview of the cities that are leading in terms of inventory\
-      \ holdings. \n\nIt's a valuable tool for understanding the geographical distribution\
-      \ of your inventory and identifying cities where stock levels are particularly\
-      \ high."
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      <p>Stores Locations features a bar chart  that showcases the top 10 cities having stores with the most significant inventory quantities. The visualization provides a clear overview of the cities that are leading in terms of inventory holdings. </p>
+
+      <p>It's a valuable tool for understanding the geographical distribution of your inventory and identifying cities where stock levels are particularly high.</p>
+      </div>
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
-    row: 60
+    row: 61
     col: 16
     width: 8
     height: 6
@@ -1582,17 +1703,17 @@
     defaults_version: 1
     hidden_pivots: {}
     note_state: collapsed
-    note_display: below
-    note_text: "DC Locations features a bar chart  that showcases the top 10 cities\
-      \ having Distribution Centres with the most significant inventory quantities.\
-      \ The visualization provides a clear overview of the cities that are leading\
-      \ in terms of inventory holdings at various DCs. \n\nIt's a valuable tool for\
-      \ understanding the geographical distribution of your inventory across the DCs\
-      \ and identifying cities where stock levels are particularly high."
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      <p>DC Locations features a bar chart  that showcases the top 10 cities having Distribution Centres with the most significant inventory quantities. The visualization provides a clear overview of the cities that are leading in terms of inventory holdings at various DCs. </p>
+
+      <p>It's a valuable tool for understanding the geographical distribution of your inventory across the DCs and identifying cities where stock levels are particularly high.</p>
+      </diiv>
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
-    row: 60
+    row: 61
     col: 8
     width: 8
     height: 6
@@ -1602,7 +1723,7 @@
     explore: inventory
     type: looker_grid
     fields: [inventory.product_uid, inventory.Alert, inventory.total_inventory_quantity_in_number,
-      product.product_category, product.product_type]
+      product.product_type, product.product_description]
     filters:
       inventory.procurement_type: Supplier
       inventory.total_inventory_quantity_in_number: '0'
@@ -1669,19 +1790,19 @@
     totals_color: "#808080"
     defaults_version: 1
     hidden_pivots: {}
-    column_order: ["$$$_row_numbers_$$$", inventory.product_uid, product.product_category,
-      product.product_hierarchy_level_1_name, product.product_type, inventory.Alert,
-      inventory.total_inventory_quantity_in_number]
+    column_order: ["$$$_row_numbers_$$$", inventory.product_uid, product.product_type,
+      product.product_description, inventory.Alert, inventory.total_inventory_quantity_in_number]
     note_state: collapsed
-    note_display: below
-    note_text: 'Needed Products (Supplier) is designed to provide immediate visibility
-      into products at Supplier Level that are in urgent need of restocking. It''s
-      a crucial tool for inventory management, ensuring that you can prevent stockouts
-      and maintain a high level of customer satisfaction. '
+    note_display: hover
+    note_text: "<div style=\"text-align: justify;\">\nNeeded Products (Supplier) is\
+      \ designed to provide immediate visibility into products at Supplier Level that\
+      \ are in urgent need of restocking. It's a crucial tool for inventory management,\
+      \ ensuring that you can prevent stockouts and maintain a high level of customer\
+      \ satisfaction. \n</div>"
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
-    row: 35
+    row: 36
     col: 0
     width: 12
     height: 7
@@ -1691,11 +1812,11 @@
     explore: inventory
     type: looker_grid
     fields: [inventory.product_uid, inventory.Alert, inventory.total_inventory_quantity_in_number,
-      product.product_category, product.product_type]
+      product.product_type, product.product_description]
     filters:
       inventory.procurement_type: DC
       inventory.total_inventory_quantity_in_number: '0'
-    sorts: [inventory.total_inventory_quantity_in_number desc 0]
+    sorts: [product.product_description]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -1758,18 +1879,19 @@
     totals_color: "#808080"
     defaults_version: 1
     hidden_pivots: {}
-    column_order: ["$$$_row_numbers_$$$", inventory.product_uid, product.product_category,
-      product.product_type, inventory.Alert, inventory.total_inventory_quantity_in_number]
+    column_order: ["$$$_row_numbers_$$$", inventory.product_uid, product.product_type,
+      inventory.Alert, product.product_description, inventory.total_inventory_quantity_in_number]
     note_state: collapsed
-    note_display: below
-    note_text: 'Needed Products (DC) is designed to provide immediate visibility into
-      products at DC Level that are in urgent need of restocking. It''s a crucial
-      tool for inventory management, ensuring that you can prevent stockouts and maintain
-      a high level of customer satisfaction. '
+    note_display: hover
+    note_text: "<div style=\"text-align: justify;\">\nNeeded Products (DC) is designed\
+      \ to provide immediate visibility into products at DC Level that are in urgent\
+      \ need of restocking. It's a crucial tool for inventory management, ensuring\
+      \ that you can prevent stockouts and maintain a high level of customer satisfaction.\
+      \ \n</div>"
     listen:
       Inventory Date: inventory.inventory_date
       Location Type: location.location_type
-    row: 35
+    row: 36
     col: 12
     width: 12
     height: 7
@@ -1853,9 +1975,11 @@
     note_state: collapsed
     note_display: hover
     note_text: |-
-      Total Stock Units - refers to the overall quantity or sum of available products or items that are shipped to DC.
+      <div style="text-align: justify;">
+      <p>Total Stock Units - refers to the overall quantity or sum of available products or items that are shipped to DC.</p>
 
-      Inventory Cost - the cost of the goods in transit.
+      <p>Inventory Cost - the cost of the goods in transit.</p>
+      </div>
     listen: {}
     row: 2
     col: 15
@@ -1941,9 +2065,11 @@
     note_state: collapsed
     note_display: hover
     note_text: |-
-      Total Stock Units - refers to the overall quantity or sum of available products or items that are shipped to Stores.
+      <div style="text-align: justify;">
+      <p>Total Stock Units - refers to the overall quantity or sum of available products or items that are shipped to Stores.</p>
 
-      Inventory Cost - the cost of the goods in transit.
+      <p>Inventory Cost - the cost of the goods in transit.</p>
+      </div>
     listen: {}
     row: 2
     col: 5
@@ -1974,9 +2100,10 @@
     defaults_version: 1
     note_state: collapsed
     note_display: hover
-    note_text: Sell Value in In Transit Stores refers to the monetary worth assigned
-      to products or goods available for sale, representing the potential revenue
-      generated upon their sale
+    note_text: |-
+      <div style="text-align: left;">
+      Sell Value in In Transit Stores refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
+      </div>
     listen: {}
     row: 8
     col: 15
@@ -2007,9 +2134,10 @@
     defaults_version: 1
     note_state: collapsed
     note_display: hover
-    note_text: Sell Value in In Transit DC refers to the monetary worth assigned to
-      products or goods available for sale, representing the potential revenue generated
-      upon their sale
+    note_text: |-
+      <div style="text-align: left;">
+      Sell Value in In Transit DC refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
+      </div>
     listen: {}
     row: 8
     col: 5
@@ -2061,11 +2189,12 @@
     defaults_version: 1
     note_state: collapsed
     note_display: hover
-    note_text: '"Lead Time" in the supply chain context refers to the duration between
-      the initiation of an order and the actual receipt of the ordered goods, encompassing
-      the time required for processing, production, and transportation.'
+    note_text: |-
+      <div style="text-align: justify;">
+      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
+      </div>
     listen: {}
-    row: 29
+    row: 30
     col: 5
     width: 4
     height: 6
@@ -2115,11 +2244,12 @@
     defaults_version: 1
     note_state: collapsed
     note_display: hover
-    note_text: '"Lead Time" in the supply chain context refers to the duration between
-      the initiation of an order and the actual receipt of the ordered goods, encompassing
-      the time required for processing, production, and transportation.'
+    note_text: |-
+      <div style="text-align: justify;">
+      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
+      </div>
     listen: {}
-    row: 29
+    row: 30
     col: 15
     width: 4
     height: 6
