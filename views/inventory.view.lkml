@@ -179,12 +179,79 @@ measure: shrinkage {
   measure: dsi {
     type: number
     sql: (${average_inventory_quantity}/ ${cogs}) * ${number_of_days_in_period};;
-    value_format_name: decimal_2
+    value_format_name: decimal_0
   }
 
   measure: stock_to_sales_ratio {
     type: number
     sql: ${average_inventory_quantity} * ${order.total_sales}  ;;
+  }
+
+  dimension: inventory_health_index {
+    type: number
+    sql: CASE WHEN ${product.product_category} = "Chemicals"
+              THEN 6/10
+              WHEN ${product.product_category} = "Beauty"
+              THEN 7/10
+              WHEN ${product.product_category} = "Clothing"
+              THEN 9/10
+              WHEN ${product.product_category} = "Electronics"
+              THEN 8.5/10
+              WHEN ${product.product_category} = "Sports"
+              THEN 1/10
+              WHEN ${product.product_category}= "Manufacturing"
+              THEN 7.5/10
+              WHEN ${product.product_category} = "Home"
+              THEN 9.5/10
+              ELSE
+              8/10
+              END ;;
+    value_format_name: percent_0
+
+  }
+
+  dimension: inventory_accuracy {
+    type: number
+    sql: CASE WHEN ${product.product_category} = "Chemicals"
+              THEN 7.8/10
+              WHEN ${product.product_category} = "Beauty"
+              THEN 9.5/10
+              WHEN ${product.product_category} = "Clothing"
+              THEN 9.6/10
+              WHEN ${product.product_category} = "Electronics"
+              THEN 8.5/10
+              WHEN ${product.product_category} = "Sports"
+              THEN 5.1/10
+              WHEN ${product.product_category}= "Manufacturing"
+              THEN 7.5/10
+              WHEN ${product.product_category} = "Home"
+              THEN 9.5/10
+              ELSE
+              8.3/10
+              END ;;
+    value_format_name: percent_0
+
+  }
+
+  dimension: stocks_cover {
+    type: number
+    sql: CASE WHEN ${product.product_category} = "Chemicals"
+              THEN 15
+              WHEN ${product.product_category} = "Beauty"
+              THEN 17
+              WHEN ${product.product_category} = "Clothing"
+              THEN 11
+              WHEN ${product.product_category} = "Electronics"
+              THEN 21
+              WHEN ${product.product_category} = "Sports"
+              THEN 25
+              WHEN ${product.product_category}= "Manufacturing"
+              THEN 19
+              WHEN ${product.product_category} = "Home"
+              THEN 13
+              ELSE
+              15
+              END ;;
   }
 
 }
