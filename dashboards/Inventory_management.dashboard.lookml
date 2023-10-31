@@ -1,13 +1,13 @@
 ---
-- dashboard: inventory
-  title: Inventory
+- dashboard: inventory_visibility
+  title: Inventory Visibility
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
   preferred_slug: PdIDa1qYtdEZc6RWtfH1Q7
   elements:
-  - title: Supplier Inventory
-    name: Supplier Inventory
+  - title: Supplier Inventory KPI
+    name: Supplier Inventory KPI
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
@@ -21,12 +21,18 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: '14'
+    font_size_main: ''
     orientation: auto
+    style_inventory.total_inventory_quantity: "#079c98"
+    show_title_inventory.total_inventory_quantity: true
+    title_override_inventory.total_inventory_quantity: Total stocks - Supplier
+    title_placement_inventory.total_inventory_quantity: below
+    value_format_inventory.total_inventory_quantity: ''
     style_order.order_backlog: "#F9AB00"
     show_title_order.order_backlog: true
     title_placement_order.order_backlog: below
     value_format_order.order_backlog: ''
+    show_comparison_order.order_backlog: false
     style_order.supplier_quality_index: "#7CB342"
     show_title_order.supplier_quality_index: true
     title_placement_order.supplier_quality_index: below
@@ -38,16 +44,7 @@
     value_format_order.backorder_rate: ''
     show_comparison_order.backorder_rate: false
     style_order.return_rate: "#EA4335"
-    show_title_order.return_rate: true
     title_placement_order.return_rate: below
-    value_format_order.return_rate: ''
-    show_comparison_order.return_rate: false
-    style_inventory.total_inventory_quantity: "#079c98"
-    show_title_inventory.total_inventory_quantity: true
-    title_override_inventory.total_inventory_quantity: Total stocks - Supplier
-    title_placement_inventory.total_inventory_quantity: below
-    value_format_inventory.total_inventory_quantity: ''
-    show_comparison_order.order_backlog: false
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -63,16 +60,29 @@
     hidden_pivots: {}
     note_state: collapsed
     note_display: hover
-    note_text: "<div style=\"text-align: left;\">  \nOrder Backlog:\nThe number of\
-      \ customer orders that are pending and have not been fulfilled within the expected\
-      \ time frame.\n\n<br>\n<br>\n\nSupplier Quality Index:\nMeasures the quality\
-      \ of products received from suppliers by calculating the percentage of defective\
-      \ units.\n\n<br>\n<br>\n\nBackorder Rate:\nMeasures the percentage of orders\
-      \ that couldn't be fulfilled immediately and were put on backorder.\n\n<br>\n\
-      <br>\n\nReturn Rate:\nA higher return rate may indicate issues such as product\
-      \ defects, inaccurate product descriptions, or dissatisfaction with the product.\
-      \ Monitoring the return rate can help businesses identify areas for improvement\
-      \ in product quality, customer service, and marketing.\n</div>"
+    note_text: |-
+      <div style="text-align: justify;">
+      Order Backlog:
+      The number of customer orders that are pending and have not been fulfilled within the expected time frame.
+
+      <br>
+      <br>
+
+      Supplier Quality Index:
+      Measures the quality of products received from suppliers by calculating the percentage of defective units.
+
+      <br>
+      <br>
+
+      Backorder Rate:
+      Measures the percentage of orders that couldn't be fulfilled immediately and were put on backorder.
+
+      <br>
+      <br>
+
+      Return Rate:
+      A higher return rate may indicate issues such as product defects, inaccurate product descriptions, or dissatisfaction with the product. Monitoring the return rate can help businesses identify areas for improvement in product quality, customer service, and marketing.
+      </div>
     listen:
       Country: location.country
       Industry: product.product_category
@@ -388,8 +398,8 @@
     col: 11
     width: 13
     height: 8
-  - title: In Transit DC
-    name: In Transit DC
+  - title: In Transit DC KPI
+    name: In Transit DC KPI
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
@@ -400,7 +410,7 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: false
-    font_size_main: '14'
+    font_size_main: ''
     orientation: auto
     style_order.lead_time: "#A8A116"
     show_title_order.lead_time: true
@@ -442,18 +452,29 @@
     defaults_version: 0
     note_state: collapsed
     note_display: hover
-    note_text: "<div style=\"text-align: left;\">  \nAverage Lead Time:\nMeasures\
-      \ the average time it takes for an order to be fulfilled from the moment it's\
-      \ placed until it's received.\n\n<br>\n<br>\n\nFill Rate:\nMeasures the percentage\
-      \ of orders that were successfully fulfilled.\n\n<br>\n<br>\n\nShrinkage:\n\
-      Shrinkage measures inventory that cannot be accounted for. The “reasonable”\
-      \ causes (accidental damage, miscounting) still indicate potential errors in\
-      \ processes that must be corrected, while theft and/or fraud are among the most\
-      \ serious issues a merchant can face and must be investigated and rectified\
-      \ ASAP.\n\n<br>\n<br>\n\nOrder Cycle Time:\nThe average duration it takes for\
-      \ a business to process and fulfill a customer order, from the point of order\
-      \ placement to the moment of delivery. A shorter Order Cycle Time generally\
-      \ indicates a more responsive and agile supply chain.\n</div>"
+    note_text: |-
+      <div style="text-align: justify;">
+      Average Lead Time:
+      Measures the average time it takes for an order to be fulfilled from the moment it's placed until it's received.
+
+      <br>
+      <br>
+
+      Fill Rate:
+      Measures the percentage of orders that were successfully fulfilled.
+
+      <br>
+      <br>
+
+      Shrinkage:
+      Shrinkage measures inventory that cannot be accounted for. The “reasonable” causes (accidental damage, miscounting) still indicate potential errors in processes that must be corrected, while theft and/or fraud are among the most serious issues a merchant can face and must be investigated and rectified ASAP.
+
+      <br>
+      <br>
+
+      Order Cycle Time:
+      The average duration it takes for a business to process and fulfill a customer order, from the point of order placement to the moment of delivery. A shorter Order Cycle Time generally indicates a more responsive and agile supply chain.
+      </div>
     listen:
       Country: location.country
       Industry: product.product_category
@@ -465,8 +486,8 @@
     col: 5
     width: 4
     height: 11
-  - title: In Transit Stores
-    name: In Transit Stores
+  - title: In Transit Stores KPI
+    name: In Transit Stores KPI
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
@@ -481,7 +502,7 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: '14'
+    font_size_main: ''
     orientation: auto
     style_inventory.shrinkage_category: "#EA4335"
     show_title_inventory.shrinkage_category: true
@@ -547,20 +568,30 @@
     hidden_pivots: {}
     note_state: collapsed
     note_display: hover
-    note_text: "<div style=\"text-align: left;\">  \nShrinkage:\nShrinkage measures\
-      \ inventory that cannot be accounted for. The “reasonable” causes (accidental\
-      \ damage, miscounting) still indicate potential errors in processes that must\
-      \ be corrected, while theft and/or fraud are among the most serious issues a\
-      \ merchant can face and must be investigated and rectified ASAP.\n\n<br>\n<br>\n\
-      \nCost per Shipped Unit:\nAssesses the average cost incurred by a business for\
-      \ shipping each unit of product to customers. It encompasses various expenses\
-      \ associated with the transportation and delivery of goods\n\n<br>\n<br>\n\n\
-      \n\n\nOrder Cycle Time:\nThe average duration it takes for a business to process\
-      \ and fulfill a customer order, from the point of order placement to the moment\
-      \ of delivery. A shorter Order Cycle Time generally indicates a more responsive\
-      \ and agile supply chain.\n<br>\n<br>\nAverage Lead Time:\nMeasures the average\
-      \ time it takes for an order to be fulfilled from the moment it's placed until\
-      \ it's received.\n</div>"
+    note_text: |-
+      <div style="text-align: justify;">
+      Shrinkage:
+      Shrinkage measures inventory that cannot be accounted for. The “reasonable” causes (accidental damage, miscounting) still indicate potential errors in processes that must be corrected, while theft and/or fraud are among the most serious issues a merchant can face and must be investigated and rectified ASAP.
+
+      <br>
+      <br>
+
+      Cost per Shipped Unit:
+      Assesses the average cost incurred by a business for shipping each unit of product to customers. It encompasses various expenses associated with the transportation and delivery of goods
+
+      <br>
+      <br>
+
+
+
+
+      Order Cycle Time:
+      The average duration it takes for a business to process and fulfill a customer order, from the point of order placement to the moment of delivery. A shorter Order Cycle Time generally indicates a more responsive and agile supply chain.
+      <br>
+      <br>
+      Average Lead Time:
+      Measures the average time it takes for an order to be fulfilled from the moment it's placed until it's received.
+      </div>
     listen:
       Country: location.country
       Industry: product.product_category
@@ -572,8 +603,8 @@
     col: 15
     width: 4
     height: 11
-  - title: Store Inventory
-    name: Store Inventory
+  - title: Store Inventory KPI
+    name: Store Inventory KPI
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
@@ -589,7 +620,7 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: '14'
+    font_size_main: ''
     orientation: auto
     style_inventory.inventory_health_index: "#1A73E8"
     show_title_inventory.inventory_health_index: true
@@ -606,12 +637,7 @@
     title_placement_inventory.dsi: below
     value_format_inventory.dsi: ''
     show_comparison_inventory.dsi: false
-    style_order.stocks_to_sales_ration: "#3A4245"
-    show_title_order.stocks_to_sales_ration: true
     title_override_order.stocks_to_sales_ration: Stocks to Sales Ratio
-    title_placement_order.stocks_to_sales_ration: below
-    value_format_order.stocks_to_sales_ration: ''
-    show_comparison_order.stocks_to_sales_ration: false
     style_inventory.total_inventory_quantity: "#079c98"
     show_title_inventory.total_inventory_quantity: true
     title_override_inventory.total_inventory_quantity: Total Stocks -  Store Inventory
@@ -637,15 +663,31 @@
     defaults_version: 0
     note_state: collapsed
     note_display: hover
-    note_text: "<div style=\"text-align: left;\">  \nInventory Health Index:\nAssesses\
-      \ the health of your inventory by quantifying the proportion of slow-moving\
-      \ or stagnant inventory.\n\n<br>\n<br>\n\nStocks Cover (Days of Supply):\nIndicates\
-      \ the number of days your current inventory will last based on your average\
-      \ daily usage. Helps in managing stockouts and overstock situations.\n\n<br>\n\
-      <br>\n\n\n\nDays Sales of Inventory (DSI):\nIndicates how long it takes to sell\
-      \ the average inventory on hand.\n\n<br>\n<br>\n\nStocks to Sales Ratio:\nstock\
-      \ to sales ratio, compares the average inventory value to the average sales\
-      \ value and is one measure of a company's inventory level health.\n</div>"
+    note_text: |-
+      <div style="text-align: justify;">
+      Inventory Health Index:
+      Assesses the health of your inventory by quantifying the proportion of slow-moving or stagnant inventory.
+
+      <br>
+      <br>
+
+      Stocks Cover (Days of Supply):
+      Indicates the number of days your current inventory will last based on your average daily usage. Helps in managing stockouts and overstock situations.
+
+      <br>
+      <br>
+
+
+
+      Days Sales of Inventory (DSI):
+      Indicates how long it takes to sell the average inventory on hand.
+
+      <br>
+      <br>
+
+      Stocks to Sales Ratio:
+      stock to sales ratio, compares the average inventory value to the average sales value and is one measure of a company's inventory level health.
+      </div>
     listen:
       Country: location.country
       Industry: product.product_category
@@ -657,8 +699,8 @@
     col: 20
     width: 4
     height: 11
-  - title: DC inventory
-    name: DC inventory
+  - title: DC inventory KPI
+    name: DC inventory KPI
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
@@ -674,7 +716,7 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: true
-    font_size_main: '14'
+    font_size_main: ''
     orientation: auto
     style_inventory.inventory_health_index: "#7CB342"
     show_title_inventory.inventory_health_index: true
@@ -736,14 +778,29 @@
     hidden_pivots: {}
     note_state: collapsed
     note_display: hover
-    note_text: "<div style=\"text-align: left;\">  \nInventory Health Index:\nAssesses\
-      \ the health of your inventory by quantifying the proportion of slow-moving\
-      \ or stagnant inventory.\n\n<br>\n<br>\n\nInventory Accuracy:\nMeasures the\
-      \ accuracy of recorded inventory levels compared to physical counts.\n\n<br>\n\
-      <br>\n\nInventory Turn Over:\nMeasures how efficiently inventory is being managed.\
-      \ A higher turnover ratio indicates better inventory optimization.\n\n<br>\n\
-      <br>\n\nDays Sales of Inventory:\nIndicates how long it takes to sell the average\
-      \ inventory on hand.\n</div>"
+    note_text: |-
+      <div style="text-align: justify;">
+      Inventory Health Index:
+      Assesses the health of your inventory by quantifying the proportion of slow-moving or stagnant inventory.
+
+      <br>
+      <br>
+
+      Inventory Accuracy:
+      Measures the accuracy of recorded inventory levels compared to physical counts.
+
+      <br>
+      <br>
+
+      Inventory Turn Over:
+      Measures how efficiently inventory is being managed. A higher turnover ratio indicates better inventory optimization.
+
+      <br>
+      <br>
+
+      Days Sales of Inventory:
+      Indicates how long it takes to sell the average inventory on hand.
+      </div>
     listen:
       Country: location.country
       Industry: product.product_category
@@ -755,10 +812,10 @@
     col: 10
     width: 4
     height: 11
-  - name: Stock Level Summary
+  - name: Stock Level Summary (At Rest)
     type: text
-    title_text: Stock Level Summary
-    subtitle_text: What's our overall stock positioning?
+    title_text: Stock Level Summary (At Rest)
+    subtitle_text: What's our overall stock positioning accross facilities?
     body_text: ''
     row: 10
     col: 0
@@ -768,15 +825,14 @@
     type: text
     title_text: ''
     subtitle_text: ''
-    body_text: '[{"type":"h1","children":[{"text":"End-to-End Supply Chain Inventory
-      Overview","bold":true}],"id":1698220667387,"align":"center"}]'
+    body_text: '[{"type":"h1","children":[{"text":"Inventory Flow"}],"id":1698220667387,"align":"center"}]'
     rich_content_json: '{"format":"slate"}'
     row: 0
     col: 0
     width: 24
     height: 2
-  - title: Daily View at DC
-    name: Daily View at DC
+  - title: Daily inventory movement at DC
+    name: Daily inventory movement at DC
     model: google-scm-demo
     explore: inventory
     type: looker_grid
@@ -916,9 +972,9 @@
     col: 0
     width: 4
     height: 6
-  - name: 14 Day Lead Time
+  - name: Lead Time (2 week window)
     type: text
-    title_text: 14 Day Lead Time
+    title_text: Lead Time (2 week window)
     subtitle_text: ''
     body_text: ''
     row: 29
@@ -1064,7 +1120,7 @@
     width: 4
     height: 6
   - title: Supplier Inventory
-    name: Supplier Inventory (2)
+    name: Supplier Inventory
     model: google-scm-demo
     explore: inventory
     type: looker_bar
@@ -1295,7 +1351,7 @@
     width: 8
     height: 6
   - title: Supplier Inventory
-    name: Supplier Inventory (3)
+    name: Supplier Inventory (2)
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
@@ -1451,7 +1507,7 @@
     width: 4
     height: 2
   - title: Store Inventory
-    name: Store Inventory (2)
+    name: Store Inventory
     model: google-scm-demo
     explore: order
     type: single_value
@@ -1486,7 +1542,7 @@
     width: 4
     height: 2
   - title: Store Inventory
-    name: Store Inventory (3)
+    name: Store Inventory (2)
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
@@ -1528,8 +1584,8 @@
     col: 20
     width: 4
     height: 6
-  - title: Supplier Locations
-    name: Supplier Locations
+  - title: Supplier Locations with highest inventory
+    name: Supplier Locations with highest inventory
     model: google-scm-demo
     explore: inventory
     type: looker_bar
@@ -1591,8 +1647,8 @@
     col: 0
     width: 8
     height: 6
-  - title: Store Locations
-    name: Store Locations
+  - title: Store Locations with highest inventory
+    name: Store Locations with highest inventory
     model: google-scm-demo
     explore: inventory
     type: looker_bar
@@ -1654,8 +1710,8 @@
     col: 16
     width: 8
     height: 6
-  - title: DC Locations
-    name: DC Locations
+  - title: DC Locations with highest inventory
+    name: DC Locations with highest inventory
     model: google-scm-demo
     explore: inventory
     type: looker_bar
@@ -1986,7 +2042,7 @@
     width: 4
     height: 6
   - title: In Transit DC
-    name: In Transit DC (2)
+    name: In Transit DC
     model: google-scm-demo
     explore: order
     type: marketplace_viz_multiple_value::multiple_value-marketplace
