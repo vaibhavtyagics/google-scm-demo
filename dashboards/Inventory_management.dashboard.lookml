@@ -350,7 +350,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 67
+    row: 76
     col: 0
     width: 11
     height: 8
@@ -397,7 +397,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
-    row: 67
+    row: 76
     col: 11
     width: 13
     height: 8
@@ -2217,7 +2217,7 @@
     filters:
       order.order_category: Delivery Order
       order.status: In Transit
-      order.order_creation_date_date: 2023/11/01 to 2023/11/15
+      order.order_creation_date_date: 14 days
     sorts: [date.date_date desc]
     limit: 500
     column_limit: 50
@@ -2272,7 +2272,7 @@
     filters:
       order.order_category: Sales Order
       order.status: In Transit
-      order.order_creation_date_date: 2023/11/01 to 2023/11/15
+      order.order_creation_date_date: 14 days
     sorts: [date.date_date desc]
     limit: 500
     column_limit: 50
@@ -2317,6 +2317,131 @@
     col: 15
     width: 4
     height: 6
+  - title: DC Inventory KPI
+    name: DC Inventory KPI
+    model: google-scm-demo
+    explore: inventory
+    type: looker_grid
+    fields: [product.product_uid, product.product_description, inventory.total_inventory_quantity_in_number,
+      total_returned_quantity, soft_served, out_of_stock]
+    filters:
+      inventory.procurement_type: DC
+    sorts: [sell_rate desc]
+    limit: 5000
+    column_limit: 50
+    dynamic_fields:
+    - category: table_calculation
+      expression: coalesce(${total_returned_quantity}, 0)/coalesce(${inventory.total_inventory_quantity_in_number},
+        0)
+      label: Return Rate
+      value_format:
+      value_format_name: percent_2
+      _kind_hint: measure
+      table_calculation: return_rate
+      _type_hint: number
+    - category: dimension
+      expression: "${inventory.inventory_quantity} <= 0"
+      label: Out of Stock
+      value_format:
+      value_format_name:
+      dimension: out_of_stock
+      _kind_hint: dimension
+      _type_hint: yesno
+    - category: measure
+      expression:
+      label: Total Returned Quantity
+      value_format:
+      value_format_name:
+      based_on: order.returned_quantity
+      _kind_hint: measure
+      measure: total_returned_quantity
+      type: sum
+      _type_hint: number
+    - category: measure
+      expression:
+      label: Soft Served
+      value_format:
+      value_format_name:
+      based_on: order.delivered_quantity
+      _kind_hint: measure
+      measure: soft_served
+      type: sum
+      _type_hint: number
+      filters:
+        order.order_category: Delivery Order
+    - category: table_calculation
+      expression: "${inventory.total_inventory_quantity_in_number}-${soft_served}"
+      label: On Hand
+      value_format:
+      value_format_name: decimal_0
+      _kind_hint: measure
+      table_calculation: on_hand
+      _type_hint: number
+    - category: table_calculation
+      expression: abs((${soft_served}-${total_returned_quantity})/(${on_hand}+${soft_served}))
+      label: Sell Rate
+      value_format:
+      value_format_name: percent_2
+      _kind_hint: measure
+      table_calculation: sell_rate
+      _type_hint: number
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: gray
+    limit_displayed_rows: false
+    enable_conditional_formatting: true
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_sql_query_menu_options: false
+    column_order: ["$$$_row_numbers_$$$", product.product_uid, product.product_description,
+      inventory.total_inventory_quantity_in_number, soft_served, on_hand, total_returned_quantity,
+      return_rate, sell_rate, out_of_stock]
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    minimum_column_width: 75
+    series_labels:
+      inventory.total_inventory_quantity: Physically Available
+      inventory.total_inventory_quantity_in_number: Physically Available
+      total_returned_quantity: Returned
+      product.product_description: Product Name
+    series_cell_visualizations:
+      inventory.total_inventory_quantity:
+        is_active: true
+      total_returned_quantity:
+        is_active: false
+        value_display: true
+      inventory.total_inventory_quantity_in_number:
+        is_active: false
+      sell_rate:
+        is_active: false
+    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: "#1A73E8",
+        font_color: !!null '', color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
+          palette_id: 4620e8de-df7a-40e0-89d6-7401f6e64d96, options: {steps: 5, constraints: {
+              min: {type: minimum}, mid: {type: number, value: 0}, max: {type: maximum}},
+            mirror: true, reverse: false, stepped: false}}, bold: false, italic: false,
+        strikethrough: false, fields: [sell_rate]}, {type: along a scale..., value: !!null '',
+        background_color: "#1A73E8", font_color: !!null '', color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
+          palette_id: 4a00499b-c0fe-4b15-a304-4083c07ff4c4, options: {steps: 5, constraints: {
+              min: {type: minimum}, mid: {type: number, value: 0}, max: {type: maximum}},
+            mirror: true, reverse: true, stepped: false}}, bold: false, italic: false,
+        strikethrough: false, fields: [return_rate]}]
+    defaults_version: 1
+    hidden_pivots: {}
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 67
+    col: 0
+    width: 24
+    height: 9
   filters:
   - name: Industry
     title: Industry
