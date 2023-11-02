@@ -2326,7 +2326,7 @@
       total_returned_quantity, soft_served, out_of_stock]
     filters:
       inventory.procurement_type: DC
-    sorts: [sell_rate desc]
+    sorts: [product.product_uid]
     limit: 5000
     column_limit: 50
     dynamic_fields:
@@ -2388,7 +2388,7 @@
     show_view_names: false
     show_row_numbers: true
     transpose: false
-    truncate_text: true
+    truncate_text: false
     hide_totals: false
     hide_row_totals: false
     size_to_fit: true
@@ -2399,7 +2399,10 @@
     header_font_size: '12'
     rows_font_size: '12'
     conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
+    conditional_formatting_include_nulls: true
+    color_application:
+      collection_id: aed851c8-b22d-4b01-8fff-4b02b91fe78d
+      palette_id: c36094e3-d04d-4aa4-8ec7-bc9af9f851f4
     show_sql_query_menu_options: false
     column_order: ["$$$_row_numbers_$$$", product.product_uid, product.product_description,
       inventory.total_inventory_quantity_in_number, soft_served, on_hand, total_returned_quantity,
@@ -2407,12 +2410,16 @@
     show_totals: true
     show_row_totals: true
     truncate_header: false
-    minimum_column_width: 75
+    minimum_column_width:
     series_labels:
       inventory.total_inventory_quantity: Physically Available
       inventory.total_inventory_quantity_in_number: Physically Available
       total_returned_quantity: Returned
       product.product_description: Product Name
+      out_of_stock: Out of Stock
+    series_column_widths:
+      product.product_description: 927
+      inventory.total_inventory_quantity_in_number: 111
     series_cell_visualizations:
       inventory.total_inventory_quantity:
         is_active: true
@@ -2423,19 +2430,44 @@
         is_active: false
       sell_rate:
         is_active: false
-    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: "#1A73E8",
-        font_color: !!null '', color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
-          palette_id: 4620e8de-df7a-40e0-89d6-7401f6e64d96, options: {steps: 5, constraints: {
+    series_text_format:
+      out_of_stock: {}
+    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: "#81BE56",
+        font_color: !!null '', color_application: {collection_id: aed851c8-b22d-4b01-8fff-4b02b91fe78d,
+          palette_id: e26878fa-802e-47d9-9478-62fb4307f763, options: {steps: 5, constraints: {
               min: {type: minimum}, mid: {type: number, value: 0}, max: {type: maximum}},
             mirror: true, reverse: false, stepped: false}}, bold: false, italic: false,
         strikethrough: false, fields: [sell_rate]}, {type: along a scale..., value: !!null '',
-        background_color: "#1A73E8", font_color: !!null '', color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
-          palette_id: 4a00499b-c0fe-4b15-a304-4083c07ff4c4, options: {steps: 5, constraints: {
-              min: {type: minimum}, mid: {type: number, value: 0}, max: {type: maximum}},
-            mirror: true, reverse: true, stepped: false}}, bold: false, italic: false,
-        strikethrough: false, fields: [return_rate]}]
+        background_color: "#81BE56", font_color: !!null '', color_application: {collection_id: aed851c8-b22d-4b01-8fff-4b02b91fe78d,
+          custom: {id: 3de49d00-ba28-08e3-1dd0-6f349b413a79, label: Custom, type: continuous,
+            stops: [{color: "#FFFFFF", offset: 0}, {color: "#E52592", offset: 100}]},
+          options: {steps: 5, constraints: {min: {type: minimum}, mid: {type: number,
+                value: 0}, max: {type: maximum}}, mirror: true, reverse: true, stepped: false}},
+        bold: false, italic: false, strikethrough: false, fields: [return_rate]}]
     defaults_version: 1
     hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: "<h4>Physcially Available</h4> \n<p>The value is the sum of all units\
+      \ that are physically available in the warehouse. It includes items that are\
+      \ \"soft reserved.\" The value of this KPI is updated whenever inventory data\
+      \ is uploaded into the system. When items are shipped out of warehouses, the\
+      \ number of those items is deducted from the KPI value.</p>\n<p>--------------------------------------------------</p>\n\
+      \n<h4>Soft Served</h4>\n<p>When items are soft reserved, the number of those\
+      \ items is added to the value of this KPI, to ensure that the same items aren't\
+      \ double booked against two different orders. After soft-reserved items are\
+      \ shipped, the number of those items is deducted from the KPI value.</p> \n\
+      <p>--------------------------------------------------</p>\n\n<h4>On Hand</h4>\
+      \ \n<p>When a fulfillment optimization runs, the Onhand inventory KPI value\
+      \ is the inventory value that is considered.</p>\n<p>--------------------------------------------------</p>\n\
+      \n<h4>Returned</h4>\n<p>The value is the number of product units that have been\
+      \ returned to the warehouse after they were sold to customers.</p>\n<p>--------------------------------------------------</p>\n\
+      \n<h4>Return Rate</h4>\n<p>The value is the return rate of product units that\
+      \ have been returned to the warehouse after they were sold to customers.</p>\n\
+      <p>--------------------------------------------------</p>\n\n<h4>Sell Rate</h4>\n\
+      <p>The value is the rate at which items are sold to customers.</p>\n<p>--------------------------------------------------</p>\n\
+      \n<h4>Out of Stock</h4>\n<p>The value is the number of units of products that\
+      \ must be replenished to fulfill demand.</p>\n<p>--------------------------------------------------</p>"
     listen:
       Inventory Date: inventory.inventory_date
     row: 67
