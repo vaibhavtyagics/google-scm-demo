@@ -93,6 +93,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 18
     col: 0
     width: 4
@@ -153,6 +154,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 53
     col: 0
     width: 8
@@ -210,6 +212,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 53
     col: 8
     width: 8
@@ -268,6 +271,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 53
     col: 16
     width: 8
@@ -350,6 +354,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 76
     col: 0
     width: 11
@@ -397,6 +402,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 76
     col: 11
     width: 13
@@ -485,6 +491,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 18
     col: 5
     width: 4
@@ -602,6 +609,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 18
     col: 15
     width: 4
@@ -703,6 +711,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 18
     col: 20
     width: 4
@@ -816,6 +825,7 @@
       Location ID: location.location_id
       Product: product.product_id
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 18
     col: 10
     width: 4
@@ -907,6 +917,7 @@
       </div>
     listen:
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 43
     col: 0
     width: 24
@@ -974,6 +985,12 @@
       order.lead_time: "#9334E6"
     hidden_pivots: {}
     defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
+      </div>
     listen:
       Location Type: location.location_type
     row: 30
@@ -1052,6 +1069,12 @@
       order.lead_time: "#9334E6"
     hidden_pivots: {}
     defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
+      </div>
     listen:
       Location Type: location.location_type
     row: 30
@@ -1121,6 +1144,12 @@
       order.lead_time: "#9334E6"
     hidden_pivots: {}
     defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
+      </div>
     listen:
       Location Type: location.location_type
     row: 30
@@ -1199,8 +1228,8 @@
       <li>Out-of-Stock: Products with no stock on hand.</li>
       </div>
     listen:
-      Inventory Date: inventory.inventory_date
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 12
     col: 0
     width: 8
@@ -1276,8 +1305,8 @@
       <li>Out-of-Stock: Products with no stock on hand.</li>
       </div>
     listen:
-      Inventory Date: inventory.inventory_date
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 12
     col: 8
     width: 8
@@ -1352,8 +1381,8 @@
       <li>Under-Stock: Products with quantities below safety stock levels.</li>
       <li>Out-of-Stock: Products with no stock on hand.</li>
     listen:
-      Inventory Date: inventory.inventory_date
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 12
     col: 16
     width: 8
@@ -1366,6 +1395,7 @@
     fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
     filters:
       inventory.procurement_type: Supplier
+      order.order_category: Purchase Order
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -1396,8 +1426,8 @@
 
       </div>
     listen:
-      Inventory Date: inventory.inventory_date
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 2
     col: 0
     width: 4
@@ -1433,6 +1463,7 @@
       </div>
     listen:
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 8
     col: 0
     width: 4
@@ -1445,6 +1476,7 @@
     fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
     filters:
       inventory.procurement_type: DC
+      order.order_category: Sales Order
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -1473,8 +1505,8 @@
       <p>Total Quantity, in the context of DC (Distribution Center) Inventory, refers to the overall sum or aggregate quantity of goods or products available in the warehouse at a given point in time. </p>
       </div>
     listen:
-      Inventory Date: inventory.inventory_date
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 2
     col: 10
     width: 4
@@ -1510,6 +1542,7 @@
       </div>
     listen:
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 8
     col: 10
     width: 4
@@ -1545,6 +1578,7 @@
       </div>
     listen:
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 8
     col: 20
     width: 4
@@ -1557,7 +1591,6 @@
     fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
     filters:
       inventory.procurement_type: Stores
-      order.status: ''
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -1586,8 +1619,8 @@
       <p> Total Quantity refers to the overall sum or aggregate amount of a specific item or product stocked in a store's inventory at a given point in time.</p>
       </div>
     listen:
-      Inventory Date: inventory.inventory_date
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 2
     col: 20
     width: 4
@@ -1649,8 +1682,8 @@
       <p>It's a valuable tool for understanding the geographical distribution of your inventory and identifying cities where stock levels are particularly high.</p>
       </div>
     listen:
-      Inventory Date: inventory.inventory_date
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 61
     col: 0
     width: 8
@@ -1712,8 +1745,8 @@
       <p>It's a valuable tool for understanding the geographical distribution of your inventory and identifying cities where stock levels are particularly high.</p>
       </div>
     listen:
-      Inventory Date: inventory.inventory_date
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 61
     col: 16
     width: 8
@@ -1775,8 +1808,8 @@
       <p>It's a valuable tool for understanding the geographical distribution of your inventory across the DCs and identifying cities where stock levels are particularly high.</p>
       </diiv>
     listen:
-      Inventory Date: inventory.inventory_date
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 61
     col: 8
     width: 8
@@ -1864,8 +1897,8 @@
       \ ensuring that you can prevent stockouts and maintain a high level of customer\
       \ satisfaction. \n</div>"
     listen:
-      Inventory Date: inventory.inventory_date
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 36
     col: 0
     width: 12
@@ -1953,8 +1986,8 @@
       \ that you can prevent stockouts and maintain a high level of customer satisfaction.\
       \ \n</div>"
     listen:
-      Inventory Date: inventory.inventory_date
       Location Type: location.location_type
+      Inventory Date: inventory.inventory_date
     row: 36
     col: 12
     width: 12
@@ -1964,10 +1997,11 @@
     model: google-scm-demo
     explore: order
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [order.total_requested_quantity, product.total_product_cost]
+    fields: [order.total_requested_quantity, product.total_product_cost, inventory.inventory_cost]
     filters:
-      order.order_category: Sales Order
+      order.order_category: Delivery Order
       order.status: In Transit
+      inventory.procurement_type: ''
     limit: 500
     column_limit: 50
     dynamic_fields:
@@ -1979,6 +2013,7 @@
       _kind_hint: measure
       table_calculation: inventory_cost
       _type_hint: number
+      is_disabled: true
     hidden_fields: [product.total_product_cost]
     hidden_points_if_no: []
     series_labels: {}
@@ -1990,6 +2025,8 @@
     title_override_order.total_requested_quantity: Total Stock Units
     title_placement_order.total_requested_quantity: below
     value_format_order.total_requested_quantity: ''
+    style_inventory.inventory_cost: "#E52592"
+    title_placement_inventory.inventory_cost: below
     style_inventory_cost: "#E52592"
     title_placement_inventory_cost: below
     value_format_inventory_cost: "$ 0,,, \\M"
@@ -2044,7 +2081,8 @@
 
       <p>Inventory Cost - the cost of the goods in transit.</p>
       </div>
-    listen: {}
+    listen:
+      Inventory Date: inventory.inventory_date
     row: 2
     col: 15
     width: 4
@@ -2056,7 +2094,7 @@
     type: marketplace_viz_multiple_value::multiple_value-marketplace
     fields: [order.total_requested_quantity, product.total_product_cost]
     filters:
-      order.order_category: Delivery Order
+      order.order_category: Sales Order
       order.status: In Transit
     limit: 500
     column_limit: 50
@@ -2134,7 +2172,8 @@
 
       <p>Inventory Cost - the cost of the goods in transit.</p>
       </div>
-    listen: {}
+    listen:
+      Inventory Date: inventory.inventory_date
     row: 2
     col: 5
     width: 4
@@ -2168,7 +2207,8 @@
       <div style="text-align: left;">
       Sell Value in In Transit Stores refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
       </div>
-    listen: {}
+    listen:
+      Inventory Date: inventory.inventory_date
     row: 8
     col: 15
     width: 4
@@ -2180,7 +2220,7 @@
     type: single_value
     fields: [order.intransit_sell_value]
     filters:
-      order.order_category: Delivery Order
+      order.order_category: Sales Order
       order.status: In Transit
     limit: 500
     column_limit: 50
@@ -2202,7 +2242,8 @@
       <div style="text-align: left;">
       Sell Value in In Transit DC refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
       </div>
-    listen: {}
+    listen:
+      Inventory Date: inventory.inventory_date
     row: 8
     col: 5
     width: 4
@@ -2504,7 +2545,7 @@
   - name: Inventory Date
     title: Inventory Date
     type: field_filter
-    default_value: ''
+    default_value: 90 day
     allow_multiple_values: true
     required: false
     ui_config:
