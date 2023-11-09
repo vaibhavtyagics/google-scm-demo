@@ -60,7 +60,7 @@ explore: inventory {
 }
 
 join: order   {
-  type:  left_outer
+  type:  inner
   sql_on: ${order.location_uid} = ${location.location_uid} ;;
   relationship: many_to_one
 }
