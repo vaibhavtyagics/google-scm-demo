@@ -103,9 +103,10 @@
     model: google-scm-demo
     explore: inventory
     type: looker_google_map
-    fields: [inventory.product_uid, location.location, location.location_type, inventory.inventory_quantity]
+    fields: [inventory.product_uid, location.city, inventory.procurement_type, location.location,
+      inventory.total_inventory_quantity_in_number]
     filters:
-      inventory.inventory_month: this week
+      inventory.procurement_type: Supplier
     sorts: [inventory.product_uid]
     limit: 5000
     column_limit: 50
@@ -164,9 +165,10 @@
     model: google-scm-demo
     explore: inventory
     type: looker_google_map
-    fields: [inventory.product_uid, location.location, location.location_type, inventory.inventory_quantity]
+    fields: [inventory.product_uid, location.city, inventory.procurement_type, location.location,
+      inventory.total_inventory_quantity_in_number]
     filters:
-      inventory.inventory_month: this week
+      inventory.procurement_type: DC
     sorts: [inventory.product_uid]
     limit: 5000
     column_limit: 50
@@ -222,10 +224,10 @@
     model: google-scm-demo
     explore: inventory
     type: looker_google_map
-    fields: [inventory.product_uid, location.city, location.location, location.location_type,
-      inventory.inventory_quantity]
+    fields: [inventory.product_uid, location.city, location.location, inventory.procurement_type,
+      inventory.total_inventory_quantity_in_number]
     filters:
-      inventory.inventory_month: this week
+      inventory.procurement_type: Stores
     sorts: [inventory.product_uid]
     limit: 5000
     column_limit: 50
@@ -2185,7 +2187,7 @@
     type: single_value
     fields: [order.intransit_sell_value]
     filters:
-      order.order_category: Sales Order
+      order.order_category: Delivery Order
       order.status: In Transit
     limit: 500
     column_limit: 50
