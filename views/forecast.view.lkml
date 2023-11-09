@@ -4,7 +4,7 @@ view: forecast {
   dimension: pk {
     type: string
     primary_key: yes
-    sql: CONCAT(${forecast_date},${product_uid},${location_uid}) ;;
+    sql: CONCAT(CAST(${forecast_date} AS string),${product_uid},${location_uid}) ;;
   }
 
   dimension_group: forecast {

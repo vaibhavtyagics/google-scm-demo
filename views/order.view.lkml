@@ -335,6 +335,13 @@ view: order {
     value_format: "$ 0,,\" M\""
   }
 
+  measure: sell_value {
+    type: sum
+    sql: ${sales_price}*${inventory.inventory_quantity} ;;
+    value_format: "$ 0,,\" M\""
+  }
+
+
   measure: return_qty {
     hidden: yes
     type: sum
@@ -386,6 +393,5 @@ view: order {
     sql: ${requested_quantity}*${sales_price} ;;
     value_format: "$ 0,,\" M\""
   }
-
 
 }
