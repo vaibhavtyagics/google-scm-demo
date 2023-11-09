@@ -932,7 +932,7 @@
     fields: [date.date_date, order.lead_time]
     fill_fields: [date.date_date]
     filters:
-      order.order_creation_date_date: 14 days
+      order.order_creation_date_date: 7 days
       order.order_category: Purchase Order
       order.status: Completed
     sorts: [date.date_date]
@@ -999,9 +999,9 @@
     col: 0
     width: 4
     height: 6
-  - name: Lead Time (2 week window)
+  - name: Lead Time (1 week window)
     type: text
-    title_text: Lead Time (2 week window)
+    title_text: Lead Time (1 week window)
     subtitle_text: ''
     body_text: ''
     row: 29
@@ -1016,8 +1016,8 @@
     fields: [date.date_date, order.lead_time]
     fill_fields: [date.date_date]
     filters:
-      order.order_creation_date_date: 14 days
-      order.order_category: Delivery Order
+      order.order_creation_date_date: 7 days
+      order.order_category: Sales Order
       order.status: Completed
     sorts: [date.date_date]
     limit: 500
@@ -1091,8 +1091,8 @@
     fields: [date.date_date, order.lead_time]
     fill_fields: [date.date_date]
     filters:
-      order.order_creation_date_date: 14 days
-      order.order_category: Sales Order
+      order.order_creation_date_date: 7 days
+      order.order_category: Delivery Order
       order.status: Completed
     sorts: [date.date_date]
     limit: 500
@@ -1397,7 +1397,6 @@
     fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
     filters:
       inventory.procurement_type: Supplier
-      order.order_category: Purchase Order
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -1439,7 +1438,7 @@
     model: google-scm-demo
     explore: order
     type: single_value
-    fields: [order.total_sales]
+    fields: [order.sell_value]
     filters:
       order.order_category: Purchase Order
       order.status: Completed,Open
@@ -1457,6 +1456,7 @@
     custom_color: "#7CB342"
     single_value_title: Sell Value
     defaults_version: 1
+    hidden_pivots: {}
     note_state: collapsed
     note_display: hover
     note_text: |-
@@ -1478,7 +1478,6 @@
     fields: [inventory.total_inventory_quantity, inventory.inventory_cost]
     filters:
       inventory.procurement_type: DC
-      order.order_category: Sales Order
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -1518,7 +1517,7 @@
     model: google-scm-demo
     explore: order
     type: single_value
-    fields: [order.total_sales]
+    fields: [order.sell_value]
     filters:
       order.order_category: Delivery Order
       order.status: Completed,Open
@@ -1536,6 +1535,7 @@
     custom_color: "#7CB342"
     single_value_title: Sell Value
     defaults_version: 1
+    hidden_pivots: {}
     note_state: collapsed
     note_display: hover
     note_text: |-
@@ -1554,7 +1554,7 @@
     model: google-scm-demo
     explore: order
     type: single_value
-    fields: [order.total_sales]
+    fields: [order.sell_value]
     filters:
       order.order_category: Sales Order
       order.status: Completed,Open
@@ -1572,6 +1572,7 @@
     custom_color: "#7CB342"
     single_value_title: Sell Value
     defaults_version: 1
+    hidden_pivots: {}
     note_state: collapsed
     note_display: hover
     note_text: |-
@@ -2003,7 +2004,6 @@
     filters:
       order.order_category: Delivery Order
       order.status: In Transit
-      inventory.procurement_type: ''
     limit: 500
     column_limit: 50
     dynamic_fields:
@@ -2238,6 +2238,7 @@
     custom_color: "#7CB342"
     single_value_title: Sell Value
     defaults_version: 1
+    hidden_pivots: {}
     note_state: collapsed
     note_display: hover
     note_text: |-
@@ -2258,9 +2259,9 @@
     fields: [date.date_date, order.in_transit_lead_time]
     fill_fields: [date.date_date]
     filters:
-      order.order_category: Delivery Order
+      order.order_category: Sales Order
       order.status: In Transit
-      order.order_creation_date_date: 14 days
+      order.order_creation_date_date: 7 days
     sorts: [date.date_date desc]
     limit: 500
     column_limit: 50
@@ -2313,9 +2314,9 @@
     fields: [date.date_date, order.in_transit_lead_time]
     fill_fields: [date.date_date]
     filters:
-      order.order_category: Sales Order
+      order.order_category: Delivery Order
       order.status: In Transit
-      order.order_creation_date_date: 14 days
+      order.order_creation_date_date: 7 days
     sorts: [date.date_date desc]
     limit: 500
     column_limit: 50
