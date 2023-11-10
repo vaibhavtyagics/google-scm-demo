@@ -348,6 +348,13 @@ view: order {
     sql: ${returned_quantity} ;;
   }
 
+  measure: total_shipped_quantity {
+    hidden: yes
+    type: sum
+    sql: CAST(${shipped_quantity} AS INT) ;;
+    value_format: "0,\" K\""
+  }
+
   measure: delivered_qty {
     hidden: yes
     type: sum
@@ -390,7 +397,7 @@ view: order {
 
   measure: intransit_sell_value {
     type: sum
-    sql: ${requested_quantity}*${sales_price} ;;
+    sql: CAST(${shipped_quantity} AS INT)*${sales_price} ;;
     value_format: "$ 0,,\" M\""
   }
 
