@@ -2197,7 +2197,7 @@
     filters:
       order.order_category: Delivery Order
       order.status: In Transit
-      inventory.procurement_type: Stores
+      location.location_type: Stores
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -2233,7 +2233,8 @@
     filters:
       order.order_category: Sales Order
       order.status: In Transit
-      inventory.procurement_type: DC
+      inventory.procurement_type: ''
+      location.location_type: DC
     limit: 500
     column_limit: 50
     custom_color_enabled: true
