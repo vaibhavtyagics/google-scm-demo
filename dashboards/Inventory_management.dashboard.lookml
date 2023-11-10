@@ -1441,7 +1441,7 @@
     fields: [order.sell_value]
     filters:
       order.order_category: Purchase Order
-      order.status: Completed,Open
+      order.status: Completed,Open,In Transit
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -1519,7 +1519,7 @@
     type: single_value
     fields: [order.sell_value]
     filters:
-      order.order_category: Delivery Order
+      order.order_category: Sales Order
       order.status: Completed,Open
     limit: 500
     column_limit: 50
@@ -1556,8 +1556,8 @@
     type: single_value
     fields: [order.sell_value]
     filters:
-      order.order_category: Sales Order
-      order.status: Completed,Open
+      order.order_category: Delivery Order
+      order.status: Open,Completed
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -2004,6 +2004,7 @@
     filters:
       order.order_category: Delivery Order
       order.status: In Transit
+      inventory.procurement_type: Stores
     limit: 500
     column_limit: 50
     dynamic_fields:
@@ -2094,15 +2095,16 @@
     model: google-scm-demo
     explore: order
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [order.total_requested_quantity, product.total_product_cost]
+    fields: [order.total_shipped_quantity, product.total_product_cost]
     filters:
       order.order_category: Sales Order
       order.status: In Transit
+      inventory.procurement_type: DC
     limit: 500
     column_limit: 50
     dynamic_fields:
     - category: table_calculation
-      expression: "${product.total_product_cost}*${order.total_requested_quantity}"
+      expression: "${product.total_product_cost}*${order.total_shipped_quantity}"
       label: Inventory Cost
       value_format:
       value_format_name: usd_0
@@ -2115,14 +2117,20 @@
     show_view_names: false
     font_size_main: '14'
     orientation: auto
+    style_order.total_shipped_quantity: "#1A73E8"
+    show_title_order.total_shipped_quantity: true
+    title_placement_order.total_shipped_quantity: below
+    value_format_order.total_shipped_quantity: ''
+    style_inventory_cost: "#E52592"
+    show_title_inventory_cost: true
+    title_placement_inventory_cost: below
+    value_format_inventory_cost: "$ 0,,, \\M"
+    show_comparison_inventory_cost: false
     style_order.total_requested_quantity: "#1A73E8"
     show_title_order.total_requested_quantity: true
     title_override_order.total_requested_quantity: Total Stock Units
     title_placement_order.total_requested_quantity: below
     value_format_order.total_requested_quantity: ''
-    style_inventory_cost: "#E52592"
-    title_placement_inventory_cost: below
-    value_format_inventory_cost: "$ 0,,, \\M"
     style_product.total_product_cost: "#E52592"
     show_title_product.total_product_cost: true
     title_override_product.total_product_cost: Inventory Cost
@@ -2189,6 +2197,7 @@
     filters:
       order.order_category: Delivery Order
       order.status: In Transit
+      inventory.procurement_type: Stores
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -2224,6 +2233,7 @@
     filters:
       order.order_category: Sales Order
       order.status: In Transit
+      inventory.procurement_type: DC
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -2548,7 +2558,7 @@
   - name: Inventory Date
     title: Inventory Date
     type: field_filter
-    default_value: 90 day
+    default_value: 30 day
     allow_multiple_values: true
     required: false
     ui_config:
