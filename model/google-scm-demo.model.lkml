@@ -60,9 +60,10 @@ explore: inventory {
 }
 
 join: order   {
-  type:  inner
-  sql_on: ${order.location_uid} = ${location.location_uid} ;;
-  relationship: many_to_one
+  type:  full_outer
+  sql_on: ${order.location_uid} = ${location.location_uid}
+    AND ${inventory.product_uid} = ${order.product_uid} ;;
+  relationship: one_to_many
 }
 
 join :product {

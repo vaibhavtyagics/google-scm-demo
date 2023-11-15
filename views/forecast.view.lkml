@@ -51,7 +51,7 @@ view: forecast {
   measure: projected_inventory{
     label: "Projected Inventory"
     type: sum
-    sql: coalesce(${order.requested_quantity},0) - coalesce(${forecast_quantity},0)*(-1);;
+    sql: coalesce(${order.requested_quantity},0) - coalesce(${forecast_quantity},0);;
     # filters: [order.order_category: "Purchase Order", order.status: "Open"]
 
   }
@@ -59,7 +59,7 @@ view: forecast {
   measure: total_forecast_quantity{
     label: "Projected Sales"
     type: sum
-    sql: ${TABLE}.forecast_quantity * 1.2 ;;
+    sql: ${TABLE}.forecast_quantity ;;
     # filters: [order.order_category: "Purchase Order", order.status: "Open"]
 
 
@@ -68,13 +68,13 @@ view: forecast {
   measure: total_requested_quantity_po{
     label: "Incoming Arrivals"
     type: number
-    sql: ${total_forecast_quantity}*1.2;;
+    sql: ${total_forecast_quantity};;
     # filters: [order_category: "Purchase Order", status: "Open"]
   }
   measure: valuation_table{
     label: "Valuation"
     type: sum
-    sql: (coalesce(${order.requested_quantity},0) - coalesce(${forecast_quantity},0)) * (coalesce(${order.sales_price},1))*(-0.3) ;;
+    sql: (coalesce(${order.requested_quantity},0) - coalesce(${forecast_quantity},0)) * (coalesce(${order.sales_price},0)) ;;
     # filters: [order.order_category: "Purchase Order", order.status: "Open"]
   }
 }
