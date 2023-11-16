@@ -81,6 +81,10 @@ view: inventory {
         name: "Description"
         type: textarea
         default: "Details#
+        Product UID :- {{product_uid._value}}
+        Status :- {{order.status._value}}
+        Location ID :- {{location.location_id._value}}
+        Procuct Cost :- {{product.product_cost._value}}
         Product :- {{product_uid._value}}
         Product Category :- {{product.product_type._value}}
         Product Description :- {{product.product_description._value}}
@@ -125,6 +129,10 @@ view: inventory {
       END ;;
   }
 
+  dimension: out_of_stock {
+    type: yesno
+    sql: ${inventory.inventory_quantity} <= 0 ;;
+  }
 
   dimension : Alert {
     type: string
@@ -270,6 +278,34 @@ measure: shrinkage {
   measure: stock_to_sales_ratio {
     type: number
     sql: ${average_inventory_quantity} * ${order.total_sales}  ;;
+  }
+
+  measure: soft_served {
+    type: sum
+    sql: ${order.delivered_quantity} ;;
+    filters: [order.order_category: "Delivery Order"]
+  }
+
+  measure: total_returned_quantity {
+    type: sum
+    sql: ${order.returned_quantity} ;;
+  }
+
+  measure: on_hand {
+    type: number
+    sql: ROUND(${inventory.total_inventory_quantity_in_number}-${soft_served},0) ;;
+  }
+
+  measure: return_rate {
+    type: number
+    sql: coalesce(${total_returned_quantity}, 0)/coalesce(${inventory.total_inventory_quantity_in_number}, 0) ;;
+    value_format_name: percent_2
+  }
+
+  measure: sell_rate {
+    type: number
+    sql: abs((${soft_served}-${total_returned_quantity})/(${on_hand}+${soft_served})) ;;
+    value_format_name: percent_2
   }
 
   dimension: inventory_health_index {

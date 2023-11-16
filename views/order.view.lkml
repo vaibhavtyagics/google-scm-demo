@@ -1,11 +1,63 @@
 view: order {
   sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.order` ;;
-  drill_fields: [order_creation_date_date,order_id,order_category,status,location_uid,delivered_quantity,sales_price]
+  drill_fields: [order_creation_date_date,order_id,order_category,status,location_uid,delivered_quantity, shipped_quantity, sales_price]
 
   dimension: order_id {
     primary_key: yes
+    label: "Order ID"
     type: string
     sql: ${TABLE}.order_id ;;
+
+    link: {
+      label: "Action in ERP"
+      url: "https://aidoahy7w.accounts.ondemand.com/"
+      icon_url: "https://i.ibb.co/58xPDWZ/icons8-sap-48.png"
+    }
+
+    action: {
+      label: "Action on Email"
+      url: "https://hooks.zapier.com/hooks/catch/11814505/bryrebp/"
+
+      form_param: {
+        name: "Heading"
+        type: string
+        default: "Let's connect urgently"
+      }
+
+      form_param: {
+        name: "Description"
+        type: textarea
+        default: "Details#
+        Order ID :- {{order_id._value}}
+        Order Creation Date :- {{order_creation_date_date._value}}
+        Order Category :- {{order_category._value}}
+        Status :- {{status._value}}
+        Location Uid :- {{location_uid._value}}
+        Delivered Quantity :- {{delivered_quantity._value}}
+        Shipped Quantity :- {{shipped_quantity._value}}
+        Sales Price :- {{sales_price._value}}
+        Lead Time :- {{lead_time._value}}
+        In Transit Lead Time :- {{in_transit_lead_time._value}}"
+      }
+
+      form_param: {
+        name: "Start Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "End Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "Recipient"
+        type: textarea
+        default: ""
+      }
+    }
   }
   dimension: active {
     type: string
@@ -120,8 +172,57 @@ view: order {
     sql: ${TABLE}.preceding_document ;;
   }
   dimension: product_uid {
+    label: "Product UID"
     type: string
     sql: ${TABLE}.product_uid ;;
+
+    link: {
+      label: "Action in ERP"
+      url: "https://aidoahy7w.accounts.ondemand.com/"
+      icon_url: "https://i.ibb.co/58xPDWZ/icons8-sap-48.png"
+    }
+
+    action: {
+      label: "Action on Email"
+      url: "https://hooks.zapier.com/hooks/catch/11814505/bryrebp/"
+
+      form_param: {
+        name: "Heading"
+        type: string
+        default: "Let's connect urgently"
+      }
+
+      form_param: {
+        name: "Description"
+        type: textarea
+        default: "Details#
+        Product UID :- {{product_uid._value}}
+        Status :- {{order.status._value}}
+        Location ID :- {{location.location_id._value}}
+        Procuct Cost :- {{product.product_cost._value}}
+        Product :- {{product_uid._value}}
+        Product Category :- {{product.product_type._value}}
+        Product Description :- {{product.product_description._value}}"
+      }
+
+      form_param: {
+        name: "Start Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "End Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "Recipient"
+        type: textarea
+        default: ""
+      }
+    }
   }
   dimension: received_quantity {
     type: number
