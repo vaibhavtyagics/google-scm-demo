@@ -61,6 +61,51 @@ view: inventory {
     type: string
     label: "Product UID"
     sql: ${TABLE}.product_uid ;;
+    link: {
+      label: "Action in ERP"
+      url: "https://aidoahy7w.accounts.ondemand.com/"
+      icon_url: "https://i.ibb.co/58xPDWZ/icons8-sap-48.png"
+    }
+
+    action: {
+      label: "Action on Email"
+      url: "https://hooks.zapier.com/hooks/catch/11814505/bryrebp/"
+
+      form_param: {
+        name: "Heading"
+        type: string
+        default: "Let's connect urgently"
+      }
+
+      form_param: {
+        name: "Description"
+        type: textarea
+        default: "Details#
+        Product :- {{product_uid._value}}
+        Product Category :- {{product.product_type._value}}
+        Product Description :- {{product.product_description._value}}
+        Alert :- {{Alert._value}}
+        Inventory :- {{total_inventory_quantity._value}}"
+      }
+
+      form_param: {
+        name: "Start Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "End Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "Recipient"
+        type: textarea
+        default: ""
+      }
+    }
   }
   dimension: remaining_shelf_life {
     type: string

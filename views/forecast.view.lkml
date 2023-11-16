@@ -14,6 +14,55 @@ view: forecast {
     datatype: date
     sql: ${TABLE}.forecast_date ;;
   }
+
+  dimension: forecast_dates {
+    type: string
+    sql: ${forecast_date} ;;
+    link: {
+      label: "Action in ERP"
+      url: "https://aidoahy7w.accounts.ondemand.com/"
+      icon_url: "https://i.ibb.co/58xPDWZ/icons8-sap-48.png"
+    }
+
+    action: {
+      label: "Action on Email"
+      url: "https://hooks.zapier.com/hooks/catch/11814505/bryrebp/"
+
+      form_param: {
+        name: "Heading"
+        type: string
+        default: "Let's connect urgently"
+      }
+
+      form_param: {
+        name: "Description"
+        type: textarea
+        default: "Details#
+        Incoming Arrivals :- {{order.total_requested_quantity._value}}
+        Projected Sales :- {{total_forecast_quantity._value}}
+        Projected Inventory :- {{projected_inventory._value}}
+        Valuation :- {{valuation_table._value}}"
+      }
+
+      form_param: {
+        name: "Start Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "End Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "Recipient"
+        type: textarea
+        default: ""
+      }
+    }
+  }
   dimension: forecast_period {
     type: string
     sql: ${TABLE}.forecast_period ;;
