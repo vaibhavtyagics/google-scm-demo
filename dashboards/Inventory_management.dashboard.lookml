@@ -1432,43 +1432,6 @@
     col: 0
     width: 4
     height: 6
-  - title: Supplier Sell Value
-    name: Supplier Sell Value
-    model: google-scm-demo
-    explore: order
-    type: single_value
-    fields: [order.sell_value]
-    filters:
-      order.order_category: Purchase Order
-      order.status: Completed,Open,In Transit
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: Sell Value
-    defaults_version: 1
-    hidden_pivots: {}
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: left;">
-      Sell Value in Supplier Inventory refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
-      </div>
-    listen:
-      Location Type: location.location_type
-      Inventory Date: inventory.inventory_date
-    row: 8
-    col: 0
-    width: 4
-    height: 2
   - title: DC Inventory
     name: DC Inventory
     model: google-scm-demo
@@ -1511,82 +1474,8 @@
     col: 10
     width: 4
     height: 6
-  - title: DC Inventory
-    name: DC Inventory (2)
-    model: google-scm-demo
-    explore: order
-    type: single_value
-    fields: [order.sell_value]
-    filters:
-      order.order_category: Sales Order
-      order.status: Completed,Open
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: Sell Value
-    defaults_version: 1
-    hidden_pivots: {}
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: left;">
-      Sell Value in DC (Distribution Center) Inventory refers to the monetary worth assigned to goods available for sale, reflecting their market value or predetermined pricing
-      </div>
-    listen:
-      Location Type: location.location_type
-      Inventory Date: inventory.inventory_date
-    row: 8
-    col: 10
-    width: 4
-    height: 2
   - title: Store Inventory
     name: Store Inventory
-    model: google-scm-demo
-    explore: order
-    type: single_value
-    fields: [order.sell_value]
-    filters:
-      order.order_category: Delivery Order
-      order.status: Open,Completed
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: Sell Value
-    defaults_version: 1
-    hidden_pivots: {}
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: left;">
-      Sell value in store inventory refers to the total monetary worth of products available for sale, reflecting their market value or retail price.
-      </div>
-    listen:
-      Location Type: location.location_type
-      Inventory Date: inventory.inventory_date
-    row: 8
-    col: 20
-    width: 4
-    height: 2
-  - title: Store Inventory
-    name: Store Inventory (2)
     model: google-scm-demo
     explore: inventory
     type: marketplace_viz_multiple_value::multiple_value-marketplace
@@ -1994,79 +1883,6 @@
     col: 12
     width: 12
     height: 7
-  - title: In Transit Store Sell Value
-    name: In Transit Store Sell Value
-    model: google-scm-demo
-    explore: order
-    type: single_value
-    fields: [order.intransit_sell_value]
-    filters:
-      order.order_category: Delivery Order
-      order.status: In Transit
-      location.location_type: Stores
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: Sell Value
-    defaults_version: 1
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: left;">
-      Sell Value in In Transit Stores refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
-      </div>
-    listen:
-      Inventory Date: inventory.inventory_date
-    row: 8
-    col: 15
-    width: 4
-    height: 2
-  - title: In Transit DC Sell Value
-    name: In Transit DC Sell Value
-    model: google-scm-demo
-    explore: order
-    type: single_value
-    fields: [order.intransit_sell_value]
-    filters:
-      order.order_category: Sales Order
-      order.status: In Transit
-      location.location_type: DC
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    custom_color: "#7CB342"
-    single_value_title: Sell Value
-    defaults_version: 1
-    hidden_pivots: {}
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: left;">
-      Sell Value in In Transit DC refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
-      </div>
-    listen:
-      Inventory Date: inventory.inventory_date
-    row: 8
-    col: 5
-    width: 4
-    height: 2
   - title: In Transit DC Lead Time
     name: In Transit DC Lead Time
     model: google-scm-demo
@@ -2442,6 +2258,185 @@
     col: 15
     width: 4
     height: 6
+  - title: Sell Value - Supplier
+    name: Sell Value - Supplier
+    model: google-scm-demo
+    explore: inventory
+    type: single_value
+    fields: [order.sell_value]
+    filters:
+      order.order_category: Purchase Order
+      order.status: Completed,In Transit,Open
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: left;">
+      Sell Value in Supplier Inventory refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 8
+    col: 0
+    width: 4
+    height: 2
+  - title: Sell Value -  DC
+    name: Sell Value -  DC
+    model: google-scm-demo
+    explore: inventory
+    type: single_value
+    fields: [order.sell_value]
+    filters:
+      order.order_category: Sales Order
+      order.status: Open,Completed
+      location.location_type: DC
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: left;">
+      Sell Value in Supplier Inventory refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 8
+    col: 10
+    width: 4
+    height: 2
+  - title: Sell Value - Stores
+    name: Sell Value - Stores
+    model: google-scm-demo
+    explore: inventory
+    type: single_value
+    fields: [order.sell_value]
+    filters:
+      order.order_category: Delivery Order
+      order.status: Completed,Open
+      location.location_type: Stores
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: left;">
+      Sell Value in Supplier Inventory refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 8
+    col: 20
+    width: 4
+    height: 2
+  - title: Sell Value - In Transit Stores
+    name: Sell Value - In Transit Stores
+    model: google-scm-demo
+    explore: inventory
+    type: single_value
+    fields: [order.sell_value]
+    filters:
+      order.order_category: Delivery Order
+      order.status: In Transit
+      location.location_type: Stores
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: left;">
+      Sell Value in Supplier Inventory refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 8
+    col: 15
+    width: 4
+    height: 2
+  - title: Sell Value - In Transit DC
+    name: Sell Value - In Transit DC
+    model: google-scm-demo
+    explore: inventory
+    type: single_value
+    fields: [order.sell_value]
+    filters:
+      order.order_category: Sales Order
+      order.status: In Transit
+      location.location_type: DC
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#7CB342"
+    single_value_title: Sell Value
+    defaults_version: 1
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: left;">
+      Sell Value in Supplier Inventory refers to the monetary worth assigned to products or goods available for sale, representing the potential revenue generated upon their sale
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 8
+    col: 5
+    width: 4
+    height: 2
   filters:
   - name: Industry
     title: Industry
