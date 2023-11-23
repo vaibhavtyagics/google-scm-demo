@@ -455,6 +455,12 @@ view: order {
     value_format: "$ 0,,\" M\""
   }
 
+  measure: shipped_inventory_cost {
+    type: sum
+    sql: ${shipped_quantity}*${product.product_cost} ;;
+    value_format: "$ 0,,\" M\""
+  }
+
   measure: delivered_qty {
     hidden: yes
     type: sum
