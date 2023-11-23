@@ -856,10 +856,9 @@
     model: google-scm-demo
     explore: inventory
     type: looker_grid
-    fields: [forecast.forecast_date, forecast.projected_inventory, forecast.total_forecast_quantity,
-      forecast.valuation_table, forecast.total_requested_quantity_po]
-    fill_fields: [forecast.forecast_date]
-    sorts: [forecast.forecast_date desc]
+    fields: [forecast.projected_inventory, forecast.total_forecast_quantity, forecast.valuation_table,
+      forecast.total_requested_quantity_po, forecast.forecast_dates]
+    sorts: [forecast.projected_inventory desc 0]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -1995,199 +1994,6 @@
     col: 12
     width: 12
     height: 7
-  - title: In Transit Store
-    name: In Transit Store
-    model: google-scm-demo
-    explore: order
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [order.total_requested_quantity, product.total_product_cost, inventory.inventory_cost]
-    filters:
-      order.order_category: Delivery Order
-      order.status: In Transit
-      inventory.procurement_type: Stores
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - category: table_calculation
-      expression: "${product.total_product_cost}*${order.total_requested_quantity}"
-      label: Inventory Cost
-      value_format:
-      value_format_name: usd_0
-      _kind_hint: measure
-      table_calculation: inventory_cost
-      _type_hint: number
-      is_disabled: true
-    hidden_fields: [product.total_product_cost]
-    hidden_points_if_no: []
-    series_labels: {}
-    show_view_names: false
-    font_size_main: '14'
-    orientation: auto
-    style_order.total_requested_quantity: "#1A73E8"
-    show_title_order.total_requested_quantity: true
-    title_override_order.total_requested_quantity: Total Stock Units
-    title_placement_order.total_requested_quantity: below
-    value_format_order.total_requested_quantity: ''
-    style_inventory.inventory_cost: "#E52592"
-    title_placement_inventory.inventory_cost: below
-    style_inventory_cost: "#E52592"
-    title_placement_inventory_cost: below
-    value_format_inventory_cost: "$ 0,,, \\M"
-    style_product.total_product_cost: "#E52592"
-    show_title_product.total_product_cost: true
-    title_override_product.total_product_cost: Inventory Cost
-    title_placement_product.total_product_cost: below
-    value_format_product.total_product_cost: ''
-    show_comparison_product.total_product_cost: false
-    hidden_pivots: {}
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 0
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: justify;">
-      <p>Total Stock Units - refers to the overall quantity or sum of available products or items that are shipped to DC.</p>
-
-      <p>Inventory Cost - the cost of the goods in transit.</p>
-      </div>
-    listen:
-      Inventory Date: inventory.inventory_date
-    row: 2
-    col: 15
-    width: 4
-    height: 6
-  - title: In Transit DC
-    name: In Transit DC
-    model: google-scm-demo
-    explore: order
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [order.total_shipped_quantity, product.total_product_cost]
-    filters:
-      order.order_category: Sales Order
-      order.status: In Transit
-      inventory.procurement_type: DC
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - category: table_calculation
-      expression: "${product.total_product_cost}*${order.total_shipped_quantity}"
-      label: Inventory Cost
-      value_format:
-      value_format_name: usd_0
-      _kind_hint: measure
-      table_calculation: inventory_cost
-      _type_hint: number
-    hidden_fields: [product.total_product_cost]
-    hidden_points_if_no: []
-    series_labels: {}
-    show_view_names: false
-    font_size_main: '14'
-    orientation: auto
-    style_order.total_shipped_quantity: "#1A73E8"
-    show_title_order.total_shipped_quantity: true
-    title_placement_order.total_shipped_quantity: below
-    value_format_order.total_shipped_quantity: ''
-    style_inventory_cost: "#E52592"
-    show_title_inventory_cost: true
-    title_placement_inventory_cost: below
-    value_format_inventory_cost: "$ 0,,, \\M"
-    show_comparison_inventory_cost: false
-    style_order.total_requested_quantity: "#1A73E8"
-    show_title_order.total_requested_quantity: true
-    title_override_order.total_requested_quantity: Total Stock Units
-    title_placement_order.total_requested_quantity: below
-    value_format_order.total_requested_quantity: ''
-    style_product.total_product_cost: "#E52592"
-    show_title_product.total_product_cost: true
-    title_override_product.total_product_cost: Inventory Cost
-    title_placement_product.total_product_cost: below
-    value_format_product.total_product_cost: "$ 0, \\K"
-    show_comparison_product.total_product_cost: false
-    hidden_pivots: {}
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    defaults_version: 0
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: justify;">
-      <p>Total Stock Units - refers to the overall quantity or sum of available products or items that are shipped to Stores.</p>
-
-      <p>Inventory Cost - the cost of the goods in transit.</p>
-      </div>
-    listen:
-      Inventory Date: inventory.inventory_date
-    row: 2
-    col: 5
-    width: 4
-    height: 6
   - title: In Transit Store Sell Value
     name: In Transit Store Sell Value
     model: google-scm-demo
@@ -2233,7 +2039,6 @@
     filters:
       order.order_category: Sales Order
       order.status: In Transit
-      inventory.procurement_type: ''
       location.location_type: DC
     limit: 500
     column_limit: 50
@@ -2529,6 +2334,114 @@
     col: 0
     width: 24
     height: 9
+  - title: In Transit DC
+    name: In Transit DC
+    model: google-scm-demo
+    explore: inventory
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [order.total_shipped_quantity, inventory.inventory_cost]
+    filters:
+      order.order_category: Sales Order
+      order.status: In Transit
+      inventory.procurement_type: DC
+    limit: 500
+    column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: true
+    font_size_main: '14'
+    orientation: auto
+    style_order.total_shipped_quantity: "#1A73E8"
+    show_title_order.total_shipped_quantity: true
+    title_override_order.total_shipped_quantity: Total Stock Units
+    title_placement_order.total_shipped_quantity: below
+    value_format_order.total_shipped_quantity: ''
+    style_inventory.inventory_cost: "#E52592"
+    show_title_inventory.inventory_cost: true
+    title_placement_inventory.inventory_cost: below
+    value_format_inventory.inventory_cost: ''
+    show_comparison_inventory.inventory_cost: false
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    defaults_version: 0
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+
+      <p>Total Stock Units - refers to the overall quantity or sum of available products or items at Supplier level</p>
+
+      <p>Inventory Cost - the expenses associated with acquiring, storing, and managing goods within a supply chain at Supplier level </p>
+
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 2
+    col: 5
+    width: 4
+    height: 6
+  - title: In Transit Stores
+    name: In Transit Stores
+    model: google-scm-demo
+    explore: inventory
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [order.total_shipped_quantity, inventory.inventory_cost]
+    filters:
+      order.order_category: Delivery Order
+      order.status: In Transit
+      inventory.procurement_type: Stores
+    limit: 500
+    column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: true
+    font_size_main: '14'
+    orientation: auto
+    style_order.total_shipped_quantity: "#1A73E8"
+    show_title_order.total_shipped_quantity: true
+    title_override_order.total_shipped_quantity: Total Stock Units
+    title_placement_order.total_shipped_quantity: below
+    value_format_order.total_shipped_quantity: ''
+    style_inventory.inventory_cost: "#E52592"
+    show_title_inventory.inventory_cost: true
+    title_placement_inventory.inventory_cost: below
+    value_format_inventory.inventory_cost: ''
+    show_comparison_inventory.inventory_cost: false
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    defaults_version: 0
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+
+      <p>Total Stock Units - refers to the overall quantity or sum of available products or items at Supplier level</p>
+
+      <p>Inventory Cost - the expenses associated with acquiring, storing, and managing goods within a supply chain at Supplier level </p>
+
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 2
+    col: 15
+    width: 4
+    height: 6
   filters:
   - name: Industry
     title: Industry
