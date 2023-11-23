@@ -450,7 +450,6 @@ view: order {
   }
 
   measure: total_shipped_quantity {
-    hidden: yes
     type: sum
     sql: CAST(${shipped_quantity} AS INT) ;;
     value_format: "0,\" K\""

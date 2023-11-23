@@ -27,12 +27,12 @@ explore: order {
     relationship: many_to_one
   }
 
-join: inventory {
-  type: full_outer
-  sql_on: ${inventory.location_uid} = ${order.location_uid}
-          and ${inventory.product_uid} = ${order.product_uid};;
-  relationship: many_to_one
-}
+  join: inventory {
+    type: inner
+    sql_on: ${inventory.location_uid} = ${order.location_uid}
+      and ${inventory.product_uid} = ${order.product_uid};;
+    relationship: many_to_one
+  }
 
 join: product {
   type: left_outer
@@ -83,6 +83,12 @@ join :product {
     sql_on: ${forecast.location_uid} = ${order.location_uid}
     and ${forecast.product_uid} = ${order.product_uid} ;;
     relationship: one_to_many
+  }
+
+  join: date {
+    type: left_outer
+    sql_on: ${order.order_creation_date_date} = ${date.date_date} ;;
+    relationship: many_to_one
   }
 
 
