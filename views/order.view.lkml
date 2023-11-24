@@ -451,7 +451,7 @@ view: order {
   measure: total_shipped_quantity {
     type: sum
     sql: CAST(${shipped_quantity} AS INT) ;;
-    value_format: "$ 0,,\" M\""
+    value_format: "0,,\" M\""
   }
 
   measure: shipped_inventory_cost {
