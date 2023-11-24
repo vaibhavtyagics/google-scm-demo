@@ -392,7 +392,6 @@ view: order {
   }
 
   measure: lead_time {
-    hidden: yes
     type: average
     sql: ROUND(date_diff(${actual_delivery_date}, ${order_creation_date_date}, DAY), 0) ;;
     drill_fields: [lead_time_details*]

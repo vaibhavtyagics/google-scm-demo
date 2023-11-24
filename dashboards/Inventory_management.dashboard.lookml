@@ -923,81 +923,6 @@
     col: 0
     width: 24
     height: 10
-  - title: Supplier Lead Time
-    name: Supplier Lead Time
-    model: google-scm-demo
-    explore: order
-    type: looker_line
-    fields: [date.date_date, order.lead_time]
-    fill_fields: [date.date_date]
-    filters:
-      order.order_creation_date_date: 7 days
-      order.order_category: Purchase Order
-      order.status: Completed
-    sorts: [date.date_date]
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - category: table_calculation
-      expression: sum(${order.lead_days})
-      label: Lead Time
-      value_format:
-      value_format_name:
-      _kind_hint: measure
-      table_calculation: lead_time
-      _type_hint: number
-      is_disabled: true
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: circle_outline
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    color_application:
-      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
-      options:
-        steps: 5
-    y_axes: [{label: '', orientation: left, series: [{axisId: order.lead_time, id: order.lead_time,
-            name: Lead Time}], showLabels: true, showValues: true, valueFormat: '',
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
-    x_axis_zoom: true
-    y_axis_zoom: true
-    label_value_format: '0'
-    series_colors:
-      order.lead_time: "#9334E6"
-    hidden_pivots: {}
-    defaults_version: 1
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: justify;">
-      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
-      </div>
-    listen:
-      Location Type: location.location_type
-    row: 30
-    col: 0
-    width: 4
-    height: 6
   - name: Lead Time (1 week window)
     type: text
     title_text: Lead Time (1 week window)
@@ -1007,156 +932,6 @@
     col: 0
     width: 24
     height: 1
-  - title: DC Lead Time
-    name: DC Lead Time
-    model: google-scm-demo
-    explore: order
-    type: looker_line
-    fields: [date.date_date, order.lead_time]
-    fill_fields: [date.date_date]
-    filters:
-      order.order_creation_date_date: 7 days
-      order.order_category: Sales Order
-      order.status: Completed
-    sorts: [date.date_date]
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - category: table_calculation
-      expression: sum(${order.lead_days})
-      label: Lead Time
-      value_format:
-      value_format_name:
-      _kind_hint: measure
-      table_calculation: lead_time
-      _type_hint: number
-      is_disabled: true
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: circle_outline
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    color_application:
-      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
-      options:
-        steps: 5
-    y_axes: [{label: '', orientation: left, series: [{axisId: order.lead_time, id: order.lead_time,
-            name: Lead Time}], showLabels: true, showValues: true, valueFormat: '',
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
-    x_axis_zoom: true
-    y_axis_zoom: true
-    label_value_format: '0'
-    series_colors:
-      order.lead_time: "#9334E6"
-    hidden_pivots: {}
-    defaults_version: 1
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: justify;">
-      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
-      </div>
-    listen:
-      Location Type: location.location_type
-    row: 30
-    col: 10
-    width: 4
-    height: 6
-  - title: Stores Lead Time
-    name: Stores Lead Time
-    model: google-scm-demo
-    explore: order
-    type: looker_line
-    fields: [date.date_date, order.lead_time]
-    fill_fields: [date.date_date]
-    filters:
-      order.order_creation_date_date: 7 days
-      order.order_category: Delivery Order
-      order.status: Completed
-    sorts: [date.date_date]
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - category: table_calculation
-      expression: sum(${order.lead_days})
-      label: Lead Time
-      value_format:
-      value_format_name:
-      _kind_hint: measure
-      table_calculation: lead_time
-      _type_hint: number
-      is_disabled: true
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: circle_outline
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    color_application:
-      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
-      options:
-        steps: 5
-    y_axes: [{label: '', orientation: left, series: [{axisId: order.lead_time, id: order.lead_time,
-            name: Lead Time}], showLabels: true, showValues: true, valueFormat: '',
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
-    x_axis_zoom: true
-    y_axis_zoom: true
-    label_value_format: '0'
-    series_colors:
-      order.lead_time: "#9334E6"
-    hidden_pivots: {}
-    defaults_version: 1
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: justify;">
-      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
-      </div>
-    listen:
-      Location Type: location.location_type
-    row: 30
-    col: 20
-    width: 4
-    height: 6
   - title: Supplier Inventory
     name: Supplier Inventory
     model: google-scm-demo
@@ -1883,116 +1658,6 @@
     col: 12
     width: 12
     height: 7
-  - title: In Transit DC Lead Time
-    name: In Transit DC Lead Time
-    model: google-scm-demo
-    explore: order
-    type: looker_line
-    fields: [date.date_date, order.in_transit_lead_time]
-    fill_fields: [date.date_date]
-    filters:
-      order.order_category: Sales Order
-      order.status: In Transit
-      order.order_creation_date_date: 7 days
-    sorts: [date.date_date desc]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: circle_outline
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    x_axis_zoom: true
-    y_axis_zoom: true
-    label_value_format: '0'
-    series_colors:
-      order.in_transit_lead_time: "#9334E6"
-    defaults_version: 1
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: justify;">
-      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
-      </div>
-    listen: {}
-    row: 30
-    col: 5
-    width: 4
-    height: 6
-  - title: In Transit Stores Lead Time
-    name: In Transit Stores Lead Time
-    model: google-scm-demo
-    explore: order
-    type: looker_line
-    fields: [date.date_date, order.in_transit_lead_time]
-    fill_fields: [date.date_date]
-    filters:
-      order.order_category: Delivery Order
-      order.status: In Transit
-      order.order_creation_date_date: 7 days
-    sorts: [date.date_date desc]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: circle_outline
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    x_axis_zoom: true
-    y_axis_zoom: true
-    label_value_format: '0'
-    series_colors:
-      order.in_transit_lead_time: "#9334E6"
-    defaults_version: 1
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: justify;">
-      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
-      </div>
-    listen: {}
-    row: 30
-    col: 15
-    width: 4
-    height: 6
   - title: DC Inventory KPI
     name: DC Inventory KPI
     model: google-scm-demo
@@ -2150,114 +1815,6 @@
     col: 0
     width: 24
     height: 9
-  - title: In Transit DC
-    name: In Transit DC
-    model: google-scm-demo
-    explore: inventory
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [order.total_shipped_quantity, inventory.inventory_cost]
-    filters:
-      order.order_category: Sales Order
-      order.status: In Transit
-      inventory.procurement_type: DC
-    limit: 500
-    column_limit: 50
-    hidden_fields: []
-    hidden_points_if_no: []
-    series_labels: {}
-    show_view_names: true
-    font_size_main: '14'
-    orientation: auto
-    style_order.total_shipped_quantity: "#1A73E8"
-    show_title_order.total_shipped_quantity: true
-    title_override_order.total_shipped_quantity: Total Stock Units
-    title_placement_order.total_shipped_quantity: below
-    value_format_order.total_shipped_quantity: ''
-    style_inventory.inventory_cost: "#E52592"
-    show_title_inventory.inventory_cost: true
-    title_placement_inventory.inventory_cost: below
-    value_format_inventory.inventory_cost: ''
-    show_comparison_inventory.inventory_cost: false
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    defaults_version: 0
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: justify;">
-
-      <p>Total Stock Units - refers to the overall quantity or sum of available products or items at Supplier level</p>
-
-      <p>Inventory Cost - the expenses associated with acquiring, storing, and managing goods within a supply chain at Supplier level </p>
-
-      </div>
-    listen:
-      Inventory Date: inventory.inventory_date
-    row: 2
-    col: 5
-    width: 4
-    height: 6
-  - title: In Transit Stores
-    name: In Transit Stores
-    model: google-scm-demo
-    explore: inventory
-    type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [order.total_shipped_quantity, inventory.inventory_cost]
-    filters:
-      order.order_category: Delivery Order
-      order.status: In Transit
-      inventory.procurement_type: Stores
-    limit: 500
-    column_limit: 50
-    hidden_fields: []
-    hidden_points_if_no: []
-    series_labels: {}
-    show_view_names: true
-    font_size_main: '14'
-    orientation: auto
-    style_order.total_shipped_quantity: "#1A73E8"
-    show_title_order.total_shipped_quantity: true
-    title_override_order.total_shipped_quantity: Total Stock Units
-    title_placement_order.total_shipped_quantity: below
-    value_format_order.total_shipped_quantity: ''
-    style_inventory.inventory_cost: "#E52592"
-    show_title_inventory.inventory_cost: true
-    title_placement_inventory.inventory_cost: below
-    value_format_inventory.inventory_cost: ''
-    show_comparison_inventory.inventory_cost: false
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    defaults_version: 0
-    note_state: collapsed
-    note_display: hover
-    note_text: |-
-      <div style="text-align: justify;">
-
-      <p>Total Stock Units - refers to the overall quantity or sum of available products or items at Supplier level</p>
-
-      <p>Inventory Cost - the expenses associated with acquiring, storing, and managing goods within a supply chain at Supplier level </p>
-
-      </div>
-    listen:
-      Inventory Date: inventory.inventory_date
-    row: 2
-    col: 15
-    width: 4
-    height: 6
   - title: Sell Value - Supplier
     name: Sell Value - Supplier
     model: google-scm-demo
@@ -2437,6 +1994,462 @@
     col: 5
     width: 4
     height: 2
+  - title: In Transit DC
+    name: In Transit DC
+    model: google-scm-demo
+    explore: inventory
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [order.total_shipped_quantity, order.shipped_inventory_cost]
+    filters:
+      order.order_category: Sales Order
+      order.status: In Transit
+      inventory.procurement_type: DC
+    limit: 500
+    column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: true
+    font_size_main: '14'
+    orientation: auto
+    style_order.total_shipped_quantity: "#1A73E8"
+    show_title_order.total_shipped_quantity: true
+    title_override_order.total_shipped_quantity: Total Stock Units
+    title_placement_order.total_shipped_quantity: below
+    value_format_order.total_shipped_quantity: ''
+    style_order.shipped_inventory_cost: "#E52592"
+    show_title_order.shipped_inventory_cost: true
+    title_override_order.shipped_inventory_cost: Inventory Cost
+    title_placement_order.shipped_inventory_cost: below
+    value_format_order.shipped_inventory_cost: ''
+    show_comparison_order.shipped_inventory_cost: false
+    style_inventory.inventory_cost: "#E52592"
+    show_title_inventory.inventory_cost: true
+    title_placement_inventory.inventory_cost: below
+    value_format_inventory.inventory_cost: ''
+    show_comparison_inventory.inventory_cost: false
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    defaults_version: 0
+    hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+
+      <p>Total Stock Units - refers to the overall quantity or sum of available products or items at Supplier level</p>
+
+      <p>Inventory Cost - the expenses associated with acquiring, storing, and managing goods within a supply chain at Supplier level </p>
+
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 2
+    col: 5
+    width: 4
+    height: 6
+  - title: In Transit Store
+    name: In Transit Store
+    model: google-scm-demo
+    explore: inventory
+    type: marketplace_viz_multiple_value::multiple_value-marketplace
+    fields: [order.total_shipped_quantity, order.shipped_inventory_cost]
+    filters:
+      order.order_category: Delivery Order
+      order.status: In Transit
+      inventory.procurement_type: Stores
+    limit: 500
+    column_limit: 50
+    hidden_fields: []
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: true
+    font_size_main: '14'
+    orientation: auto
+    style_order.total_shipped_quantity: "#1A73E8"
+    show_title_order.total_shipped_quantity: true
+    title_override_order.total_shipped_quantity: Total Stock Units
+    title_placement_order.total_shipped_quantity: below
+    value_format_order.total_shipped_quantity: ''
+    style_order.shipped_inventory_cost: "#E52592"
+    show_title_order.shipped_inventory_cost: true
+    title_override_order.shipped_inventory_cost: Inventory Cost
+    title_placement_order.shipped_inventory_cost: below
+    value_format_order.shipped_inventory_cost: ''
+    show_comparison_order.shipped_inventory_cost: false
+    style_inventory.inventory_cost: "#E52592"
+    show_title_inventory.inventory_cost: true
+    title_placement_inventory.inventory_cost: below
+    value_format_inventory.inventory_cost: ''
+    show_comparison_inventory.inventory_cost: false
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    defaults_version: 0
+    hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+
+      <p>Total Stock Units - refers to the overall quantity or sum of available products or items at Supplier level</p>
+
+      <p>Inventory Cost - the expenses associated with acquiring, storing, and managing goods within a supply chain at Supplier level </p>
+
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 2
+    col: 15
+    width: 4
+    height: 6
+  - title: Supplier Lead Time
+    name: Supplier Lead Time
+    model: google-scm-demo
+    explore: inventory
+    type: looker_line
+    fields: [order.order_creation_date_date, order.lead_time]
+    fill_fields: [order.order_creation_date_date]
+    filters:
+      order.order_creation_date_date: 7 days
+      order.order_category: Purchase Order
+      order.status: Completed
+    sorts: [order.order_creation_date_date desc]
+    limit: 500
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    y_axes: [{label: Lead Time, orientation: left, series: [{axisId: order.lead_time,
+            id: order.lead_time, name: Lead Time}], showLabels: true, showValues: true,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
+    x_axis_label: Order Creation Date
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.lead_time: "#9334E6"
+    defaults_version: 1
+    hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 30
+    col: 0
+    width: 4
+    height: 6
+  - title: In Transit DC Lead Time
+    name: In Transit DC Lead Time
+    model: google-scm-demo
+    explore: inventory
+    type: looker_line
+    fields: [order.order_creation_date_date, order.in_transit_lead_time]
+    fill_fields: [order.order_creation_date_date]
+    filters:
+      order.order_creation_date_date: 7 days
+      order.order_category: Sales Order
+      order.status: In Transit
+    sorts: [order.order_creation_date_date desc]
+    limit: 500
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    y_axes: [{label: Lead Time, orientation: left, series: [{axisId: order.in_transit_lead_time,
+            id: order.in_transit_lead_time, name: In Transit Lead Time}], showLabels: true,
+        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}]
+    x_axis_label: Order Creation Date
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.lead_time: "#9334E6"
+      order.in_transit_lead_time: "#9334E6"
+    defaults_version: 1
+    hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 30
+    col: 5
+    width: 4
+    height: 6
+  - title: DC Lead Time
+    name: DC Lead Time
+    model: google-scm-demo
+    explore: inventory
+    type: looker_line
+    fields: [order.order_creation_date_date, order.lead_time]
+    fill_fields: [order.order_creation_date_date]
+    filters:
+      order.order_creation_date_date: 7 days
+      order.order_category: Sales Order
+      order.status: Completed
+    sorts: [order.order_creation_date_date desc]
+    limit: 500
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    x_axis_label: Order Creation Date
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.lead_time: "#9334E6"
+      order.in_transit_lead_time: "#9334E6"
+    defaults_version: 1
+    hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 30
+    col: 10
+    width: 4
+    height: 6
+  - title: In Transit Stores Lead Time
+    name: In Transit Stores Lead Time
+    model: google-scm-demo
+    explore: inventory
+    type: looker_line
+    fields: [order.order_creation_date_date, order.in_transit_lead_time]
+    fill_fields: [order.order_creation_date_date]
+    filters:
+      order.order_creation_date_date: 7 days
+      order.order_category: Delivery Order
+      order.status: In Transit
+    sorts: [order.order_creation_date_date desc]
+    limit: 500
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    y_axes: [{label: Lead Time, orientation: left, series: [{axisId: order.in_transit_lead_time,
+            id: order.in_transit_lead_time, name: In Transit Lead Time}], showLabels: true,
+        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}]
+    x_axis_label: Order Creation Date
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.lead_time: "#9334E6"
+      order.in_transit_lead_time: "#9334E6"
+    defaults_version: 1
+    hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 30
+    col: 15
+    width: 4
+    height: 6
+  - title: Stores Lead Time
+    name: Stores Lead Time
+    model: google-scm-demo
+    explore: inventory
+    type: looker_line
+    fields: [order.order_creation_date_date, order.lead_time]
+    fill_fields: [order.order_creation_date_date]
+    filters:
+      order.order_creation_date_date: 7 days
+      order.order_category: Delivery Order
+      order.status: Completed
+    sorts: [order.order_creation_date_date desc]
+    limit: 500
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    color_application:
+      collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+      palette_id: 5d189dfc-4f46-46f3-822b-bfb0b61777b1
+      options:
+        steps: 5
+    y_axes: [{label: Lead Time, orientation: left, series: [{axisId: order.in_transit_lead_time,
+            id: order.in_transit_lead_time, name: In Transit Lead Time}], showLabels: true,
+        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}]
+    x_axis_label: Order Creation Date
+    x_axis_zoom: true
+    y_axis_zoom: true
+    label_value_format: '0'
+    series_colors:
+      order.lead_time: "#9334E6"
+      order.in_transit_lead_time: "#9334E6"
+    defaults_version: 1
+    hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <div style="text-align: justify;">
+      Lead Time, in the supply chain context, refers to the duration between the initiation of an order and the actual receipt of the ordered goods, encompassing the time required for processing, production, and transportation.
+      </div>
+    listen:
+      Inventory Date: inventory.inventory_date
+    row: 30
+    col: 20
+    width: 4
+    height: 6
   filters:
   - name: Industry
     title: Industry
