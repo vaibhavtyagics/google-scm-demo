@@ -90,6 +90,26 @@ join :product {
     sql_on: ${order.order_creation_date_date} = ${date.date_date} ;;
     relationship: many_to_one
   }
+}
 
+explore: inventory_simulation {
+  group_label: "Inventory Forecast"
+  label: "Inventory Simulation"
+  join: location {
+    type: left_outer
+    sql_on: ${inventory_simulation.location_uid} = ${location.location_uid} ;;
+    relationship: many_to_one
+  }
 
+  join: store_level_cost2 {
+    type: inner
+    sql_on: cast(${inventory_simulation.alpha} as int) = ${store_level_cost2.alpha}
+            and
+            ${inventory_simulation.location_uid} = ${store_level_cost2.location_uid}
+            and
+            ${inventory_simulation.product_uid} = ${store_level_cost2.product_uid}
+            and
+            ${inventory_simulation.time} = ${store_level_cost2.time};;
+    relationship: one_to_one
+  }
 }
