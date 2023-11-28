@@ -9,14 +9,14 @@ view: inventory_simulation {
 
   dimension: alpha {
     type: number
-    sql: cast((${TABLE}.alpha) as string) ;;
+    sql: cast((${TABLE}.alpha) as FLOAT64) ;;
     order_by_field: alpha
     value_format_name: percent_0
   }
 
   dimension: service_level {
-    type: string
-    sql: ${alpha} ;;
+    type: number
+    sql: cast((${TABLE}.alpha) as FLOAT64) ;;
     order_by_field: alpha
     value_format_name: percent_0
   }

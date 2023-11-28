@@ -104,7 +104,7 @@ explore: inventory_simulation {
 
   join: store_level_cost2 {
     type: inner
-    sql_on: cast(${inventory_simulation.alpha} as int) = ${store_level_cost2.alpha}
+    sql_on: CAST(${inventory_simulation.alpha} AS FLOAT64) = CAST(${store_level_cost2.alpha}/100 AS FLOAT64)
             and
             ${inventory_simulation.location_uid} = ${store_level_cost2.location_uid}
             and
