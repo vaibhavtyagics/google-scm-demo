@@ -220,9 +220,17 @@ view: inventory {
     drill_fields: [detail*]
   }
 
+  measure: inventory_loss {
+    type: sum
+    sql:  ${inventory_quantity} /29;;
+    # value_format_name: percent_1
+  }
+
 measure: shrinkage {
   type: number
-  sql: 2.1 ;;
+  sql: ${inventory_loss}/${total_inventory_quantity_in_number} ;;
+  value_format_name: percent_1
+  drill_fields: [detail*]
 }
 
   dimension: shrinkage_category {
