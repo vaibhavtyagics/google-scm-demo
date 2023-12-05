@@ -5,6 +5,7 @@ include: "/views/**/*.view.lkml"
 
 include: "/dashboards/Inventory_management.dashboard.lookml"
 include: "/dashboards/inventory_simulation.dashboard.lookml"
+include: "/dashboards/gdc_twos_simulations.dashboard.lookml"
 
 datagroup: google_scm_demo_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
