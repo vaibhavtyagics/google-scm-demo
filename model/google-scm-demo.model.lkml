@@ -114,3 +114,7 @@ explore: inventory_simulation {
     relationship: one_to_one
   }
 }
+
+explore: gdc_twos_simulations {
+  view_name: gdc_twos_simulations
+}
