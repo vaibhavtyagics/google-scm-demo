@@ -96,8 +96,9 @@
     model: google-scm-demo
     explore: gdc_twos_simulations
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [gdc_twos_simulations.total_cost, gdc_twos_simulations.inc_air_cost_,
-      gdc_twos_simulations.inv_cost_, gdc_twos_simulations.lost_sales_cost_, gdc_twos_simulations.sl_]
+    fields: [gdc_twos_simulations.wos_target_scenario, gdc_twos_simulations.total_cost,
+      gdc_twos_simulations.inc_air_cost_, gdc_twos_simulations.inv_cost_, gdc_twos_simulations.lost_sales_cost_,
+      gdc_twos_simulations.sl_]
     filters: {}
     sorts: [gdc_twos_simulations.total_cost]
     limit: 1
@@ -108,24 +109,29 @@
     show_view_names: false
     font_size_main: ''
     orientation: auto
+    style_gdc_twos_simulations.wos_target_scenario: "#079c98"
+    show_title_gdc_twos_simulations.wos_target_scenario: true
+    title_placement_gdc_twos_simulations.wos_target_scenario: below
+    value_format_gdc_twos_simulations.wos_target_scenario: ''
     style_gdc_twos_simulations.total_cost: "#215ac8"
     show_title_gdc_twos_simulations.total_cost: true
     title_placement_gdc_twos_simulations.total_cost: below
-    value_format_gdc_twos_simulations.total_cost: ''
+    value_format_gdc_twos_simulations.total_cost: "$#,##0"
+    show_comparison_gdc_twos_simulations.total_cost: false
     style_gdc_twos_simulations.inc_air_cost_: "#2ca0fa"
     show_title_gdc_twos_simulations.inc_air_cost_: true
     title_placement_gdc_twos_simulations.inc_air_cost_: below
-    value_format_gdc_twos_simulations.inc_air_cost_: ''
+    value_format_gdc_twos_simulations.inc_air_cost_: "$#,##0"
     show_comparison_gdc_twos_simulations.inc_air_cost_: false
     style_gdc_twos_simulations.inv_cost_: "#fa7850"
     show_title_gdc_twos_simulations.inv_cost_: true
     title_placement_gdc_twos_simulations.inv_cost_: below
-    value_format_gdc_twos_simulations.inv_cost_: ''
+    value_format_gdc_twos_simulations.inv_cost_: "$#,##0"
     show_comparison_gdc_twos_simulations.inv_cost_: false
     style_gdc_twos_simulations.lost_sales_cost_: "#8214a0"
     show_title_gdc_twos_simulations.lost_sales_cost_: true
     title_placement_gdc_twos_simulations.lost_sales_cost_: below
-    value_format_gdc_twos_simulations.lost_sales_cost_: ''
+    value_format_gdc_twos_simulations.lost_sales_cost_: "$#,##0"
     show_comparison_gdc_twos_simulations.lost_sales_cost_: false
     style_gdc_twos_simulations.sl_: "#0bb45b"
     show_title_gdc_twos_simulations.sl_: true
