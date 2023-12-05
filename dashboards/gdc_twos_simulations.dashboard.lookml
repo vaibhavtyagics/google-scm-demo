@@ -107,7 +107,7 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: false
-    font_size_main: ''
+    font_size_main: '18'
     orientation: auto
     style_gdc_twos_simulations.wos_target_scenario: "#079c98"
     show_title_gdc_twos_simulations.wos_target_scenario: true
