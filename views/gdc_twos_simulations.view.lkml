@@ -22,6 +22,12 @@ view: gdc_twos_simulations {
     type: number
     sql: ${TABLE}.EOH_WOS_mean ;;
   }
+
+  dimension: wos_mean {
+    type: string
+    sql: cast(${TABLE}.EOH_WOS_mean as string) ;;
+  }
+
   dimension: inc_air_cost {
     type: number
     sql: ${TABLE}.IncAirCost ;;
@@ -88,7 +94,7 @@ view: gdc_twos_simulations {
   }
 
   measure: sl_ {
-    label: "Service Level"
+    label: "Service Level %"
     type: sum
     sql: ${TABLE}.SL ;;
     value_format_name: percent_0
@@ -109,6 +115,7 @@ view: gdc_twos_simulations {
   measure: total_cost_ {
     type: sum
     sql: ${TABLE}.TotalCost ;;
+    value_format_name: usd_0
   }
 
   dimension: total_sellin_fcst {
@@ -122,6 +129,16 @@ view: gdc_twos_simulations {
   dimension: wos_target_scenario {
     type: number
     sql: ${TABLE}.WOS_Target_Scenario ;;
+  }
+
+  filter: sku_wos {
+    type: string
+    suggest_dimension: wos_mean
+  }
+
+  measure: min_total_cost {
+    type: min
+    sql: ${total_cost} ;;
   }
 
   measure: count {
