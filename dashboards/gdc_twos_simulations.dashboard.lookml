@@ -13,7 +13,7 @@
     type: looker_column
     fields: [gdc_twos_simulations.wos_target_scenario, gdc_twos_simulations.total_cost_,
       gdc_twos_simulations.inv_cost_, gdc_twos_simulations.lost_sales_cost_, gdc_twos_simulations.inc_air_cost_,
-      gdc_twos_simulations.sl_, filtered_gdc_twos_simulationsmin_total_cost]
+      gdc_twos_simulations.sl_, derived_gdc.min_cost, filtered_derived_gdcmin_cost]
     filters: {}
     sorts: [gdc_twos_simulations.wos_target_scenario]
     limit: 500
@@ -46,7 +46,49 @@
       type: count_distinct
       _type_hint: number
       filters:
-        gdc_twos_simulations.wos_target_scenario: '4'
+        gdc_twos_simulations.wos_target_scenario: "$Wos Target Scenario}"
+    - args:
+      - gdc_twos_simulations.min_total_cost
+      calculation_type: rank_of_column
+      category: table_calculation
+      based_on: gdc_twos_simulations.min_total_cost
+      label: Rank of Gdc Twos Simulations Min Total Cost
+      source_field: gdc_twos_simulations.min_total_cost
+      table_calculation: rank_of_gdc_twos_simulations_min_total_cost
+      value_format:
+      value_format_name:
+      _kind_hint: measure
+      _type_hint: number
+      is_disabled: true
+    - category: measure
+      expression: "${gdc_twos_simulations.total_cost} "
+      label: Filtered gdc_twos_simulations.min_total_cost
+      based_on: gdc_twos_simulations.min_total_cost
+      filter_expression: "${gdc_twos_simulations.total_cost} "
+      _kind_hint: measure
+      measure: filtered_gdc_twos_simulationsmin_total_cost_1
+      type: count_distinct
+      _type_hint: number
+      filters:
+        gdc_twos_simulations.total_cost: min(${gdc_twos_simulations.total_cost} )
+    - category: measure
+      label: min_total_cost
+      based_on: gdc_twos_simulations.min_total_cost
+      _kind_hint: measure
+      measure: min_total_cost
+      type: count_distinct
+      _type_hint: number
+      filters:
+        derived_gdc.rank_dim: '1'
+    - category: measure
+      label: Filtered derived_gdc.min_cost
+      based_on: derived_gdc.min_cost
+      _kind_hint: measure
+      measure: filtered_derived_gdcmin_cost
+      type: count_distinct
+      _type_hint: number
+      filters:
+        derived_gdc.rank_dim: '1'
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -79,25 +121,26 @@
       palette_id: b0768e0d-03b8-4c12-9e30-9ada6affc357
       options:
         steps: 5
-    y_axes: [{label: Total Cost ($), orientation: left, series: [{axisId: filtered_gdc_twos_simulationsmin_total_cost,
-            id: filtered_gdc_twos_simulationsmin_total_cost, name: Min Cost}], showLabels: false,
-        showValues: false, maxValue: !!null '', minValue: !!null '', unpinAxis: false,
-        tickDensity: custom, tickDensityCustom: 16, type: linear}, {label: '', orientation: left,
-        series: [{axisId: gdc_twos_simulations.lost_sales_cost_, id: gdc_twos_simulations.lost_sales_cost_,
-            name: 'Lost Sales Cost '}], showLabels: false, showValues: false, unpinAxis: false,
-        tickDensity: default, type: linear}, {label: !!null '', orientation: left,
-        series: [{axisId: gdc_twos_simulations.inv_cost_, id: gdc_twos_simulations.inv_cost_,
-            name: 'Inv Cost '}], showLabels: false, showValues: false, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear}, {label: '', orientation: left,
-        series: [{axisId: gdc_twos_simulations.inc_air_cost_, id: gdc_twos_simulations.inc_air_cost_,
-            name: 'Inc Air Cost '}], showLabels: false, showValues: false, unpinAxis: false,
-        tickDensity: default, type: linear}, {label: !!null '', orientation: left,
-        series: [{axisId: gdc_twos_simulations.total_cost_, id: gdc_twos_simulations.total_cost_,
-            name: 'Total Cost '}], showLabels: true, showValues: true, maxValue: !!null '',
-        minValue: !!null '', unpinAxis: false, tickDensity: custom, tickDensityCustom: 16,
-        type: linear}, {label: Service Level, orientation: right, series: [{axisId: gdc_twos_simulations.sl_,
-            id: gdc_twos_simulations.sl_, name: Service Level %}], showLabels: true,
-        showValues: true, unpinAxis: false, tickDensity: default, type: linear}]
+    y_axes: [{label: '', orientation: left, series: [{axisId: gdc_twos_simulations.lost_sales_cost_,
+            id: gdc_twos_simulations.lost_sales_cost_, name: 'Lost Sales Cost '}],
+        showLabels: false, showValues: false, unpinAxis: false, tickDensity: default,
+        type: linear}, {label: !!null '', orientation: left, series: [{axisId: gdc_twos_simulations.inv_cost_,
+            id: gdc_twos_simulations.inv_cost_, name: 'Inv Cost '}], showLabels: false,
+        showValues: false, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}, {label: '', orientation: left, series: [{axisId: gdc_twos_simulations.inc_air_cost_,
+            id: gdc_twos_simulations.inc_air_cost_, name: 'Inc Air Cost '}], showLabels: false,
+        showValues: false, unpinAxis: false, tickDensity: default, type: linear},
+      {label: !!null '', orientation: left, series: [{axisId: filtered_derived_gdcmin_cost,
+            id: filtered_derived_gdcmin_cost, name: Filtered derived_gdc.min_cost}],
+        showLabels: false, showValues: false, maxValue: !!null '', minValue: !!null '',
+        unpinAxis: false, tickDensity: custom, tickDensityCustom: 16, type: linear},
+      {label: !!null '', orientation: left, series: [{axisId: gdc_twos_simulations.total_cost_,
+            id: gdc_twos_simulations.total_cost_, name: 'Total Cost '}], showLabels: true,
+        showValues: true, maxValue: !!null '', minValue: !!null '', unpinAxis: false,
+        tickDensity: custom, tickDensityCustom: 16, type: linear}, {label: Service
+          Level, orientation: right, series: [{axisId: gdc_twos_simulations.sl_, id: gdc_twos_simulations.sl_,
+            name: Service Level %}], showLabels: true, showValues: true, unpinAxis: false,
+        tickDensity: default, type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
     hidden_series: []
@@ -118,7 +161,7 @@
     show_null_points: false
     interpolation: linear
     defaults_version: 1
-    hidden_fields: []
+    hidden_fields: [derived_gdc.min_cost]
     hidden_pivots: {}
     hidden_points_if_no:
     title_hidden: true
@@ -233,31 +276,6 @@
     col: 17
     width: 7
     height: 9
-  - title: Untitled
-    name: Untitled
-    model: google-scm-demo
-    explore: gdc_twos_simulations
-    type: single_value
-    fields: [gdc_twos_simulations.min_total_cost]
-    filters: {}
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    defaults_version: 1
-    listen:
-      SKU: gdc_twos_simulations.sku
-    row: 9
-    col: 0
-    width: 8
-    height: 6
   filters:
   - name: SKU
     title: SKU

@@ -141,6 +141,11 @@ view: gdc_twos_simulations {
     sql: ${total_cost} ;;
   }
 
+  # measure: rank_cost {
+  #   type: min
+  #   sql:  ;;
+  # }
+
   measure: count {
     type: number
   }

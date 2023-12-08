@@ -118,4 +118,13 @@ explore: inventory_simulation {
 
 explore: gdc_twos_simulations {
   view_name: gdc_twos_simulations
+  join: derived_gdc {
+    type: inner
+    sql_on: ${gdc_twos_simulations.sku} = ${derived_gdc.sku}
+            and
+            ${gdc_twos_simulations.wos_target_scenario} = ${derived_gdc.WOS_Target_Scenario};;
+    relationship: one_to_one
+  }
 }
+
+explore: gdc_twos_optimization {}
