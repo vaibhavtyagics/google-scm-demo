@@ -154,6 +154,7 @@
       filtered_gdc_twos_simulationsmin_total_cost: "#3b3b3b"
     series_labels:
       filtered_gdc_twos_simulationsmin_total_cost: Min Cost
+      filtered_derived_gdcmin_cost: Min Cost
     reference_lines: []
     trend_lines: []
     column_spacing_ratio: 1
