@@ -69,7 +69,35 @@ view: s_q_cost_simulation {
     type: number
     sql: ${TABLE}.transaction_cost ;;
   }
-  measure: count {
-    type: count
+  measure: inventory_cost {
+    type: average
+    sql: ${total_cost} ;;
+    value_format_name: usd_0
+  }
+  measure: holding_cost_ {
+    label: "Holding Cost"
+    type: average
+    sql: ${holding_cost} ;;
+    value_format_name: usd
+  }
+  measure: lead_time_cost_ {
+    label: "Lead Time Cost"
+    type: average
+    sql: ${lead_time_cost} ;;
+    value_format_name: usd
+  }
+  measure: cyclic_stock {
+    label: "Cyclic Stock (CS)"
+    type: average
+    sql: ABS(${cs}) ;;
+  }
+  measure: on_hand {
+    type: average
+    sql: ${inventory_onhand} ;;
+  }
+  measure: safety_stock_ {
+    label: "Safety Stock"
+    type: average
+    sql: ABS(${safety_stock}) ;;
   }
 }
