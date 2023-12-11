@@ -128,3 +128,5 @@ explore: gdc_twos_simulations {
 }
 
 explore: gdc_twos_optimization {}
+
+explore: s_q_cost_simulation {}
