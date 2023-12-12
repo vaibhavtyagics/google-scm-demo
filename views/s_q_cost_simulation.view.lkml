@@ -87,7 +87,7 @@ view: s_q_cost_simulation {
     value_format_name: usd
   }
   measure: cyclic_stock {
-    label: "Cyclic Stock (CS)"
+    label: "Cyclic Stock"
     type: average
     sql: ABS(${cs}) ;;
   }
@@ -99,5 +99,11 @@ view: s_q_cost_simulation {
     label: "Safety Stock"
     type: average
     sql: ABS(${safety_stock}) ;;
+  }
+
+  measure: avg_cumulative_demand {
+    label: "Demand"
+    type: average
+    sql: ABS(${cumulative_demand}) ;;
   }
 }

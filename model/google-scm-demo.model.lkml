@@ -130,4 +130,19 @@ explore: gdc_twos_simulations {
 
 explore: gdc_twos_optimization {}
 
-explore: s_q_cost_simulation {}
+explore: s_q_cost_simulation {
+  join: inventory_simulation3 {
+    type: inner
+    sql_on: ${inventory_simulation3.product_uid} = ${s_q_cost_simulation.product_uid}
+    AND ${inventory_simulation3.location_uid} = ${s_q_cost_simulation.location_uid}
+    AND ${inventory_simulation3.alpha} = ${s_q_cost_simulation.alpha}
+    AND ${inventory_simulation3.time} = ${s_q_cost_simulation.time};;
+    relationship: one_to_one
+  }
+
+  join: location {
+    type: left_outer
+    sql_on: ${location.location_uid} = ${s_q_cost_simulation.location_uid} ;;
+    relationship: one_to_many
+  }
+}
