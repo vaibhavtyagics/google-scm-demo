@@ -106,4 +106,14 @@ view: s_q_cost_simulation {
     type: average
     sql: ABS(${cumulative_demand}) ;;
   }
+  measure: backorder_cost_ {
+    type: average
+    sql: ${backorder_cost} ;;
+    value_format_name: usd
+  }
+  measure: transcation_cost_ {
+    type: average
+    sql: ${transaction_cost} ;;
+    value_format_name: usd
+  }
 }
