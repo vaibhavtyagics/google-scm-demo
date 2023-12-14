@@ -164,13 +164,17 @@
     y_axes: [{label: Total Cost $, orientation: left, series: [{axisId: check2.inc_air_cost_,
             id: check2.inc_air_cost_, name: 'Inc Air Cost '}, {axisId: check2.inv_cost_,
             id: check2.inv_cost_, name: 'Inv Cost '}, {axisId: check2.lost_sales_cost_,
-            id: check2.lost_sales_cost_, name: 'Lost Sales Cost '}, {axisId: check2.total_cost_,
-            id: check2.total_cost_, name: 'Total Cost '}, {axisId: min_ncost, id: min_ncost,
-            name: Min ncost}], showLabels: true, showValues: true, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear}, {label: !!null '',
-        orientation: right, series: [{axisId: check2.sl_, id: check2.sl_, name: Service
-              Level %}], showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
+            id: check2.lost_sales_cost_, name: 'Lost Sales Cost '}], showLabels: true,
+        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}, {label: !!null '', orientation: left, series: [{axisId: min_cost,
+            id: min_cost, name: Min cost}], showLabels: false, showValues: false,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
+      {label: !!null '', orientation: left, series: [{axisId: check2.total_cost_,
+            id: check2.total_cost_, name: 'Total Cost '}], showLabels: false, showValues: false,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
+      {label: !!null '', orientation: right, series: [{axisId: check2.sl_, id: check2.sl_,
+            name: Service Level %}], showLabels: true, showValues: true, unpinAxis: false,
+        tickDensity: default, tickDensityCustom: 5, type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
     series_types:
