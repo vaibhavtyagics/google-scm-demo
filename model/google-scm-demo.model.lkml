@@ -14,7 +14,8 @@ datagroup: google_scm_demo_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-persist_with: google_scm_demo_default_datagroup
+# persist_with: google_scm_demo_default_datagroup
+persist_for: "10 second"
 
 #Models to establish connections betweeen views.
 
