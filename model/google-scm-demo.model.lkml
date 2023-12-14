@@ -159,3 +159,15 @@ explore: s_q_cost_simulation {
     relationship: one_to_many
   }
 }
+
+explore: rs_q_policy {
+  label: "RSQ Policy"
+  join: inventory_simulation3 {
+    type: inner
+    sql_on: ${inventory_simulation3.product_uid} = ${rs_q_policy.product_uid}
+    AND ${inventory_simulation3.location_uid} = ${rs_q_policy.location_uid}
+    AND ${inventory_simulation3.alpha} = ${rs_q_policy.alpha}
+    AND ${inventory_simulation3.time} = ${rs_q_policy.time};;
+    relationship: one_to_one
+  }
+}
