@@ -41,5 +41,6 @@ view: inventory_simulation3 {
     label: "On Hand"
     type: average
     sql: ${onhand} ;;
+    value_format: "0"
   }
 }

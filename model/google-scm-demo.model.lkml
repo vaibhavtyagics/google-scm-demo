@@ -6,7 +6,8 @@ include: "/views/**/*.view.lkml"
 include: "/dashboards/Inventory_management.dashboard.lookml"
 include: "/dashboards/inventory_simulation.dashboard.lookml"
 include: "/dashboards/gdc_twos_simulations.dashboard.lookml"
-include: "/dashboards/sq_cost_inventory_simulation.dashboard.lookml"
+include: "/dashboards/sq_inventory_policy_simulation.dashboard.lookml"
+include: "/dashboards/rsq_inventory_policy_simulation.dashboard.lookml"
 
 datagroup: google_scm_demo_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -156,5 +157,10 @@ explore: rs_q_policy {
     AND ${inventory_simulation3.alpha} = ${rs_q_policy.alpha}
     AND ${inventory_simulation3.time} = ${rs_q_policy.time};;
     relationship: one_to_one
+  }
+  join: location {
+    type: left_outer
+    sql_on: ${location.location_uid} = ${rs_q_policy.location_uid} ;;
+    relationship: one_to_many
   }
 }

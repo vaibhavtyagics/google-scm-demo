@@ -37,7 +37,15 @@ view: rs_q_policy {
     type: number
     sql: ${TABLE}.time ;;
   }
-  measure: count {
-    type: count
+  measure: safety_stock_ {
+    type: average
+    sql: ABS(${safety_stock}) ;;
+    value_format: "0"
+  }
+  measure: avg_cumulative_demand {
+    label: "Demand"
+    type: average
+    sql: ABS(${cumulative_demand}) ;;
+    value_format: "0"
   }
 }

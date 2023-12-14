@@ -1,6 +1,6 @@
 ---
-- dashboard: sq_cost_inventory_simulation
-  title: SQ Cost Inventory Simulation
+- dashboard: sq_inventory_policy_simulation
+  title: "(s,Q) Inventory Policy Simulation"
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
@@ -20,15 +20,16 @@
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: false
-    style_s_q_cost_simulation.inventory_cost: "#DC143C"
+    font_size_main: '14'
+    style_s_q_cost_simulation.inventory_cost: "#1A73E8"
     title_placement_s_q_cost_simulation.inventory_cost: below
-    style_s_q_cost_simulation.holding_cost_: "#B22222"
+    style_s_q_cost_simulation.holding_cost_: "#12B5CB"
     title_placement_s_q_cost_simulation.holding_cost_: below
-    style_s_q_cost_simulation.lead_time_cost_: "#8B0000"
+    style_s_q_cost_simulation.lead_time_cost_: "#E52592"
     title_placement_s_q_cost_simulation.lead_time_cost_: below
     style_s_q_cost_simulation.backorder_cost_: "#FA8072"
     title_placement_s_q_cost_simulation.backorder_cost_: below
-    style_s_q_cost_simulation.transcation_cost_: "#DC143C"
+    style_s_q_cost_simulation.transcation_cost_: "#A8A116"
     title_placement_s_q_cost_simulation.transcation_cost_: below
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -58,6 +59,13 @@
     totals_color: "#808080"
     defaults_version: 0
     hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: "<h4>The formula for calculating Inventory Cost is:</h4>\nh⋅(Cs+Ss)+Qk⋅\
+      D +Qb⋅Lx⋅D \n\n<p>Where:\nh is the holding cost parameter.\nCs is the corrected\
+      \ transaction cost.\nSs is the safety stock.\nk is the transaction cost parameter.\n\
+      D is the cumulative demand.\nQ is the optimal cycle service level.\nb is the\
+      \ backorder cost parameter.\nLx is the lead time cost parameter</p>"
     listen:
       Location Uid: s_q_cost_simulation.location_uid
       Alpha: s_q_cost_simulation.alpha
@@ -66,7 +74,7 @@
     row: 0
     col: 0
     width: 24
-    height: 5
+    height: 3
   - title: Safety Stock
     name: Safety Stock
     model: google-scm-demo
@@ -87,12 +95,26 @@
     target_length: 15
     target_gap: 15
     target_weight: 50
+    range_min: 0
+    value_label_type: value
+    value_label_font: 12
     value_formatting: '0'
     value_label_padding: 54
+    target_source: 'off'
+    target_label_type: both
+    target_label_font: 3
+    label_font_size: 3
     range_formatting: ''
     spinner_type: needle
+    fill_color: "#0092E5"
+    background_color: "#CECECE"
+    spinner_color: "#282828"
+    range_color: "#282828"
     gauge_fill_type: segment
     fill_colors: ["#EE7772", "#ffed6f", "#7FCDAE"]
+    viz_trellis_by: none
+    trellis_rows: 2
+    trellis_cols: 2
     angle: 90
     cutout: 42
     range_x: 1
@@ -148,12 +170,20 @@
     totals_color: "#808080"
     defaults_version: 0
     hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <h4>The formula for calculating Safety Stock is:</h4>
+      Safety Stock=α−Cumulative Demand+Inventory Stock−Inventory Shortage
+
+      <p>Where:
+      α is a service level factor for safety stock calculation.</p>
     listen:
       Time: s_q_cost_simulation.time
       Alpha: s_q_cost_simulation.alpha
       Location Uid: s_q_cost_simulation.location_uid
       Product Uid: s_q_cost_simulation.product_uid
-    row: 5
+    row: 3
     col: 8
     width: 8
     height: 5
@@ -257,7 +287,7 @@
       Alpha: s_q_cost_simulation.alpha
       Location Uid: s_q_cost_simulation.location_uid
       Product Uid: s_q_cost_simulation.product_uid
-    row: 5
+    row: 3
     col: 16
     width: 8
     height: 5
@@ -356,12 +386,20 @@
     totals_color: "#808080"
     defaults_version: 1
     hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: |-
+      <h4>The formula for calculating Cyclic Stock is:</h4>
+      Cyclic Stock=Q×Optimal Cycle Service Level
+      <p>Where:
+      Q is the order quantity or the batch size.
+      Optimal Cycle Service Level is the service level targeted for the inventory system.</p>
     listen:
       Time: s_q_cost_simulation.time
       Alpha: s_q_cost_simulation.alpha
       Location Uid: s_q_cost_simulation.location_uid
       Product Uid: s_q_cost_simulation.product_uid
-    row: 5
+    row: 3
     col: 0
     width: 8
     height: 5
@@ -440,7 +478,7 @@
       Alpha: s_q_cost_simulation.alpha
       Location Uid: s_q_cost_simulation.location_uid
       Product Uid: s_q_cost_simulation.product_uid
-    row: 10
+    row: 8
     col: 0
     width: 16
     height: 6
@@ -512,7 +550,7 @@
       Alpha: s_q_cost_simulation.alpha
       Location Uid: s_q_cost_simulation.location_uid
       Product Uid: s_q_cost_simulation.product_uid
-    row: 16
+    row: 14
     col: 0
     width: 24
     height: 7
@@ -537,8 +575,7 @@
     show_region_field: true
     draw_map_labels_above_data: true
     map_tile_provider: streets
-    map_position: custom
-    map_zoom: 2
+    map_position: fit_data
     map_pannable: true
     map_zoomable: true
     map_marker_type: icon
@@ -549,14 +586,14 @@
     map_marker_color_mode: value
     show_legend: true
     quantize_map_value_colors: false
-    reverse_map_value_colors: false
+    reverse_map_value_colors: true
     defaults_version: 0
     listen:
       Time: s_q_cost_simulation.time
       Alpha: s_q_cost_simulation.alpha
       Product Uid: s_q_cost_simulation.product_uid
       Location Uid: s_q_cost_simulation.location_uid
-    row: 10
+    row: 8
     col: 16
     width: 8
     height: 6
