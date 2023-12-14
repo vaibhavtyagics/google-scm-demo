@@ -115,22 +115,21 @@
     explore: check2
     type: looker_column
     fields: [check2.inc_air_cost_, check2.inv_cost_, check2.lost_sales_cost_, check2.sl_,
-      check2.total_cost_, derived_gdc_check2.min_cost, derived_gdc_check2.WOS_Target_Scenario,
-      min_ncost]
+      check2.total_cost_, derived_gdc_check2.min_cost, min_cost, check2.wos_target_scenario]
     filters:
       derived_gdc_check2.sku: ''
-    sorts: [check2.inc_air_cost_ desc 0]
+    sorts: [check2.wos_target_scenario]
     limit: 500
     column_limit: 50
     dynamic_fields:
     - category: measure
       expression:
-      label: Min ncost
+      label: Min cost
       value_format:
       value_format_name:
       based_on: derived_gdc_check2.min_cost
       _kind_hint: measure
-      measure: min_ncost
+      measure: min_cost
       type: sum
       _type_hint: number
       filters:
@@ -200,7 +199,7 @@
   - name: SKU
     title: SKU
     type: field_filter
-    default_value: ''
+    default_value: ABC
     allow_multiple_values: true
     required: false
     ui_config:
