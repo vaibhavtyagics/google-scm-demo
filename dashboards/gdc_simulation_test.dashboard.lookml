@@ -6,159 +6,6 @@
   description: ''
   preferred_slug: A225pPGauMGnK6YkFCjcxM
   elements:
-  - title: Gdc Twos Simulations
-    name: Gdc Twos Simulations
-    model: google-scm-demo
-    explore: check2
-    type: looker_column
-    fields: [check2.wos_target_scenario, check2.total_cost_, check2.inv_cost_, check2.lost_sales_cost_,
-      check2.inc_air_cost_, check2.sl_, derived_gdc_check2.min_cost]
-    sorts: [check2.wos_target_scenario]
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - category: table_calculation
-      expression: min(${check2.total_cost_})
-      label: Min Cost
-      value_format:
-      value_format_name:
-      _kind_hint: measure
-      table_calculation: min_cost
-      _type_hint: number
-      is_disabled: true
-    - category: table_calculation
-      expression: min(${check2.total_cost_})
-      label: min cost per sku
-      value_format:
-      value_format_name: ''
-      _kind_hint: measure
-      table_calculation: min_cost_per_sku
-      _type_hint: number
-      is_disabled: true
-    - category: measure
-      expression: ''
-      label: Filtered check2.min_total_cost
-      based_on: check2.min_total_cost
-      _kind_hint: measure
-      measure: filtered_check2min_total_cost
-      type: count_distinct
-      _type_hint: number
-      filters:
-        check2.wos_target_scenario: "$Wos Target Scenario}"
-    - args:
-      - check2.min_total_cost
-      calculation_type: rank_of_column
-      category: table_calculation
-      based_on: check2.min_total_cost
-      label: Rank of Gdc Twos Simulations Min Total Cost
-      source_field: check2.min_total_cost
-      table_calculation: rank_of_check2_min_total_cost
-      value_format:
-      value_format_name:
-      _kind_hint: measure
-      _type_hint: number
-      is_disabled: true
-    - category: measure
-      expression: "${check2.total_cost} "
-      label: Filtered check2.min_total_cost
-      based_on: check2.min_total_cost
-      filter_expression: "${check2.total_cost} "
-      _kind_hint: measure
-      measure: filtered_check2min_total_cost_1
-      type: count_distinct
-      _type_hint: number
-      filters:
-        check2.total_cost: min(${check2.total_cost} )
-    - category: measure
-      label: min_total_cost
-      based_on: check2.min_total_cost
-      _kind_hint: measure
-      measure: min_total_cost
-      type: count_distinct
-      _type_hint: number
-      filters:
-        derived_gdc.rank_dim: '1'
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: circle
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    color_application:
-      collection_id: d754397b-2c05-4470-bbbb-05eb4c2b15cd
-      palette_id: b0768e0d-03b8-4c12-9e30-9ada6affc357
-      options:
-        steps: 5
-    y_axes: [{label: '', orientation: left, series: [{axisId: check2.lost_sales_cost_,
-            id: check2.lost_sales_cost_, name: 'Lost Sales Cost '}], showLabels: false,
-        showValues: false, unpinAxis: false, tickDensity: default, type: linear},
-      {label: !!null '', orientation: left, series: [{axisId: check2.inv_cost_, id: check2.inv_cost_,
-            name: 'Inv Cost '}], showLabels: false, showValues: false, unpinAxis: false,
-        tickDensity: default, tickDensityCustom: 5, type: linear}, {label: '', orientation: left,
-        series: [{axisId: check2.inc_air_cost_, id: check2.inc_air_cost_, name: 'Inc
-              Air Cost '}], showLabels: false, showValues: false, unpinAxis: false,
-        tickDensity: default, type: linear}, {label: !!null '', orientation: left,
-        series: [{axisId: filtered_derived_gdcmin_cost, id: filtered_derived_gdcmin_cost,
-            name: Filtered derived_gdc.min_cost}], showLabels: false, showValues: false,
-        maxValue: !!null '', minValue: !!null '', unpinAxis: false, tickDensity: custom,
-        tickDensityCustom: 16, type: linear}, {label: !!null '', orientation: left,
-        series: [{axisId: check2.total_cost_, id: check2.total_cost_, name: 'Total
-              Cost '}], showLabels: true, showValues: true, maxValue: !!null '', minValue: !!null '',
-        unpinAxis: false, tickDensity: custom, tickDensityCustom: 16, type: linear},
-      {label: Service Level, orientation: right, series: [{axisId: check2.sl_, id: check2.sl_,
-            name: Service Level %}], showLabels: true, showValues: true, unpinAxis: false,
-        tickDensity: default, type: linear}]
-    x_axis_zoom: true
-    y_axis_zoom: true
-    hidden_series: []
-    series_types:
-      check2.sl_: line
-      check2.inc_air_cost_: line
-      check2.lost_sales_cost_: line
-      check2.inv_cost_: line
-      check2.total_cost_: line
-    series_colors:
-      filtered_check2min_total_cost: "#3b3b3b"
-    series_labels:
-      filtered_check2min_total_cost: Min Cost
-      filtered_derived_gdcmin_cost: Min Cost
-    reference_lines: []
-    trend_lines: []
-    column_spacing_ratio: 1
-    swap_axes: false
-    show_null_points: false
-    interpolation: linear
-    defaults_version: 1
-    hidden_fields: [derived_gdc.min_cost]
-    hidden_pivots: {}
-    hidden_points_if_no:
-    title_hidden: true
-    listen: {}
-    row: 0
-    col: 0
-    width: 17
-    height: 9
   - title: 'Target week of supply: Costs'
     name: 'Target week of supply: Costs'
     model: google-scm-demo
@@ -255,8 +102,104 @@
     comparison_type: value
     comparison_reverse_colors: false
     show_comparison_label: true
-    listen: {}
+    listen:
+      SKU: derived_gdc_check2.sku
     row: 0
     col: 17
     width: 7
     height: 9
+  - title: Untitled
+    name: Untitled
+    model: google-scm-demo
+    explore: check2
+    type: looker_column
+    fields: [check2.inc_air_cost_, check2.inv_cost_, check2.lost_sales_cost_, check2.sl_,
+      check2.total_cost_, derived_gdc_check2.min_cost, derived_gdc_check2.WOS_Target_Scenario,
+      min_ncost]
+    filters: {}
+    sorts: [check2.inc_air_cost_ desc 0]
+    limit: 500
+    column_limit: 50
+    dynamic_fields:
+    - category: measure
+      expression:
+      label: Min ncost
+      value_format:
+      value_format_name:
+      based_on: derived_gdc_check2.min_cost
+      _kind_hint: measure
+      measure: min_ncost
+      type: sum
+      _type_hint: number
+      filters:
+        derived_gdc_check2.rank_dim: '1'
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    y_axes: [{label: Total Cost $, orientation: left, series: [{axisId: check2.inc_air_cost_,
+            id: check2.inc_air_cost_, name: 'Inc Air Cost '}, {axisId: check2.inv_cost_,
+            id: check2.inv_cost_, name: 'Inv Cost '}, {axisId: check2.lost_sales_cost_,
+            id: check2.lost_sales_cost_, name: 'Lost Sales Cost '}, {axisId: check2.sl_,
+            id: check2.sl_, name: Service Level %}, {axisId: check2.total_cost_, id: check2.total_cost_,
+            name: 'Total Cost '}, {axisId: min_ncost, id: min_ncost, name: Min ncost}],
+        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
+    x_axis_zoom: true
+    y_axis_zoom: true
+    series_types:
+      check2.inc_air_cost_: line
+      check2.inv_cost_: line
+      check2.lost_sales_cost_: line
+      check2.sl_: line
+      check2.total_cost_: line
+    series_colors:
+      min_ncost: "#F9AB00"
+    column_spacing_ratio: 1
+    show_null_points: true
+    interpolation: linear
+    defaults_version: 1
+    hidden_fields: [derived_gdc_check2.min_cost]
+    listen:
+      SKU: derived_gdc_check2.sku
+    row: 0
+    col: 0
+    width: 17
+    height: 9
+  filters:
+  - name: SKU
+    title: SKU
+    type: field_filter
+    default_value: SKU1
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: dropdown_menu
+      display: inline
+    model: google-scm-demo
+    explore: check2
+    listens_to_filters: []
+    field: derived_gdc_check2.sku
