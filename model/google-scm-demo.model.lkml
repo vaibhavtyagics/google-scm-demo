@@ -7,6 +7,7 @@ include: "/dashboards/Inventory_management.dashboard.lookml"
 include: "/dashboards/inventory_simulation.dashboard.lookml"
 include: "/dashboards/gdc_twos_simulations.dashboard.lookml"
 include: "/dashboards/sq_cost_inventory_simulation.dashboard.lookml"
+include: "/dashboards/gdc_simulation_test.dashboard.lookml"
 
 datagroup: google_scm_demo_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -127,6 +128,18 @@ explore: gdc_twos_simulations {
     relationship: one_to_one
   }
 }
+
+explore: check2 {
+  join: derived_gdc_check2 {
+    type: inner
+    sql_on: ${check2.sku} = ${derived_gdc_check2.sku}
+            and
+            ${check2.wos_target_scenario} = ${derived_gdc_check2.WOS_Target_Scenario};;
+    relationship: one_to_one
+  }
+}
+
+
 
 explore: gdc_twos_optimization {}
 
