@@ -8,13 +8,16 @@ include: "/dashboards/inventory_simulation.dashboard.lookml"
 include: "/dashboards/gdc_twos_simulations.dashboard.lookml"
 include: "/dashboards/sq_inventory_policy_simulation.dashboard.lookml"
 include: "/dashboards/rsq_inventory_policy_simulation.dashboard.lookml"
+include: "/dashboards/sq_inventory_policy_simulation.dashboard.lookml"
+include: "/dashboards/gdc_simulation_test.dashboard.lookml"
 
 datagroup: google_scm_demo_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
 
-persist_with: google_scm_demo_default_datagroup
+# persist_with: google_scm_demo_default_datagroup
+persist_for: "10 second"
 
 #Models to establish connections betweeen views.
 
@@ -128,6 +131,18 @@ explore: gdc_twos_simulations {
     relationship: one_to_one
   }
 }
+
+explore: check2 {
+  join: derived_gdc_check2 {
+    type: inner
+    sql_on: ${check2.sku} = ${derived_gdc_check2.sku}
+            and
+            ${check2.wos_target_scenario} = ${derived_gdc_check2.WOS_Target_Scenario};;
+    relationship: one_to_one
+  }
+}
+
+
 
 explore: gdc_twos_optimization {}
 
