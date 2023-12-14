@@ -183,6 +183,7 @@
     interpolation: linear
     defaults_version: 1
     hidden_fields: [derived_gdc_check2.min_cost]
+    title_hidden: true
     listen:
       SKU: derived_gdc_check2.sku
     row: 0
@@ -202,4 +203,4 @@
     model: google-scm-demo
     explore: check2
     listens_to_filters: []
-    field: derived_gdc_check2.sku
+    field: check2.sku
