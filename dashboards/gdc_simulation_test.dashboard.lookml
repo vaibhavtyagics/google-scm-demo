@@ -203,7 +203,7 @@
   - name: SKU
     title: SKU
     type: field_filter
-    default_value: ABC
+    default_value: ''
     allow_multiple_values: true
     required: false
     ui_config:
