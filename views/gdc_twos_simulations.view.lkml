@@ -110,6 +110,7 @@ view: gdc_twos_simulations {
   dimension: total_cost {
     type: number
     sql: ${TABLE}.TotalCost ;;
+    value_format_name: usd
   }
 
   measure: total_cost_ {

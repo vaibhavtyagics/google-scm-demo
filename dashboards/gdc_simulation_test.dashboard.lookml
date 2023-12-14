@@ -4,6 +4,7 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
+  refresh: 1 second
   preferred_slug: A225pPGauMGnK6YkFCjcxM
   elements:
   - title: 'Target week of supply: Costs'
@@ -103,11 +104,11 @@
     comparison_reverse_colors: false
     show_comparison_label: true
     listen:
-      SKU: derived_gdc_check2.sku
-    row: 0
-    col: 17
-    width: 7
-    height: 9
+      SKU: check2.sku
+    row: 10
+    col: 0
+    width: 24
+    height: 3
   - title: Untitled
     name: Untitled
     model: google-scm-demo
@@ -116,7 +117,8 @@
     fields: [check2.inc_air_cost_, check2.inv_cost_, check2.lost_sales_cost_, check2.sl_,
       check2.total_cost_, derived_gdc_check2.min_cost, derived_gdc_check2.WOS_Target_Scenario,
       min_ncost]
-    filters: {}
+    filters:
+      derived_gdc_check2.sku: ''
     sorts: [check2.inc_air_cost_ desc 0]
     limit: 500
     column_limit: 50
@@ -163,10 +165,12 @@
     y_axes: [{label: Total Cost $, orientation: left, series: [{axisId: check2.inc_air_cost_,
             id: check2.inc_air_cost_, name: 'Inc Air Cost '}, {axisId: check2.inv_cost_,
             id: check2.inv_cost_, name: 'Inv Cost '}, {axisId: check2.lost_sales_cost_,
-            id: check2.lost_sales_cost_, name: 'Lost Sales Cost '}, {axisId: check2.sl_,
-            id: check2.sl_, name: Service Level %}, {axisId: check2.total_cost_, id: check2.total_cost_,
-            name: 'Total Cost '}, {axisId: min_ncost, id: min_ncost, name: Min ncost}],
-        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+            id: check2.lost_sales_cost_, name: 'Lost Sales Cost '}, {axisId: check2.total_cost_,
+            id: check2.total_cost_, name: 'Total Cost '}, {axisId: min_ncost, id: min_ncost,
+            name: Min ncost}], showLabels: true, showValues: true, unpinAxis: false,
+        tickDensity: default, tickDensityCustom: 5, type: linear}, {label: !!null '',
+        orientation: right, series: [{axisId: check2.sl_, id: check2.sl_, name: Service
+              Level %}], showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
         tickDensityCustom: 5, type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
@@ -178,6 +182,8 @@
       check2.total_cost_: line
     series_colors:
       min_ncost: "#F9AB00"
+    series_labels:
+      min_ncost: Min Cost
     column_spacing_ratio: 1
     show_null_points: true
     interpolation: linear
@@ -185,16 +191,16 @@
     hidden_fields: [derived_gdc_check2.min_cost]
     title_hidden: true
     listen:
-      SKU: derived_gdc_check2.sku
+      SKU: check2.sku
     row: 0
     col: 0
-    width: 17
-    height: 9
+    width: 24
+    height: 10
   filters:
   - name: SKU
     title: SKU
     type: field_filter
-    default_value: SKU1
+    default_value: ''
     allow_multiple_values: true
     required: false
     ui_config:
