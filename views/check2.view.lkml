@@ -148,4 +148,15 @@ view: check2 {
   measure: count {
     type: number
   }
+
+  filter: sku_filter {
+    type: string
+    suggest_dimension: sku
+  }
+
+  dimension: sku_filter_dim {
+    type: string
+    sql: {% condition sku_filter %} ${sku} {% endcondition %} ;;
+  }
+
 }
