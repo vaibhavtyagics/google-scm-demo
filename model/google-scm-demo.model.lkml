@@ -108,9 +108,21 @@ explore: inventory_simulation {
     relationship: many_to_one
   }
 
+  join: s_q_policy_simulation {
+    type: inner
+    sql_on: ${inventory_simulation.alpha} = ${s_q_policy_simulation.alpha}
+            and
+            ${inventory_simulation.location_uid} = ${s_q_policy_simulation.location_uid}
+            and
+            ${inventory_simulation.product_uid} = ${s_q_policy_simulation.product_uid}
+            and
+            ${inventory_simulation.time} = ${s_q_policy_simulation.time};;
+    relationship: one_to_one
+  }
+
   join: store_level_cost2 {
     type: inner
-    sql_on: CAST(${inventory_simulation.alpha} AS FLOAT64) = CAST(${store_level_cost2.alpha}/100 AS FLOAT64)
+    sql_on: cast(${inventory_simulation.alpha} as int) = ${store_level_cost2.alpha}
             and
             ${inventory_simulation.location_uid} = ${store_level_cost2.location_uid}
             and
@@ -118,6 +130,25 @@ explore: inventory_simulation {
             and
             ${inventory_simulation.time} = ${store_level_cost2.time};;
     relationship: one_to_one
+  }
+
+  join: product {
+    type: inner
+    sql_on: ${product.product_uid} = ${store_level_cost2.product_uid} ;;
+    relationship: one_to_one
+  }
+
+  join: inventory {
+    type: inner
+    sql_on: ${product.product_uid} = ${inventory.product_uid} ;;
+    relationship: one_to_one
+  }
+
+  join: order   {
+    type:  full_outer
+    sql_on: ${order.location_uid} = ${location.location_uid}
+      AND ${inventory.product_uid} = ${order.product_uid} ;;
+    relationship: one_to_many
   }
 }
 
