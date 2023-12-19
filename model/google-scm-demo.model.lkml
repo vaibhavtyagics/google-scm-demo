@@ -4,7 +4,7 @@ connection: "google_scm_demo"
 include: "/views/**/*.view.lkml"
 
 include: "/dashboards/Inventory_management.dashboard.lookml"
-include: "/dashboards/inventory_simulation.dashboard.lookml"
+include: "/dashboards/rs_inventory_policy_simulation.dashboard.lookml"
 include: "/dashboards/gdc_twos_simulations.dashboard.lookml"
 include: "/dashboards/sq_inventory_policy_simulation.dashboard.lookml"
 include: "/dashboards/rsq_inventory_policy_simulation.dashboard.lookml"

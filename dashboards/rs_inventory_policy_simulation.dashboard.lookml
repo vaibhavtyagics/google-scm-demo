@@ -1,6 +1,6 @@
 ---
-- dashboard: inventory_simulation
-  title: Inventory Simulation
+- dashboard: rs_inventory_policy_simulation
+  title: "(R,s) Inventory Policy Simulation"
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
@@ -121,7 +121,7 @@
       Product Uid: inventory_simulation.product_uid
       Location Uid: inventory_simulation.location_uid
       Service Level %: inventory_simulation.service_level
-    row: 6
+    row: 7
     col: 4
     width: 20
     height: 10
@@ -223,7 +223,7 @@
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
       Service Level %: inventory_simulation.service_level
-    row: 0
+    row: 1
     col: 8
     width: 4
     height: 6
@@ -324,7 +324,7 @@
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
       Service Level %: inventory_simulation.service_level
-    row: 0
+    row: 1
     col: 4
     width: 4
     height: 6
@@ -450,7 +450,7 @@
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
       Service Level %: inventory_simulation.service_level
-    row: 0
+    row: 1
     col: 16
     width: 8
     height: 6
@@ -551,7 +551,7 @@
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
       Service Level %: inventory_simulation.service_level
-    row: 0
+    row: 1
     col: 12
     width: 4
     height: 6
@@ -653,7 +653,7 @@
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
       Service Level %: inventory_simulation.service_level
-    row: 0
+    row: 1
     col: 0
     width: 4
     height: 6
@@ -747,7 +747,7 @@
       Product Uid: inventory_simulation.product_uid
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
-    row: 6
+    row: 7
     col: 0
     width: 4
     height: 5
@@ -841,10 +841,38 @@
       Product Uid: inventory_simulation.product_uid
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
-    row: 11
+    row: 12
     col: 0
     width: 4
     height: 5
+  - type: button
+    name: button_1158
+    rich_content_json: '{"text":"s,Q Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/146?Time=%5B0%2C100%5D&Alpha=%5B90%2C90%5D&Product+Uid=P3394&Location+Uid=US16570"}'
+    row: 0
+    col: 0
+    width: 6
+    height: 1
+  - type: button
+    name: button_1159
+    rich_content_json: '{"text":"Gdc Twos Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/143?SKU=SKU24"}'
+    row: 0
+    col: 18
+    width: 6
+    height: 1
+  - type: button
+    name: button_1160
+    rich_content_json: '{"text":"R,s,Q Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/150?Product+Uid=P3479&Time=%5B0%2C100%5D&Alpha=%5B0%2C100%5D&Location+Uid=US00163"}'
+    row: 0
+    col: 12
+    width: 6
+    height: 1
+  - type: button
+    name: button_1161
+    rich_content_json: '{"text":"R,s Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/142?Service%20Level%20%25=87&Product%20Uid=P3394&Location%20Uid=&Week="}'
+    row: 0
+    col: 6
+    width: 6
+    height: 1
   filters:
   - name: Service Level %
     title: Service Level %

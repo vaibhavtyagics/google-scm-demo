@@ -67,7 +67,7 @@
       Location Uid: rs_q_policy.location_uid
       Alpha: rs_q_policy.alpha
       Time: rs_q_policy.time
-    row: 3
+    row: 4
     col: 0
     width: 16
     height: 6
@@ -155,7 +155,7 @@
       Time: rs_q_policy.time
       Alpha: rs_q_policy.alpha
       Location Uid: rs_q_policy.location_uid
-    row: 3
+    row: 4
     col: 16
     width: 8
     height: 6
@@ -258,10 +258,38 @@
       Time: rs_q_policy.time
       Alpha: rs_q_policy.alpha
       Location Uid: rs_q_policy.location_uid
-    row: 0
+    row: 1
     col: 0
     width: 24
     height: 3
+  - type: button
+    name: button_1147
+    rich_content_json: '{"text":"s,Q Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/146?Time=%5B0%2C100%5D&Alpha=%5B90%2C90%5D&Product+Uid=P3394&Location+Uid=US16570"}'
+    row: 0
+    col: 0
+    width: 6
+    height: 1
+  - type: button
+    name: button_1149
+    rich_content_json: '{"text":"Gdc Twos Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/143?SKU=SKU24"}'
+    row: 0
+    col: 18
+    width: 6
+    height: 1
+  - type: button
+    name: button_1154
+    rich_content_json: '{"text":"R,s Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/142?Service%20Level%20%25=87&Product%20Uid=P3394&Location%20Uid=&Week="}'
+    row: 0
+    col: 6
+    width: 6
+    height: 1
+  - type: button
+    name: button_1155
+    rich_content_json: '{"text":"R,s,Q Inventory Policy Simulation","description":"","newTab":false,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/150?Product+Uid=P3479&Time=%5B0%2C100%5D&Alpha=%5B0%2C100%5D&Location+Uid=US00163"}'
+    row: 0
+    col: 12
+    width: 6
+    height: 1
   filters:
   - name: Product Uid
     title: Product Uid
