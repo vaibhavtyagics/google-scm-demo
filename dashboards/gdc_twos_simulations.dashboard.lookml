@@ -154,7 +154,7 @@
       filtered_gdc_twos_simulationsmin_total_cost: "#3b3b3b"
     series_labels:
       filtered_gdc_twos_simulationsmin_total_cost: Min Cost
-      filtered_derived_gdcmin_cost: Min Cost
+      filtered_derived_gdcmin_cost: Target Week of Supply
     reference_lines: []
     trend_lines: []
     column_spacing_ratio: 1
@@ -170,8 +170,8 @@
       SKU: gdc_twos_simulations.sku
     row: 1
     col: 0
-    width: 17
-    height: 15
+    width: 24
+    height: 10
   - title: 'Target week of supply: Costs'
     name: 'Target week of supply: Costs'
     model: google-scm-demo
@@ -273,10 +273,10 @@
     show_comparison_label: true
     listen:
       SKU: gdc_twos_simulations.sku
-    row: 1
-    col: 17
-    width: 7
-    height: 15
+    row: 11
+    col: 0
+    width: 24
+    height: 4
   - type: button
     name: button_1150
     rich_content_json: '{"text":"R,s Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/142?Service%20Level%20%25=87&Product%20Uid=P3394&Location%20Uid=&Week="}'
@@ -309,11 +309,11 @@
   - name: SKU
     title: SKU
     type: field_filter
-    default_value: SKU24
+    default_value: SKU2
     allow_multiple_values: true
     required: true
     ui_config:
-      type: advanced
+      type: dropdown_menu
       display: popover
     model: google-scm-demo
     explore: gdc_twos_simulations
