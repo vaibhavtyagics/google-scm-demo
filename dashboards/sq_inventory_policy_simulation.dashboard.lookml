@@ -599,28 +599,31 @@
     height: 6
   - type: button
     name: button_1146
-    rich_content_json: '{"text":"R,s,Q Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/150?Product+Uid=P3479&Time=%5B0%2C100%5D&Alpha=%5B0%2C100%5D&Location+Uid=US00163"}'
+    rich_content_json: '{"text":"R,s,Q Inventory Policy Simulation","description":"R,s,Q
+      Inventory Policy Simulation","newTab":false,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/150?Product+Uid=P3479&Time=%5B0%2C100%5D&Alpha=%5B0%2C100%5D&Location+Uid=US00163"}'
     row: 0
     col: 12
     width: 6
     height: 1
   - type: button
     name: button_1148
-    rich_content_json: '{"text":"Gdc Twos Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/143?SKU=SKU24"}'
+    rich_content_json: '{"text":"Gdc Twos Simulation","description":"Gdc Twos Simulation","newTab":false,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/143?SKU=SKU24"}'
     row: 0
     col: 18
     width: 6
     height: 1
   - type: button
     name: button_1156
-    rich_content_json: '{"text":"R,s Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/142?Service%20Level%20%25=87&Product%20Uid=P3394&Location%20Uid=&Week="}'
+    rich_content_json: '{"text":"R,s Inventory Policy Simulation","description":"R,s
+      Inventory Policy Simulation","newTab":false,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/142?Service%20Level%20%25=87&Product%20Uid=P3394&Location%20Uid=&Week="}'
     row: 0
     col: 6
     width: 6
     height: 1
   - type: button
     name: button_1157
-    rich_content_json: '{"text":"s,Q Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/146?Time=%5B0%2C100%5D&Alpha=%5B90%2C90%5D&Product+Uid=P3394&Location+Uid=US16570"}'
+    rich_content_json: '{"text":"s,Q Inventory Policy Simulation","description":"s,Q
+      Inventory Policy Simulation","newTab":false,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/146?Time=%5B0%2C100%5D&Alpha=%5B90%2C90%5D&Product+Uid=P3394&Location+Uid=US16570"}'
     row: 0
     col: 0
     width: 6
