@@ -10,6 +10,7 @@ include: "/dashboards/sq_inventory_policy_simulation.dashboard.lookml"
 include: "/dashboards/rsq_inventory_policy_simulation.dashboard.lookml"
 include: "/dashboards/sq_inventory_policy_simulation.dashboard.lookml"
 include: "/dashboards/gdc_simulation_test.dashboard.lookml"
+include: "/dashboards/simulation_sq_inventory_policy.dashboard.lookml"
 
 datagroup: google_scm_demo_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -207,6 +208,23 @@ explore: rs_q_policy {
   join: location {
     type: left_outer
     sql_on: ${location.location_uid} = ${rs_q_policy.location_uid} ;;
+    relationship: one_to_many
+  }
+}
+
+explore: s_q_inv_policy {
+  label: "SQ Inventory Policy"
+  join: simulated_demand {
+    type: inner
+    sql_on: ${s_q_inv_policy.product_uid} = ${simulated_demand.product_uid}
+    AND ${s_q_inv_policy.location_uid} = ${simulated_demand.location_uid}
+    AND ${s_q_inv_policy.alpha} = ${simulated_demand.alpha}
+    AND ${s_q_inv_policy.time} = ${simulated_demand.time} ;;
+    relationship: one_to_one
+  }
+  join: location {
+    type: left_outer
+    sql_on: ${s_q_inv_policy.location_uid} = ${location.location_uid} ;;
     relationship: one_to_many
   }
 }
