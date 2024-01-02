@@ -3,12 +3,12 @@ view: derived_gdc {
 
   derived_table: {
     sql:
-    select sku, WOS_Target_Scenario, min(TotalCost) as min_cost, Rank()
+    select sku, SL, WOS_Target_Scenario, min(TotalCost) as min_cost, Rank()
           over
 (partition by sku
 order by min(TotalCost) asc) as rank
 from smart-nomad-401004.google_demo_reporting.gdc_twos_simulations
-group by 1,2
+group by 1,2,3
     ;;
   }
 
