@@ -498,6 +498,7 @@ view: order {
   measure: stocks_to_sales_ration {
     type: number
     sql: ${total_requested_quantity}/${total_sales} ;;
+    value_format_name: decimal_1
   }
 
   measure: intransit_sell_value {

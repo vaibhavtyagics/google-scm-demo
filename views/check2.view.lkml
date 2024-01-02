@@ -1,5 +1,5 @@
 view: check2 {
-  sql_table_name: `smart-nomad-401004.google_demo_reporting.check2` ;;
+  sql_table_name: `smart-nomad-401004.google_demo_reporting.gdc_twos_simulations` ;;
 
   dimension: air_percent_mean {
     type: number
