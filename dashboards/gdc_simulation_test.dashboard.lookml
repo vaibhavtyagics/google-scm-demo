@@ -1,6 +1,6 @@
 ---
-- dashboard: gdc_twos_simulations_imported
-  title: Gdc Twos Simulations (imported)
+- dashboard: twos_simulations
+  title: Gdc Two's Simulations
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
@@ -104,7 +104,7 @@
     comparison_reverse_colors: false
     show_comparison_label: true
     listen:
-      SKU: check2.sku
+      SKU: derived_gdc_check2.sku
     row: 10
     col: 0
     width: 24
@@ -116,8 +116,7 @@
     type: looker_column
     fields: [check2.inc_air_cost_, check2.inv_cost_, check2.lost_sales_cost_, check2.sl_,
       check2.total_cost_, derived_gdc_check2.min_cost, min_cost, check2.wos_target_scenario]
-    filters:
-      derived_gdc_check2.sku: ''
+    filters: {}
     sorts: [check2.wos_target_scenario]
     limit: 500
     column_limit: 50
@@ -187,6 +186,7 @@
       min_ncost: "#F9AB00"
     series_labels:
       min_ncost: Min Cost
+      min_cost: Target Week of Supply
     column_spacing_ratio: 1
     show_null_points: true
     interpolation: linear
@@ -194,7 +194,7 @@
     hidden_fields: [derived_gdc_check2.min_cost]
     title_hidden: true
     listen:
-      SKU: check2.sku
+      SKU: derived_gdc_check2.sku
     row: 0
     col: 0
     width: 24
@@ -207,9 +207,9 @@
     allow_multiple_values: true
     required: false
     ui_config:
-      type: dropdown_menu
-      display: inline
+      type: advanced
+      display: popover
     model: google-scm-demo
     explore: check2
     listens_to_filters: []
-    field: check2.sku
+    field: derived_gdc_check2.sku
