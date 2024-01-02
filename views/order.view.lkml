@@ -497,7 +497,7 @@ view: order {
 
   measure: stocks_to_sales_ration {
     type: number
-    sql: 0.17 ;;
+    sql: ${total_requested_quantity}/${total_sales} ;;
   }
 
   measure: intransit_sell_value {
