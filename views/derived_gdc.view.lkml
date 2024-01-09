@@ -7,7 +7,7 @@ view: derived_gdc {
           over
 (partition by sku
 order by min(TotalCost) asc) as rank
-from smart-nomad-401004.google_demo_reporting.gdc_twos_simulations
+from smart-nomad-401004.google_demo_reporting.GDC_TWOS_what_if
 group by 1,2,3
     ;;
   }

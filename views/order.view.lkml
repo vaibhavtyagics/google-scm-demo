@@ -491,8 +491,8 @@ view: order {
   }
 
   measure: average_lead_time {
-    type: number
-    sql: 14 ;;
+    type: average
+    sql: ROUND(date_diff(${actual_delivery_date}, ${order_creation_date_date}, DAY), 0) ;;
   }
 
   measure: stocks_to_sales_ration {

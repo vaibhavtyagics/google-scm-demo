@@ -1,5 +1,5 @@
 view: gdc_twos_simulations {
-  sql_table_name: `smart-nomad-401004.google_demo_reporting.gdc_twos_simulations` ;;
+  sql_table_name: `smart-nomad-401004.google_demo_reporting.GDC_TWOS_what_if` ;;
   drill_fields: [total_cost, inv_cost, inc_air_cost, lost_sales_cost, sl_]
 
   dimension: air_percent_mean {

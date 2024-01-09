@@ -7,7 +7,7 @@ view: derived_gdc_check2 {
           over
 (partition by sku
 order by min(TotalCost) asc) as rank
-from smart-nomad-401004.google_demo_reporting.gdc_twos_simulations
+from smart-nomad-401004.google_demo_reporting.GDC_TWOS_what_if
 group by 1,2
     ;;
   }
@@ -25,6 +25,7 @@ group by 1,2
   measure: min_cost {
     type: sum
     sql: ${TABLE}.min_cost ;;
+    filters: [check2.sl: ">0.95",rank_dim: "2"]
   }
 
   dimension: rank_dim {
@@ -35,6 +36,11 @@ group by 1,2
   measure: rank {
     type: sum
     sql: ${TABLE}.Rank ;;
+  }
+
+  measure: min_cost_sl {
+    type: sum
+
   }
 
 }

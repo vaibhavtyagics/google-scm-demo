@@ -228,3 +228,12 @@ explore: s_q_inv_policy {
     relationship: one_to_many
   }
 }
+
+explore: warehouse_view {
+  label: "Warehouse Optimization"
+  join: transfer_view {
+    type: left_outer
+    sql_on: ${warehouse_view.product_uid} = ${transfer_view.product_uid} ;;
+    relationship: many_to_one
+  }
+}
