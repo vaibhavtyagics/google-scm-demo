@@ -1,5 +1,5 @@
 ---
-- dashboard: twos_simulations
+- dashboard: gdc_twos_simulations_
   title: Gdc Two's Simulations
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -13,11 +13,23 @@
     explore: check2
     type: marketplace_viz_multiple_value::multiple_value-marketplace
     fields: [check2.wos_target_scenario, check2.total_cost, check2.inc_air_cost_,
-      check2.inv_cost_, check2.lost_sales_cost_, check2.sl_]
-    sorts: [check2.total_cost]
-    limit: 1
+      check2.inv_cost_, check2.lost_sales_cost_, check2.sl_, derived_gdc_check2.min_cost]
+    filters:
+      derived_gdc_check2.min_cost: not 0
+    sorts: [check2.wos_target_scenario desc]
+    limit: 12
     column_limit: 50
-    hidden_fields: []
+    dynamic_fields:
+    - category: measure
+      label: Filtered derived_gdc_check2.min_cost
+      based_on: derived_gdc_check2.min_cost
+      _kind_hint: measure
+      measure: filtered_derived_gdc_check2min_cost
+      type: count_distinct
+      _type_hint: number
+      filters:
+        derived_gdc_check2.rank_dim: '2'
+    hidden_fields: [derived_gdc_check2.min_cost]
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: false
@@ -115,14 +127,14 @@
     explore: check2
     type: looker_column
     fields: [check2.inc_air_cost_, check2.inv_cost_, check2.lost_sales_cost_, check2.sl_,
-      check2.total_cost_, derived_gdc_check2.min_cost, min_cost, check2.wos_target_scenario]
+      check2.total_cost_, derived_gdc_check2.min_cost, check2.wos_target_scenario]
     filters: {}
     sorts: [check2.wos_target_scenario]
     limit: 500
     column_limit: 50
     dynamic_fields:
     - category: measure
-      expression:
+      expression: ''
       label: Min cost
       value_format:
       value_format_name:
@@ -133,6 +145,78 @@
       _type_hint: number
       filters:
         derived_gdc_check2.rank_dim: '1'
+    - category: measure
+      label: Filtered derived_gdc_check2.min_cost
+      based_on: derived_gdc_check2.min_cost
+      _kind_hint: measure
+      measure: filtered_derived_gdc_check2min_cost
+      type: count_distinct
+      _type_hint: number
+      filters:
+        check2.sl: ">0.95"
+        derived_gdc_check2.rank_dim: '1'
+    - category: measure
+      label: Filtered derived_gdc_check2.min_cost
+      based_on: derived_gdc_check2.min_cost
+      _kind_hint: measure
+      measure: filtered_derived_gdc_check2min_cost_1
+      type: count_distinct
+      _type_hint: number
+      filters:
+        derived_gdc_check2.rank_dim: '1'
+    - category: measure
+      label: Filtered derived_gdc_check2.min_cost
+      based_on: derived_gdc_check2.min_cost
+      _kind_hint: measure
+      measure: filtered_derived_gdc_check2min_cost_2
+      type: count_distinct
+      _type_hint: number
+      filters:
+        derived_gdc_check2.rank_dim: '1'
+    - category: measure
+      label: Filtered derived_gdc_check2.min_cost
+      based_on: derived_gdc_check2.min_cost
+      _kind_hint: measure
+      measure: filtered_derived_gdc_check2min_cost_3
+      type: count_distinct
+      _type_hint: number
+      filters:
+        derived_gdc_check2.rank_dim: '1'
+    - args:
+      - derived_gdc_check2.min_cost
+      calculation_type: percent_difference_from_previous
+      category: table_calculation
+      based_on: derived_gdc_check2.min_cost
+      label: Percent change from previous - Derived Gdc Check2 Min Cost
+      source_field: derived_gdc_check2.min_cost
+      table_calculation: percent_change_from_previous_derived_gdc_check2_min_cost
+      value_format:
+      value_format_name: percent_0
+      _kind_hint: measure
+      _type_hint: number
+      is_disabled: true
+    - category: measure
+      label: Filtered check2.total_cost_
+      based_on: check2.total_cost_
+      _kind_hint: measure
+      measure: filtered_check2total_cost_
+      type: count_distinct
+      _type_hint: number
+      filters:
+        check2.sl: ">0.95"
+    - args:
+      - filtered_check2total_cost_
+      calculation_type: percent_difference_from_previous
+      category: table_calculation
+      based_on: filtered_check2total_cost_
+      label: Percent change from previous -  Filtered check2.total_cost_
+      source_field: filtered_check2total_cost_
+      table_calculation: percent_change_from_previous_filtered_check2total_cost_
+      value_format:
+      value_format_name: percent_0
+      _kind_hint: measure
+      _type_hint: number
+      is_disabled: true
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -165,10 +249,10 @@
             id: check2.inv_cost_, name: 'Inv Cost '}, {axisId: check2.lost_sales_cost_,
             id: check2.lost_sales_cost_, name: 'Lost Sales Cost '}], showLabels: true,
         showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear}, {label: !!null '', orientation: left, series: [{axisId: min_cost,
-            id: min_cost, name: Min cost}], showLabels: false, showValues: false,
-        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
-      {label: !!null '', orientation: left, series: [{axisId: check2.total_cost_,
+        type: linear}, {label: !!null '', orientation: left, series: [{axisId: derived_gdc_check2.min_cost,
+            id: derived_gdc_check2.min_cost, name: Min Cost}], showLabels: false,
+        showValues: false, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}, {label: !!null '', orientation: left, series: [{axisId: check2.total_cost_,
             id: check2.total_cost_, name: 'Total Cost '}], showLabels: false, showValues: false,
         unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
       {label: !!null '', orientation: right, series: [{axisId: check2.sl_, id: check2.sl_,
@@ -191,7 +275,8 @@
     show_null_points: true
     interpolation: linear
     defaults_version: 1
-    hidden_fields: [derived_gdc_check2.min_cost]
+    hidden_fields:
+    hidden_pivots: {}
     title_hidden: true
     listen:
       SKU: derived_gdc_check2.sku
