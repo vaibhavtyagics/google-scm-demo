@@ -233,7 +233,17 @@ explore: warehouse_view {
   label: "Warehouse Optimization"
   join: transfer_view {
     type: left_outer
-    sql_on: ${warehouse_view.product_uid} = ${transfer_view.product_uid} ;;
+    sql_on: ${warehouse_view.product_uid} = ${transfer_view.product_uid}
+            and
+            ${warehouse_view.warehouse} = ${transfer_view.origin_warehouse};;
+    relationship: many_to_one
+  }
+
+  join: warehouse_distance {
+    type: left_outer
+    sql_on: ${transfer_view.origin_warehouse} = ${warehouse_distance.origin_location_uid}
+            and
+           ${transfer_view.dest_warehouse} = ${warehouse_distance.dest_location_uid};;
     relationship: many_to_one
   }
 }

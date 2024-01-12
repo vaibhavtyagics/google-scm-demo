@@ -18,6 +18,7 @@ view: transfer_view {
     sql: ${TABLE}.lead_time ;;
   }
   dimension: origin_warehouse {
+    primary_key: yes
     type: string
     sql: ${TABLE}.origin_warehouse ;;
   }
@@ -63,5 +64,32 @@ view: transfer_view {
   }
   measure: count {
     type: count
+  }
+
+#Measured fields.
+
+  measure: avg_quantity_transferred {
+    type: average
+    sql: ${TABLE}.quantity_transferred ;;
+  }
+
+  measure: avg_handling_cost {
+    type: average
+    sql: ${TABLE}.handling_cost ;;
+  }
+
+  measure: avg_transportation_cost {
+    type: average
+    sql: ${TABLE}.transportation_cost ;;
+  }
+
+  measure: avg_origin_warehouse {
+    type: count_distinct
+    sql: ${TABLE}.origin_warehouse ;;
+  }
+
+  measure: avg_dest_warehouse {
+    type: count_distinct
+    sql: ${dest_warehouse} ;;
   }
 }

@@ -1,5 +1,5 @@
 ---
-- dashboard: gdc_twos_simulations_
+- dashboard: gdc_twos_simulations_test
   title: Gdc Two's Simulations
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -12,12 +12,10 @@
     model: google-scm-demo
     explore: check2
     type: marketplace_viz_multiple_value::multiple_value-marketplace
-    fields: [check2.wos_target_scenario, check2.total_cost, check2.inc_air_cost_,
-      check2.inv_cost_, check2.lost_sales_cost_, check2.sl_, derived_gdc_check2.min_cost]
-    filters:
-      derived_gdc_check2.min_cost: not 0
-    sorts: [check2.wos_target_scenario desc]
-    limit: 12
+    fields: [check2.gdc_twos, check2.sl_opt, check2.total_cost_KPI, check2.lost_sales_cost_KPI,
+      check2.inv_cost_KPI, check2.inc_air_cost_KPI]
+    sorts: [check2.sl_opt desc 0]
+    limit: 1
     column_limit: 50
     dynamic_fields:
     - category: measure
@@ -29,23 +27,49 @@
       _type_hint: number
       filters:
         derived_gdc_check2.rank_dim: '2'
-    hidden_fields: [derived_gdc_check2.min_cost]
+    hidden_fields: []
     hidden_points_if_no: []
     series_labels: {}
     show_view_names: false
     font_size_main: '14'
     orientation: auto
-    style_check2.wos_target_scenario: "#079c98"
-    show_title_check2.wos_target_scenario: true
-    title_override_check2.wos_target_scenario: 'TWOS: Min Cost with >= 95% SL'
-    title_placement_check2.wos_target_scenario: below
-    value_format_check2.wos_target_scenario: ''
+    style_check2.gdc_twos: "#12B5CB"
+    show_title_check2.gdc_twos: true
+    title_placement_check2.gdc_twos: below
+    value_format_check2.gdc_twos: ''
     style_check2.total_cost: "#215ac8"
     show_title_check2.total_cost: true
     title_override_check2.total_cost: Min Total Cost
     title_placement_check2.total_cost: below
     value_format_check2.total_cost: "$#,##0"
     show_comparison_check2.total_cost: false
+    style_derived_gdc_check2.min_cost: "#A8A116"
+    title_placement_derived_gdc_check2.min_cost: below
+    style_check2.sl_opt: "#E52592"
+    show_title_check2.sl_opt: true
+    title_placement_check2.sl_opt: below
+    value_format_check2.sl_opt: ''
+    show_comparison_check2.sl_opt: false
+    style_check2.total_cost_KPI: "#E8710A"
+    show_title_check2.total_cost_KPI: true
+    title_placement_check2.total_cost_KPI: below
+    value_format_check2.total_cost_KPI: ''
+    show_comparison_check2.total_cost_KPI: false
+    style_check2.lost_sales_cost_KPI: "#EA4335"
+    show_title_check2.lost_sales_cost_KPI: true
+    title_placement_check2.lost_sales_cost_KPI: below
+    value_format_check2.lost_sales_cost_KPI: ''
+    show_comparison_check2.lost_sales_cost_KPI: false
+    style_check2.inv_cost_KPI: "#7CB342"
+    show_title_check2.inv_cost_KPI: true
+    title_placement_check2.inv_cost_KPI: below
+    value_format_check2.inv_cost_KPI: ''
+    show_comparison_check2.inv_cost_KPI: false
+    style_check2.inc_air_cost_KPI: "#079c98"
+    show_title_check2.inc_air_cost_KPI: true
+    title_placement_check2.inc_air_cost_KPI: below
+    value_format_check2.inc_air_cost_KPI: ''
+    show_comparison_check2.inc_air_cost_KPI: false
     style_check2.inc_air_cost_: "#2ca0fa"
     show_title_check2.inc_air_cost_: true
     title_override_check2.inc_air_cost_: Incremental Air Cost
@@ -68,6 +92,11 @@
     title_placement_check2.sl_: below
     value_format_check2.sl_: ''
     show_comparison_check2.sl_: false
+    style_check2.wos_target_scenario: "#079c98"
+    show_title_check2.wos_target_scenario: true
+    title_override_check2.wos_target_scenario: Optimised TWOS
+    title_placement_check2.wos_target_scenario: below
+    value_format_check2.wos_target_scenario: ''
     hidden_pivots: {}
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -127,7 +156,7 @@
     explore: check2
     type: looker_column
     fields: [check2.inc_air_cost_, check2.inv_cost_, check2.lost_sales_cost_, check2.sl_,
-      check2.total_cost_, derived_gdc_check2.min_cost, check2.wos_target_scenario]
+      check2.total_cost_, check2.wos_target_scenario, check2.opt_costs]
     filters: {}
     sorts: [check2.wos_target_scenario]
     limit: 500
@@ -249,10 +278,10 @@
             id: check2.inv_cost_, name: 'Inv Cost '}, {axisId: check2.lost_sales_cost_,
             id: check2.lost_sales_cost_, name: 'Lost Sales Cost '}], showLabels: true,
         showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear}, {label: !!null '', orientation: left, series: [{axisId: derived_gdc_check2.min_cost,
-            id: derived_gdc_check2.min_cost, name: Min Cost}], showLabels: false,
-        showValues: false, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear}, {label: !!null '', orientation: left, series: [{axisId: check2.total_cost_,
+        type: linear}, {label: !!null '', orientation: left, series: [{axisId: check2.opt_costs,
+            id: check2.opt_costs, name: Opt Costs}], showLabels: false, showValues: false,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
+      {label: !!null '', orientation: left, series: [{axisId: check2.total_cost_,
             id: check2.total_cost_, name: 'Total Cost '}], showLabels: false, showValues: false,
         unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear},
       {label: !!null '', orientation: right, series: [{axisId: check2.sl_, id: check2.sl_,
@@ -271,6 +300,7 @@
     series_labels:
       min_ncost: Min Cost
       min_cost: Target Week of Supply
+      check2.opt_costs: Optimised Two's
     column_spacing_ratio: 1
     show_null_points: true
     interpolation: linear

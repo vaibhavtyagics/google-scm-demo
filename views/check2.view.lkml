@@ -34,7 +34,7 @@ view: check2 {
 
   measure: inc_air_cost_ {
     type: sum
-    sql: ${TABLE}.IncAirCost ;;
+    sql:  ${inc_air_cost} ;;
   }
 
   dimension: inv_cost {
@@ -44,7 +44,7 @@ view: check2 {
 
   measure: inv_cost_ {
     type: sum
-    sql: ${TABLE}.InvCost ;;
+    sql:  ${inv_cost};;
   }
   dimension: lifecycle {
     type: string
@@ -57,7 +57,7 @@ view: check2 {
 
   measure: lost_sales_cost_ {
     type: sum
-    sql: ${TABLE}.LostSalesCost ;;
+    sql:  ${lost_sales_cost} ;;
   }
   dimension: margin {
     type: number
@@ -98,6 +98,17 @@ view: check2 {
     sql: ${TABLE}.SL ;;
     value_format_name: percent_0
   }
+
+  measure: sl_opt {
+    label: "Service Level %"
+    type: sum
+    sql: case when
+                  ${gdc_twos} = ${wos_target_scenario} then ${TABLE}.OPT_SL
+                  else 0
+                  end;;
+    value_format_name: percent_0
+  }
+
   dimension: stock_out_percent_mean {
     type: number
     sql: ${TABLE}.stock_out_percent_mean ;;
@@ -113,7 +124,7 @@ view: check2 {
 
   measure: total_cost_ {
     type: sum
-    sql: ${TABLE}.TotalCost ;;
+    sql:  ${total_cost} ;;
     value_format_name: usd_0
   }
 
@@ -158,5 +169,64 @@ view: check2 {
     type: string
     sql: {% condition sku_filter %} ${sku} {% endcondition %} ;;
   }
+
+  dimension: opt_Cost {
+    type: number
+    sql: ${TABLE}.OPT_Cost ;;
+  }
+
+  measure: opt_costs {
+    type: sum
+    sql: case when
+                  ${gdc_twos} = ${wos_target_scenario} then ${opt_Cost}
+                  else 0
+                  end;;
+  }
+
+  dimension: gdc_twos {
+    type: number
+    sql: ${TABLE}.GDC_TWOS ;;
+  }
+
+#Measure for single KPI's
+
+  measure: inc_air_cost_KPI {
+    label: "Inc Air Cost"
+    group_label: "KPI"
+    type: sum
+    sql:  case when
+                  ${gdc_twos} = ${wos_target_scenario} then ${inc_air_cost}
+                  else 0
+                  end ;;
+  }
+  measure: inv_cost_KPI {
+    label: "Inventory Cost"
+    group_label: "KPI"
+    type: sum
+    sql:  case when
+                  ${gdc_twos} = ${wos_target_scenario} then ${inv_cost}
+                  else 0
+                  end;;
+  }
+  measure: lost_sales_cost_KPI {
+    label: "Lost Sales Cost"
+    group_label: "KPI"
+    type: sum
+    sql:  case when
+                  ${gdc_twos} = ${wos_target_scenario} then ${lost_sales_cost}
+                  else 0
+                  end ;;
+  }
+  measure: total_cost_KPI {
+    label: "Total Cost"
+    group_label: "KPI"
+    type: sum
+    sql:  case when
+                  ${gdc_twos} = ${wos_target_scenario} then ${total_cost}
+                  else 0
+                  end ;;
+    value_format_name: usd_0
+  }
+
 
 }

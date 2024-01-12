@@ -25,7 +25,7 @@ group by 1,2
   measure: min_cost {
     type: sum
     sql: ${TABLE}.min_cost ;;
-    filters: [check2.sl: ">0.95",rank_dim: "2"]
+    filters: [rank_dim: "2"]
   }
 
   dimension: rank_dim {
