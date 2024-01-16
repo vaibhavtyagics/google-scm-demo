@@ -11,7 +11,7 @@ include: "/dashboards/rsq_inventory_policy_simulation.dashboard.lookml"
 include: "/dashboards/sq_inventory_policy_simulation.dashboard.lookml"
 include: "/dashboards/gdc_simulation_test.dashboard.lookml"
 include: "/dashboards/simulation_sq_inventory_policy.dashboard.lookml"
-# include: "/dashboards/gdc_simulation_test.dashboard.lookml"
+include: "/dashboards/warehouse_optimization.dashboard.lookml"
 
 datagroup: google_scm_demo_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
