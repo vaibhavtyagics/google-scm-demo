@@ -11,6 +11,7 @@ include: "/dashboards/rsq_inventory_policy_simulation.dashboard.lookml"
 include: "/dashboards/sq_inventory_policy_simulation.dashboard.lookml"
 include: "/dashboards/gdc_simulation_test.dashboard.lookml"
 include: "/dashboards/simulation_sq_inventory_policy.dashboard.lookml"
+# include: "/dashboards/gdc_simulation_test.dashboard.lookml"
 
 datagroup: google_scm_demo_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -246,4 +247,13 @@ explore: warehouse_view {
            ${transfer_view.dest_warehouse} = ${warehouse_distance.dest_location_uid};;
     relationship: many_to_one
   }
+
+  join: scenario_summary {
+    type: left_outer
+    sql_on: ${scenario_summary.origin_warehouse} = ${warehouse_distance.origin_location_uid}
+            and
+            ${scenario_summary.destination_warehouse} =  ${warehouse_distance.dest_location_uid};;
+    relationship: many_to_one
+  }
+
 }

@@ -57,6 +57,7 @@ view: transfer_view {
   dimension: transportation_cost {
     type: number
     sql: ${TABLE}.transportation_cost ;;
+    value_format: "$ #.##"
   }
   dimension: transportation_mode {
     type: string

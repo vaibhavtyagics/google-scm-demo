@@ -16,6 +16,7 @@ view: warehouse_distance {
   dimension: distance {
     type: number
     sql: ${TABLE}.distance ;;
+    value_format_name: decimal_1
   }
   dimension: origin_lat {
     type: number
