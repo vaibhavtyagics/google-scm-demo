@@ -1,5 +1,5 @@
 view: inventory_simulation {
-  sql_table_name: `smart-nomad-401004.google_demo_reporting.Inventory_simulation2` ;;
+  sql_table_name: `smart-nomad-401004.google_demo_reporting.Inventory_simulation3` ;;
 
   dimension: pk {
     hidden: yes

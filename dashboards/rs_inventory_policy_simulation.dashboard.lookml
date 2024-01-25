@@ -4,7 +4,7 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: TDFsGFkmHYaC1A7hY6esl5
+  preferred_slug: kU5tzBb6arXbg5818kWbOf
   elements:
   - title: Inventory Simulation for Periodic Review (R) and Order Up-to Level (S)
       Policy
@@ -120,7 +120,6 @@
     listen:
       Product Uid: inventory_simulation.product_uid
       Location Uid: inventory_simulation.location_uid
-      Service Level %: inventory_simulation.service_level
     row: 7
     col: 4
     width: 20
@@ -222,7 +221,6 @@
       Product Uid: inventory_simulation.product_uid
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
-      Service Level %: inventory_simulation.service_level
     row: 1
     col: 8
     width: 4
@@ -323,7 +321,6 @@
       Product Uid: inventory_simulation.product_uid
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
-      Service Level %: inventory_simulation.service_level
     row: 1
     col: 4
     width: 4
@@ -449,7 +446,6 @@
       Product Uid: inventory_simulation.product_uid
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
-      Service Level %: inventory_simulation.service_level
     row: 1
     col: 16
     width: 8
@@ -550,7 +546,6 @@
       Product Uid: inventory_simulation.product_uid
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
-      Service Level %: inventory_simulation.service_level
     row: 1
     col: 12
     width: 4
@@ -652,7 +647,6 @@
       Product Uid: inventory_simulation.product_uid
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
-      Service Level %: inventory_simulation.service_level
     row: 1
     col: 0
     width: 4
@@ -743,7 +737,6 @@
       </body>
       </html>
     listen:
-      Service Level %: inventory_simulation.service_level
       Product Uid: inventory_simulation.product_uid
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
@@ -837,7 +830,6 @@
       </body>
       </html>
     listen:
-      Service Level %: inventory_simulation.service_level
       Product Uid: inventory_simulation.product_uid
       Location Uid: inventory_simulation.location_uid
       Week: inventory_simulation.time_dimension
@@ -846,43 +838,43 @@
     width: 4
     height: 5
   - type: button
-    name: button_1158
+    name: button_1243
     rich_content_json: '{"text":"s,Q Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/146?Time=%5B0%2C100%5D&Alpha=%5B90%2C90%5D&Product+Uid=P3394&Location+Uid=US16570"}'
     row: 0
     col: 0
     width: 6
     height: 1
   - type: button
-    name: button_1159
+    name: button_1244
     rich_content_json: '{"text":"Gdc Twos Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/143?SKU=SKU24"}'
     row: 0
     col: 18
     width: 6
     height: 1
   - type: button
-    name: button_1160
+    name: button_1245
     rich_content_json: '{"text":"R,s,Q Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/150?Product+Uid=P3479&Time=%5B0%2C100%5D&Alpha=%5B0%2C100%5D&Location+Uid=US00163"}'
     row: 0
     col: 12
     width: 6
     height: 1
   - type: button
-    name: button_1161
+    name: button_1246
     rich_content_json: '{"text":"R,s Inventory Policy Simulation","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cloudsufipartner.cloud.looker.com/dashboards/142?Service%20Level%20%25=87&Product%20Uid=P3394&Location%20Uid=&Week="}'
     row: 0
     col: 6
     width: 6
     height: 1
   filters:
-  - name: Service Level %
-    title: Service Level %
+  - name: Service Level
+    title: Service Level
     type: field_filter
-    default_value: '87'
+    default_value: '96'
     allow_multiple_values: true
     required: false
     ui_config:
-      type: dropdown_menu
-      display: inline
+      type: advanced
+      display: popover
     model: google-scm-demo
     explore: inventory_simulation
     listens_to_filters: []
@@ -916,7 +908,7 @@
   - name: Week
     title: Week
     type: field_filter
-    default_value: ''
+    default_value: '93'
     allow_multiple_values: true
     required: false
     ui_config:
