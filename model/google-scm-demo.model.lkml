@@ -84,5 +84,13 @@ join :product {
     relationship: one_to_many
   }
 
+}
 
+
+explore: s_q_revamped {
+  view_name: s_q_revamped
+}
+
+explore: rs_q_policy_prod {
+  view_name: rs_q_policy_prod
 }
