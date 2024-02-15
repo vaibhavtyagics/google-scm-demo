@@ -3,7 +3,7 @@ connection: "google_scm_demo"
 # include all the views
 include: "/views/**/*.view.lkml"
 
-#include: "/dashboards/**/*"
+include: "/dashboard/**/*"
 
 datagroup: google_scm_demo_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
