@@ -1,11 +1,63 @@
 view: order {
   sql_table_name: `@{PROJECT}.@{INVENTORY_DATASET}.order` ;;
-  drill_fields: [order_id]
+  drill_fields: [order_creation_date_date,order_id,order_category,status,location_uid,delivered_quantity, shipped_quantity, sales_price]
 
   dimension: order_id {
     primary_key: yes
+    label: "Order ID"
     type: string
     sql: ${TABLE}.order_id ;;
+
+    link: {
+      label: "Action in ERP"
+      url: "https://aidoahy7w.accounts.ondemand.com/"
+      icon_url: "https://i.ibb.co/58xPDWZ/icons8-sap-48.png"
+    }
+
+    action: {
+      label: "Action on Email"
+      url: "https://hooks.zapier.com/hooks/catch/11814505/bryrebp/"
+
+      form_param: {
+        name: "Heading"
+        type: string
+        default: "Let's connect urgently"
+      }
+
+      form_param: {
+        name: "Description"
+        type: textarea
+        default: "Details#
+        Order ID :- {{order_id._value}}
+        Order Creation Date :- {{order_creation_date_date._value}}
+        Order Category :- {{order_category._value}}
+        Status :- {{status._value}}
+        Location Uid :- {{location_uid._value}}
+        Delivered Quantity :- {{delivered_quantity._value}}
+        Shipped Quantity :- {{shipped_quantity._value}}
+        Sales Price :- {{sales_price._value}}
+        Lead Time :- {{lead_time._value}}
+        In Transit Lead Time :- {{in_transit_lead_time._value}}"
+      }
+
+      form_param: {
+        name: "Start Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "End Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "Recipient"
+        type: textarea
+        default: ""
+      }
+    }
   }
   dimension: active {
     type: string
@@ -120,8 +172,57 @@ view: order {
     sql: ${TABLE}.preceding_document ;;
   }
   dimension: product_uid {
+    label: "Product UID"
     type: string
     sql: ${TABLE}.product_uid ;;
+
+    link: {
+      label: "Action in ERP"
+      url: "https://aidoahy7w.accounts.ondemand.com/"
+      icon_url: "https://i.ibb.co/58xPDWZ/icons8-sap-48.png"
+    }
+
+    action: {
+      label: "Action on Email"
+      url: "https://hooks.zapier.com/hooks/catch/11814505/bryrebp/"
+
+      form_param: {
+        name: "Heading"
+        type: string
+        default: "Let's connect urgently"
+      }
+
+      form_param: {
+        name: "Description"
+        type: textarea
+        default: "Details#
+        Product UID :- {{product_uid._value}}
+        Status :- {{order.status._value}}
+        Location ID :- {{location.location_id._value}}
+        Procuct Cost :- {{product.product_cost._value}}
+        Product :- {{product_uid._value}}
+        Product Category :- {{product.product_type._value}}
+        Product Description :- {{product.product_description._value}}"
+      }
+
+      form_param: {
+        name: "Start Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "End Date and Time (M/DD/YYYY, HH:MM Timezone)"
+        type: string
+        default: ""
+      }
+
+      form_param: {
+        name: "Recipient"
+        type: textarea
+        default: ""
+      }
+    }
   }
   dimension: received_quantity {
     type: number
@@ -211,6 +312,7 @@ view: order {
   measure: total_requested_quantity {
     type: sum
     sql: ${requested_quantity} ;;
+    value_format: "0,\" K\""
   }
 
   measure: total_rejected_quantity {
@@ -228,24 +330,78 @@ view: order {
     type: number
     sql: ${total_rejected_quantity}/IF(COALESCE(${total_delivered_quantity},0) = 0,null,${total_delivered_quantity})  ;;
     value_format_name: decimal_3
+    drill_fields: [supplier_quality_index_drills*]
+  }
+
+  set: supplier_quality_index_drills {
+    fields: [
+      order_id,
+      order_creation_date_date,
+      status,
+      order_category,
+      supplier_quality_index
+    ]
+  }
+
+  set: order_backlog_drills {
+    fields: [
+      order_id,
+      order_creation_date_date,
+      status,
+      order_category,
+      order_backlog,
+      backorder_rate
+      ]
   }
 
   measure: order_backlog{
     type: number
     sql:  (${total_requested_quantity}) - ${total_delivered_quantity};;
+    drill_fields: [order_backlog_drills*]
   }
 
-  measure: total_requested_quantity_po{
-    label: "Incoming Arrivals"
-    type: sum
-    sql: Cast(${TABLE}.requested_quantity as int) ;;
-    # filters: [order_category: "Purchase Order", status: "Open"]
-    }
+  # measure: total_requested_quantity_po{
+  #   label: "Incoming Arrivals"
+  #   type: number
+  #   sql: ${forecast.total_forecast_quantity}*1.2;;
+  #   # filters: [order_category: "Purchase Order", status: "Open"]
+  #   }
+
+  set: lead_time_details {
+    fields: [
+      order_id,
+      order_creation_date_date,
+      actual_delivery_date,
+      order_category,
+      status,
+      location_uid,
+      lead_time
+    ]
+  }
+
+  set: lead_time_details_in_transit {
+    fields: [
+      order_id,
+      order_creation_date_date,
+      requested_delivery_date,
+      order_category,
+      status,
+      location_uid,
+      in_transit_lead_time
+    ]
+  }
 
   measure: lead_time {
-    hidden: yes
     type: average
     sql: ROUND(date_diff(${actual_delivery_date}, ${order_creation_date_date}, DAY), 0) ;;
+    drill_fields: [lead_time_details*]
+  }
+
+  measure: in_transit_lead_time {
+    hidden: yes
+    type: average
+    sql: date_diff(${requested_delivery_date}, ${order_creation_date_date}, DAY);;
+    drill_fields: [lead_time_details_in_transit*]
   }
 
   measure: backorders {
@@ -264,6 +420,7 @@ view: order {
     type: number
     sql: (COALESCE(${backorders},0) / (COALESCE(${total_orders},0)));;
     value_format_name: percent_2
+    drill_fields: [order_backlog_drills*]
   }
 
   measure: backorder_rate_fr {
@@ -275,13 +432,32 @@ view: order {
   measure: total_sales {
     type: sum
     sql: ${sales_price}*${delivered_quantity} ;;
-    value_format: "$ 0.00,,\" M\""
+    value_format: "$ 0,,\" M\""
   }
+
+  measure: sell_value {
+    type: sum
+    sql: ${sales_price}*${inventory.inventory_quantity} ;;
+    value_format: "$ 0,,\" M\""
+  }
+
 
   measure: return_qty {
     hidden: yes
     type: sum
     sql: ${returned_quantity} ;;
+  }
+
+  measure: total_shipped_quantity {
+    type: sum
+    sql: CAST(${shipped_quantity} AS INT) ;;
+    value_format: "0,,\" M\""
+  }
+
+  measure: shipped_inventory_cost {
+    type: sum
+    sql: ${shipped_quantity}*${product.product_cost} ;;
+    value_format: "$ 0,,\" M\""
   }
 
   measure: delivered_qty {
@@ -290,18 +466,45 @@ view: order {
     sql: ${delivered_quantity} ;;
   }
 
+  set: return_rate_drills {
+    fields: [
+      order_id,
+      order_creation_date_date,
+      status,
+      order_category,
+      delivered_qty,
+      return_qty
+      ]
+  }
   measure: return_rate {
     type: number
-    sql: ${return_qty} / ${delivered_qty} ;;
+    sql: COALESCE(${return_qty},0) / COALESCE(${delivered_qty},0) ;;
     value_format_name: percent_2
+    drill_fields: [return_rate_drills*]
   }
 
   measure: cycle_time {
     hidden: no
     type: average
-    sql: ROUND(date_diff(${order_creation_date_date} ,${actual_delivery_date}, DAY), 0) ;;
-    value_format_name: decimal_2
+    sql: ROUND(date_diff(${actual_delivery_date}, ${order_creation_date_date}, DAY), 0) ;;
+    value_format_name: decimal_0
   }
 
+  measure: average_lead_time {
+    type: average
+    sql: ROUND(date_diff(${actual_delivery_date}, ${order_creation_date_date}, DAY), 0) ;;
+  }
+
+  measure: stocks_to_sales_ration {
+    type: number
+    sql: ${total_requested_quantity}/${total_sales} ;;
+    value_format_name: decimal_1
+  }
+
+  measure: intransit_sell_value {
+    type: sum
+    sql: CAST(${shipped_quantity} AS INT)*${sales_price} ;;
+    value_format: "$ 0,,\" M\""
+  }
 
 }
